@@ -1,7 +1,7 @@
 {
   "name": "customer_relationship_manager",
   "version": "1.0.0",
-  "description": "",
+  "description": "### From the perspective of a buyer dealing with sales reps and working with executives. I have managed as many as 19,000 pieces of inventory and as much as $5 million in total inventory cost. I would like to build features that would improve on the current options I have used.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/tylercasperson/CustomerRelationshipManager/issues"
   },
-  "homepage": "https://github.com/tylercasperson/CustomerRelationshipManager#readme"
+  "homepage": "https://github.com/tylercasperson/CustomerRelationshipManager#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.2.3"
+  },
+  "devDependencies": {}
 }
