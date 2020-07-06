@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     });
   
     BusinessFunctions.associate = function(models) {
-        BusinessFunctions.hasMany(models.business, {
+        BusinessFunctions.hasMany(models.contacts, {
             onDelete: 'cascade'
         });
     };
