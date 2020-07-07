@@ -5,13 +5,13 @@ module.exports = function(sequelize, DataTypes) {
           primaryKey: true,
           allowNulls: false,
           required: true
-      }
+      },
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE
     });
   
     Numbers.associate = function(models) {
         Numbers.hasMany(models.Businesss, {
-            foreignKey: 'priority',
-            sourceKey: 'id',
             onDelete: 'cascade'
         });
     };

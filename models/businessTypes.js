@@ -1,5 +1,3 @@
-var sequelize = require('./index');
-
 module.exports = function(sequelize, DataTypes) {
     const BusinessTypes = sequelize.define("BusinessTypes", {
       businessType: {
@@ -11,8 +9,6 @@ module.exports = function(sequelize, DataTypes) {
 
     BusinessTypes.associate = function(models) {
         BusinessTypes.hasMany(models.Businesss, {
-            foreignKey: 'businessTypeID',
-            source: 'ID',
             onDelete: 'cascade'
         });
     };

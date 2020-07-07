@@ -4,7 +4,9 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNulls: false,
           required: true
-      }
+      },
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE
     });
   
     Roles.associate = function(models) {

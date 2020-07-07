@@ -10,7 +10,12 @@ app.use(express.json());
 // Static directory
 app.use(express.static('public'));
 
-db.sequelize.sync({ force: false, alter: true }).then(function() {
+// Warning handler
+process.on('warning', (warning) => {
+    console.log(warning.stack);
+});
+
+db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
         console.log(`Business Relationship Manager ==> API server now listening on PORT ${PORT}!`);
     });

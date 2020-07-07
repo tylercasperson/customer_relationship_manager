@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     const Contacts = sequelize.define("Contacts", {
-      ContactsName: {
+      contactName: {
           type: DataTypes.STRING,
           allowNulls: false
         },
@@ -13,26 +13,8 @@ module.exports = function(sequelize, DataTypes) {
       },
       contactWhen: DataTypes.STRING,
       notes: DataTypes.TEXT,
-      roleID: {
-          type: DataTypes.INTEGER,
-          allowNulls: false,
-          required: true
-      },
-      businessFunctionID: {
-          type: DataTypes.INTEGER,
-          allowNulls: false,
-          required: true
-      },
-      contactTypeID: {
-          type: DataTypes.INTEGER,
-          allowNulls: false,
-          required: true
-      },
-      businessID: {
-          type: DataTypes.INTEGER,
-          allowNulls: false,
-          required: true
-      }
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE
     });
   
     Contacts.associate = models => {

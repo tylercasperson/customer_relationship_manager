@@ -10,23 +10,13 @@ module.exports = function(sequelize, DataTypes) {
       zip: DataTypes.STRING,
       phoneNumber: DataTypes.STRING,
       notes: DataTypes.TEXT,
-      businessTypeID: {
-          type: DataTypes.INTEGER,
-          required: true,
-          allowNulls: false
-      },
-      industryID: {
-          type: DataTypes.INTEGER,
-          required: true,
-          allowNulls: false
-      },
-      priority: DataTypes.INTEGER
+      priority: DataTypes.INTEGER,
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE
     });
   
     Businesss.associate = models => {
         Businesss.hasMany(models.Contacts, {
-            foreignKey: 'businessID',
-            sourceKey: 'id',
             onDelete: 'cascade'
         }),
         Businesss.belongsTo(models.BusinessTypes, {

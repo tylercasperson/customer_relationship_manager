@@ -4,13 +4,13 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNulls: false,
           required: true
-      }
+      },
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE
     });
   
     Industries.associate = function(models) {
         Industries.hasMany(models.Businesss, {
-            foreignKey: 'industryID',
-            sourceKey: 'id',
             onDelete: 'cascade'
         });
     };
