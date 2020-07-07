@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     });
   
     Roles.associate = function(models) {
-        Roles.hasMany(models.contacts, {
+        Roles.hasMany(models.Contacts, {
             onDelete: 'cascade'
         });
     };

@@ -35,17 +35,17 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   
-    Contacts.associate = function(models) {
-        Contacts.belongsTo(models.business, {
+    Contacts.associate = models => {
+        Contacts.belongsTo(models.Businesss, {
+            onDelete: 'cascade'
+        });
+        Contacts.belongsTo(models.Roles, {
             onDelete: 'cascade'
         }),
-        Contacts.belongsTo(models.roles, {
+        Contacts.belongsTo(models.BusinessFunctions, {
             onDelete: 'cascade'
         }),
-        Contacts.belongsTo(models.businessFunctions, {
-            onDelete: 'cascade'
-        }),
-        Contacts.belongsTo(models.contactType, {
+        Contacts.belongsTo(models.ContactTypes, {
             onDelete: 'cascade'
         });
     };

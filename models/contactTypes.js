@@ -8,7 +8,9 @@ module.exports = function(sequelize, DataTypes) {
     });
   
     ContactTypes.associate = function(models) {
-        ContactTypes.hasMany(models.contacts, {
+        ContactTypes.hasMany(models.Contacts, {
+            foreignKey: 'contactTypeID',
+            sourceKey: 'id',
             onDelete: 'cascade'
         });
     };

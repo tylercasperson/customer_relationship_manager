@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const Business = sequelize.define("Business", {
+    var Businesss = sequelize.define("Businesss", {
       businessName: {
           type: DataTypes.STRING,
           allowNulls: false
@@ -23,17 +23,19 @@ module.exports = function(sequelize, DataTypes) {
       priority: DataTypes.INTEGER
     });
   
-    Business.associate = function(models) {
-        Business.hasMany(models.contacts, {
+    Businesss.associate = models => {
+        Businesss.hasMany(models.Contacts, {
+            foreignKey: 'businessID',
+            sourceKey: 'id',
             onDelete: 'cascade'
         }),
-        Business.belongsTo(models.businessTypes, {
+        Businesss.belongsTo(models.BusinessTypes, {
             onDelete: 'cascade'
         }),
-        Business.belongsTo(models.indutries, {
+        Businesss.belongsTo(models.Industries, {
             onDelete: 'cascade'
         });
     };
   
-    return Business;
+    return Businesss;
   };

@@ -10,8 +10,8 @@ app.use(express.json());
 // Static directory
 app.use(express.static('public'));
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false, alter: true }).then(function() {
     app.listen(PORT, function() {
-        console.log(`CRM ==> API server now listening on PORT ${PORT}!`);
+        console.log(`Business Relationship Manager ==> API server now listening on PORT ${PORT}!`);
     });
 });
