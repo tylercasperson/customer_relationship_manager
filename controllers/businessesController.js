@@ -18,13 +18,4 @@ router.get('/businesses', function(req, res) {
     });
 });
 
-// router.get('/business', function(req, res) {
-//     db.businesses.findAll(({
-//         include: [db.Contacts]
-//     }).then(dunction(dbbusinesses) {
-//         var 
-//     })
-//     )
-// })
-
 module.exports = router;
