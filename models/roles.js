@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const Roles = sequelize.define("Roles", {
+    const roles = sequelize.define("roles", {
       role: {
           type: DataTypes.STRING,
           allowNulls: false,
@@ -9,11 +9,11 @@ module.exports = function(sequelize, DataTypes) {
       updatedAt: DataTypes.DATE
     });
   
-    Roles.associate = function(models) {
-        Roles.hasMany(models.Contacts, {
+    roles.associate = function(models) {
+        roles.hasMany(models.contacts, {
             onDelete: 'cascade'
         });
     };
   
-    return Roles;
+    return roles;
   };

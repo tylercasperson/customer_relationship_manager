@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const Numbers = sequelize.define("Numbers", {
+    const numbers = sequelize.define("numbers", {
       id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
@@ -10,11 +10,11 @@ module.exports = function(sequelize, DataTypes) {
       updatedAt: DataTypes.DATE
     });
   
-    Numbers.associate = function(models) {
-        Numbers.hasMany(models.Businesss, {
+    numbers.associate = function(models) {
+        numbers.hasMany(models.businesses, {
             onDelete: 'cascade'
         });
     };
   
-    return Numbers;
+    return numbers;
   };

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const BusinessFunctions = sequelize.define("BusinessFunctions", {
+    const businessFunctions = sequelize.define("businessFunctions", {
       businessFunction: {
           type: DataTypes.STRING,
           allowNulls: false,
@@ -9,11 +9,11 @@ module.exports = function(sequelize, DataTypes) {
       updatedAt: DataTypes.DATE
     });
   
-    BusinessFunctions.associate = function(models) {
-        BusinessFunctions.hasMany(models.Contacts, {
+    businessFunctions.associate = function(models) {
+        businessFunctions.hasMany(models.contacts, {
             onDelete: 'cascade'
         });
     };
   
-    return BusinessFunctions;
+    return businessFunctions;
   };

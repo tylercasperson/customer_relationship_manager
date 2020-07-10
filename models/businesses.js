@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Businesss = sequelize.define("Businesss", {
+    var businesses = sequelize.define("businesses", {
       businessName: {
           type: DataTypes.STRING,
           allowNulls: false
@@ -10,22 +10,22 @@ module.exports = function(sequelize, DataTypes) {
       zip: DataTypes.STRING,
       phoneNumber: DataTypes.STRING,
       notes: DataTypes.TEXT,
-      priority: DataTypes.INTEGER,
+      numberID: DataTypes.INTEGER,
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE
     });
   
-    Businesss.associate = models => {
-        Businesss.hasMany(models.Contacts, {
+    businesses.associate = models => {
+        businesses.hasMany(models.contacts, {
             onDelete: 'cascade'
         }),
-        Businesss.belongsTo(models.BusinessTypes, {
+        businesses.belongsTo(models.businessTypes, {
             onDelete: 'cascade'
         }),
-        Businesss.belongsTo(models.Industries, {
+        businesses.belongsTo(models.industries, {
             onDelete: 'cascade'
         });
     };
   
-    return Businesss;
+    return businesses;
   };

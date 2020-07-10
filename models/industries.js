@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const Industries = sequelize.define("Industries", {
+    const industries = sequelize.define("industries", {
       industry: {
           type: DataTypes.STRING,
           allowNulls: false,
@@ -9,11 +9,11 @@ module.exports = function(sequelize, DataTypes) {
       updatedAt: DataTypes.DATE
     });
   
-    Industries.associate = function(models) {
-        Industries.hasMany(models.Businesss, {
+    industries.associate = function(models) {
+    industries.hasMany(models.businesses, {
             onDelete: 'cascade'
         });
     };
   
-    return Industries;
+    return industries;
   };

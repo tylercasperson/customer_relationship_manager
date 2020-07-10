@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const Contacts = sequelize.define("Contacts", {
+    const contacts = sequelize.define("contacts", {
       contactName: {
           type: DataTypes.STRING,
           allowNulls: false
@@ -17,20 +17,20 @@ module.exports = function(sequelize, DataTypes) {
       updatedAt: DataTypes.DATE
     });
   
-    Contacts.associate = models => {
-        Contacts.belongsTo(models.Businesss, {
+    contacts.associate = models => {
+        contacts.belongsTo(models.businesses, {
             onDelete: 'cascade'
         });
-        Contacts.belongsTo(models.Roles, {
+        contacts.belongsTo(models.roles, {
             onDelete: 'cascade'
         }),
-        Contacts.belongsTo(models.BusinessFunctions, {
+        contacts.belongsTo(models.businessFunctions, {
             onDelete: 'cascade'
         }),
-        Contacts.belongsTo(models.ContactTypes, {
+        contacts.belongsTo(models.contactTypes, {
             onDelete: 'cascade'
         });
     };
   
-    return Contacts;
+    return contacts;
   };
