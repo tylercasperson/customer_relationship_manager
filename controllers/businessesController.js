@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {Op} = require('sequelize');
 const db = require('../models');
 
 router.get('/', function(req, res) {
@@ -29,6 +30,29 @@ router.get('/api/businesses/:id', function(req, res) {
     });
 });
 
+router.post('/api/businesses/:id', function(req, res) {
+    db.businesses.create({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(function(dbbusinesses) {
+        res.json(dbbusinesses);
+    });
+});
+
+router.put('/api/businesses', function(req, res) {
+    db.businesses.update(
+        req.body,
+        {
+            where: {
+                id: req.params.id
+            }
+        })
+    .then(function(dbbusinesses) {
+        res.json(dbbusinesses);
+    });
+});
 
 router.delete('/api/businesses/:id', function(req,res) {
     db.businesses.destroy({
