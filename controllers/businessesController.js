@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
     res.redirect('/api/businesses');
 });
 
-router.get('/businesses', function(req, res) {
+router.get('/api/businesses', function(req, res) {
     db.businesses.findAll(({
         include: [db.contacts]
     }))
