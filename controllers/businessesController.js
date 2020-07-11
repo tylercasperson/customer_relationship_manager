@@ -18,4 +18,15 @@ router.get('/businesses', function(req, res) {
     });
 });
 
+router.get('/api/businesses/:id', function(req, res) {
+    db.businesses.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(function(dbbusinesses) {
+        res.json(dbbusinesses);
+    });
+});
+
 module.exports = router;
