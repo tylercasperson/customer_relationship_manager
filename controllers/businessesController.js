@@ -29,4 +29,15 @@ router.get('/api/businesses/:id', function(req, res) {
     });
 });
 
+
+router.delete('/api/businesses/:id', function(req,res) {
+    db.businesses.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(function(dbbusinesses) {
+        res.json(dbbusinesses);
+    });
+});
+
 module.exports = router;
