@@ -30,7 +30,7 @@ router.get('/api/businesses/:id', function(req, res) {
     });
 });
 
-router.post('/api/businesses/:id', function(req, res) {
+router.post('/api/businesses', function(req, res) {
     db.businesses.create({
         where: {
             id: req.params.id
@@ -41,7 +41,7 @@ router.post('/api/businesses/:id', function(req, res) {
     });
 });
 
-router.put('/api/businesses', function(req, res) {
+router.put('/api/businesses/:id', function(req, res) {
     db.businesses.update(
         req.body,
         {
