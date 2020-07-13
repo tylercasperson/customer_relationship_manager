@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import businesses from '../../utils/API';
+import BusinessCard from '../src/components/BusinessCard';
 
 function App() {
   return (
@@ -19,6 +21,15 @@ function App() {
           Learn React
         </a>
       </header>
+      <BusinessCard 
+        businessName={businesses[0].businessName}
+        // phoneNumber={bus}
+        // address={}
+        // city={}
+        // state={}
+        // zip={}
+        // notes={}
+      />
     </div>
   );
 }
