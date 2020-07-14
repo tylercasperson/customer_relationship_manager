@@ -1,35 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Businesses from './pages/Businesses';
 import './App.css';
-// import API from "./utils/API";
-import BusinessCard from '../src/components/BusinessCard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <BusinessCard 
-        businessName={1}
-        // phoneNumber={bus}
-        // address={}
-        // city={}
-        // state={}
-        // zip={}
-        // notes={}
-      />
+    <div id="BusinessRealtionshipManager">
+      <div className="container-fluid router-body">
+        <Router>
+          <div>
+            <Switch>
+              <Route exact path="/" component={Businesses} />
+              <Route exact path="/businesses" component={Businesses} />
+            </Switch>
+          </div>
+        </Router>
+      </div>
     </div>
   );
 }
