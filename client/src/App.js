@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import businesses from '../../utils/API';
+// import API from "./utils/API";
 import BusinessCard from '../src/components/BusinessCard';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         </a>
       </header>
       <BusinessCard 
-        businessName={businesses[0].businessName}
+        businessName={1}
         // phoneNumber={bus}
         // address={}
         // city={}
