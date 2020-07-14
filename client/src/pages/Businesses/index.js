@@ -2,19 +2,27 @@ import React from "react";
 import "./style.css";
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
-import BusinessCard from "../../components/BusinessCard";
+// import BusinessCard from "../../components/BusinessCard";
 import API from "../../utils/API";
 
 class Businesses extends React.Component 
 {
     state = 
     {
-        businesses: []
+        businessList: []
     }
 
-    componentDidMount = () =>
+    componentDidMount = () => 
     {
-        API.businesses();
+        API.businesses()
+        .then((res) => {
+            this.setState({ businessList: res.data.businesses });
+            console.log('Business List: ');
+            console.log(this.state.businessList);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     render = () =>
@@ -22,9 +30,11 @@ class Businesses extends React.Component
         return (
             <div className="container-fluid">
                 <NavBar />
-                <BusinessCard 
-                    businessName={1}
-                />
+            
+                {/* <BusinessCard
+                    businessName={this.state.businessList.length >0? this.state.businessList[0].businessName : this.state.businessList.length}
+                /> */}
+
                 <Footer />
             </div>
         )
