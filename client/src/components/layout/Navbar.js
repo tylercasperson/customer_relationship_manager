@@ -1,11 +1,38 @@
 import React from 'react';
-import './style.css';
+import gearsLogo from '../images/service-provider.png';
+import enterpriseLogo from '../images/company-enterprise.png';
 
 function NavBar() {
   return (
-    <div className="navBar">
-        
-    </div>
+    <nav>
+      <div className='nav-wrapper light-blue'>
+        <a className='brand-logo center logoDiv' href='#!'>
+          <img src={enterpriseLogo} alt='logo' id='logo' /> Business
+          Relationship Manager <img src={gearsLogo} alt='logo' id='logo' />
+        </a>
+
+        <ul className='left hide-on-med-and-down'>
+          <li>
+            <a href='#!'>Business</a>
+          </li>
+          <li>
+            <a href='#!'>Contacts</a>
+          </li>
+          <li>
+            <a href='#!'>Reports</a>
+          </li>
+        </ul>
+
+        <ul className='right hide-on-med-and-down'>
+          <li>
+            <a href='#!'>Profile</a>
+          </li>
+          <li>
+            <a href='#!'>Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 }
 
