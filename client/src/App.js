@@ -2,13 +2,14 @@ import React from 'react';
 import './App.css';
 
 import Navbar from './components/layout/Navbar';
+import BusinessCard from './components/layout/BusinessCard';
 
 function App() {
   return (
     <div id='BusinessRealtionshipManager'>
       <Navbar />
       <div className='container-fluid router-body'>
-        <h1>Customer Relationship Manager</h1>
+        <BusinessCard />
       </div>
     </div>
   );

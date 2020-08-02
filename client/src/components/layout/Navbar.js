@@ -7,8 +7,9 @@ function NavBar() {
     <nav>
       <div className='nav-wrapper light-blue'>
         <a className='brand-logo center logoDiv' href='#!'>
-          <img src={enterpriseLogo} alt='logo' id='logo' /> Business
-          Relationship Manager <img src={gearsLogo} alt='logo' id='logo' />
+          <img src={enterpriseLogo} alt='logo' className='logo' /> Business
+          Relationship Manager{' '}
+          <img src={gearsLogo} alt='logo' className='logo' />
         </a>
 
         <ul className='left hide-on-med-and-down'>

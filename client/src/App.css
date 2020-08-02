@@ -1,4 +1,32 @@
-#logo {
+.logo {
   height: 50px;
   padding-top: 10px;
+}
+.businessCard {
+  width: 40%;
+}
+.businessName {
+  display: inline-block;
+}
+.businessImage {
+  padding: 10px;
+  height: 100%;
+  width: auto;
+}
+.industryBadges {
+  margin-top: 10px;
+}
+.industryLink {
+  color: black;
+}
+.card-description {
+  padding: 10px;
+}
+.businessSlogan {
+  margin-top: none;
+  padding-top: 0%;
+}
+
+.info {
+  float: right;
 }
