@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InfoCard = (props) => {
+const AddressCard = (props) => {
   return (
     <div className='bg-gray-400 px-3 py-6'>
       <div className='bg-black flex max-w-md shadow-lg rounded-lg overflow-hidden'>
@@ -25,4 +25,4 @@ const InfoCard = (props) => {
   );
 };
 
-export default InfoCard;
+export default AddressCard;

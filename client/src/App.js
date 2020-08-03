@@ -8,9 +8,7 @@ function App() {
   return (
     <div id='BusinessRealtionshipManager'>
       <Navbar />
-      <div className='container-fluid router-body'>
-        <BusinessCard />
-      </div>
+      <BusinessCard />
     </div>
   );
 }

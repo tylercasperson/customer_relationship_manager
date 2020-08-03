@@ -18,6 +18,9 @@ const SocialLinks = () => {
       <a className='py-2' href='#!'>
         <i className='fab fa-instagram'></i>
       </a>
+      <a className='py-2' href='#!'>
+        <i className='fab fa-linkedin'></i>
+      </a>
       <button>
         <i className='far fa-address-book'></i>
       </button>
@@ -26,6 +29,15 @@ const SocialLinks = () => {
       </button>
       <button>
         <i className='fas fa-store'></i>
+      </button>
+      <button>
+        <i className='far fa-sticky-note'></i>
+      </button>
+      <button>
+        <i className='fas fa-chart-line'></i>
+      </button>
+      <button>
+        <i className='far fa-handshake'></i>
       </button>
     </div>
   );
