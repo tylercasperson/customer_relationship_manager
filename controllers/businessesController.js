@@ -1,66 +1,76 @@
 const express = require('express');
 const router = express.Router();
-const {Op} = require('sequelize');
+const { Op } = require('sequelize');
 const db = require('../models');
 
-router.get('/', function(req, res) {
-    res.redirect('/api/businesses');
+router.get('/', function (req, res) {
+  res.redirect('/api/businesses');
 });
 
-router.get('/api/businesses', function(req, res) {
-    db.businesses.findAll(({
-        include: [db.contacts]
-    }))
-    .then(function(dbbusinesses) {
-        var businessesObject = {
-            businesses: dbbusinesses
-        };
-        return res.json(businessesObject);
+router.get('/api/businesses', async (req, res) => {
+  try {
+    const businesses = await db.businesses.findAll({
+      include: [db.contacts],
     });
+    res.json(businesses);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
+//     .then(function(dbbusinesses) {
+//         var businessesObject = {
+//             businesses: dbbusinesses
+//         };
+//         return res.json(businessesObject);
+//     });
+// });
 
-router.get('/api/businesses/:id', function(req, res) {
-    db.businesses.findOne({
-        where: {
-            id: req.params.id
-        }
+router.get('/api/businesses/:id', function (req, res) {
+  db.businesses
+    .findOne({
+      where: {
+        id: req.params.id,
+      },
     })
-    .then(function(dbbusinesses) {
-        res.json(dbbusinesses);
+    .then(function (dbbusinesses) {
+      res.json(dbbusinesses);
     });
 });
 
-router.post('/api/businesses', function(req, res) {
-    db.businesses.create({
-        where: {
-            id: req.params.id
-        }
+router.post('/api/businesses', function (req, res) {
+  db.businesses
+    .create({
+      where: {
+        id: req.params.id,
+      },
     })
-    .then(function(dbbusinesses) {
-        res.json(dbbusinesses);
+    .then(function (dbbusinesses) {
+      res.json(dbbusinesses);
     });
 });
 
-router.put('/api/businesses/:id', function(req, res) {
-    db.businesses.update(
-        req.body,
-        {
-            where: {
-                id: req.params.id
-            }
-        })
-    .then(function(dbbusinesses) {
-        res.json(dbbusinesses);
+router.put('/api/businesses/:id', function (req, res) {
+  db.businesses
+    .update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    })
+    .then(function (dbbusinesses) {
+      res.json(dbbusinesses);
     });
 });
 
-router.delete('/api/businesses/:id', function(req,res) {
-    db.businesses.destroy({
-        where: {
-            id: req.params.id
-        }
-    }).then(function(dbbusinesses) {
-        res.json(dbbusinesses);
+router.delete('/api/businesses/:id', function (req, res) {
+  db.businesses
+    .destroy({
+      where: {
+        id: req.params.id,
+      },
+    })
+    .then(function (dbbusinesses) {
+      res.json(dbbusinesses);
     });
 });
 

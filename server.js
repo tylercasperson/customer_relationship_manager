@@ -21,14 +21,15 @@ app.use(cors());
 app.use(businessRoute);
 app.use(contactRoute);
 
-
 // Warning handler
 process.on('warning', (warning) => {
-    console.log(warning.stack);
+  console.log(warning.stack);
 });
 
-db.sequelize.sync({ force: false }).then(function() {
-    app.listen(PORT, function() {
-        console.log(`Business Relationship Manager ==> API server now listening on PORT ${PORT}!`);
-    });
+db.sequelize.sync({ force: false }).then(function () {
+  app.listen(PORT, function () {
+    console.log(
+      `Business Relationship Manager ==> API server now listening on PORT ${PORT}!`
+    );
+  });
 });
