@@ -21,6 +21,12 @@ const SocialLinks = () => {
       <a className='py-2' href='#!'>
         <i className='fab fa-linkedin'></i>
       </a>
+      <a className='py-2' href='#!'>
+        <i className='fab fa-tiktok'></i>
+      </a>
+      <a className='py-2' href='#!'>
+        <i className='fab fa-whatsapp'></i>
+      </a>
     </div>
   );
 };

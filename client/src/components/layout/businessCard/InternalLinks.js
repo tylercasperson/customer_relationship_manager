@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SocialLinks = () => {
+const InternalLinks = (props) => {
   return (
     <div className='flex item-center justify-between'>
-      <button>
+      <button name='address' onClick={props.address}>
         <i className='far fa-address-book'></i>
       </button>
       <button>
@@ -25,4 +25,4 @@ const SocialLinks = () => {
   );
 };
 
-export default SocialLinks;
+export default InternalLinks;

@@ -1,8 +1,6 @@
 import React from 'react';
-// import InfoCard from './InfoCard';
+// import AddressCard from './AddressCard';
 import Industry from './Industry';
-import SocialLinks from './SocialLinks';
-import InternalLinks from './InternalLinks';
 
 const BusinessCard = () => {
   return (
@@ -50,8 +48,6 @@ const BusinessCard = () => {
           </svg>
         </div>
         <Industry />
-        <SocialLinks />
-        <InternalLinks />
       </div>
     </div>
   );
