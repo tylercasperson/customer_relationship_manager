@@ -3,6 +3,9 @@ import React from 'react';
 const InternalLinks = (props) => {
   return (
     <div className='flex item-center justify-between'>
+      <button onClick={props.home}>
+        <i className='fas fa-home'></i>
+      </button>
       <button onClick={props.address}>
         <i className='far fa-address-book'></i>
       </button>

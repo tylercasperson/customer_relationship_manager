@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import BusinessContext from '../../../context/business/businessContext';
 
-const AddressCard = () => {
+const Address = () => {
   const businessContext = useContext(BusinessContext);
 
   const { businesses, getBusinesses } = businessContext;
@@ -37,4 +37,4 @@ const AddressCard = () => {
   );
 };
 
-export default AddressCard;
+export default Address;
