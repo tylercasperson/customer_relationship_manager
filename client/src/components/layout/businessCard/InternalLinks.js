@@ -13,7 +13,7 @@ const InternalLinks = (props) => {
         <i className='fas fa-store'></i>
       </button>
       <button>
-        <i className='far fa-sticky-note'></i>
+        <i className='far fa-sticky-note' onClick={props.notes}></i>
       </button>
       <button>
         <i className='fas fa-chart-line'></i>

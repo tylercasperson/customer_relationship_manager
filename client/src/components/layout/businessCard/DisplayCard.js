@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import BusinessCard from './BusinessCard';
 import AddressCard from './AddressCard';
+import NotesCard from './NotesCard';
+
 import SocialLinks from './SocialLinks';
 import InternalLinks from './InternalLinks';
 
@@ -8,9 +10,6 @@ const DisplayCard = () => {
   const [showCard, setShowCard] = useState(<BusinessCard />);
 
   const cardToDisplay = (buttonName) => {
-    console.log(buttonName);
-    console.log(showCard.type.name);
-    console.log(buttonName === showCard.type.name);
     if (showCard.type.name === buttonName) {
       setShowCard(<BusinessCard />);
     } else {
@@ -18,9 +17,13 @@ const DisplayCard = () => {
         case 'AddressCard':
           setShowCard(<AddressCard />);
           break;
+        case 'NotesCard':
+          setShowCard(<NotesCard />);
+          break;
 
         default:
           setShowCard(<BusinessCard />);
+          break;
       }
     }
   };
@@ -30,7 +33,10 @@ const DisplayCard = () => {
     <div className='block max-w-md bg-white shadow-lg rounded-lg overflow-hidden'>
       {showCard}
       <SocialLinks />
-      <InternalLinks address={() => cardToDisplay('AddressCard')} />
+      <InternalLinks
+        address={() => cardToDisplay('AddressCard')}
+        notes={() => cardToDisplay('NotesCard')}
+      />
     </div>
   );
 };
