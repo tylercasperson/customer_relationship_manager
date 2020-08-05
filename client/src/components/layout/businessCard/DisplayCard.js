@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BusinessCard from './BusinessCard';
 import AddressCard from './AddressCard';
 import NotesCard from './NotesCard';
+import ImportantToBusiness from './ImportantToBusiness';
 
 import SocialLinks from './SocialLinks';
 import InternalLinks from './InternalLinks';
@@ -16,6 +17,9 @@ const DisplayCard = () => {
       switch (buttonName) {
         case 'AddressCard':
           setShowCard(<AddressCard />);
+          break;
+        case 'ImportantToBusiness':
+          setShowCard(<ImportantToBusiness />);
           break;
         case 'NotesCard':
           setShowCard(<NotesCard />);
@@ -35,6 +39,7 @@ const DisplayCard = () => {
       <SocialLinks />
       <InternalLinks
         address={() => cardToDisplay('AddressCard')}
+        agreement={() => cardToDisplay('ImportantToBusiness')}
         notes={() => cardToDisplay('NotesCard')}
       />
     </div>
