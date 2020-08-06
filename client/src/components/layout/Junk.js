@@ -5,14 +5,6 @@
 <i class="fas fa-map-marked-alt"></i>
 <i class="fas fa-star"></i>
 <i class="far fa-star"></i>
+<i class="fas fa-star-half-alt"></i>
 
-
-Icons made by{' '}
-<a href='https://www.flaticon.com/authors/prettycons' title='prettycons'>
-  prettycons
-</a>{' '}
-from{' '}
-<a href='https://www.flaticon.com/' title='Flaticon'>
-  {' '}
-  www.flaticon.com
-</a>
+<i class="far fa-comments"></i>

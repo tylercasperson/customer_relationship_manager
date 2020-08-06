@@ -1,5 +1,4 @@
 import React from 'react';
-// import AddressCard from './AddressCard';
 import Industry from './Industry';
 
 const BusinessCard = () => {

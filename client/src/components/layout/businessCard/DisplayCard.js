@@ -4,6 +4,7 @@ import Introduction from './Introduction';
 import Address from './Address';
 import Notes from './Notes';
 import ImportantToBusiness from './ImportantToBusiness';
+import ContactsToUse from './ContactsToUse';
 
 import SocialLinks from './SocialLinks';
 import InternalLinks from './InternalLinks';
@@ -26,6 +27,9 @@ const DisplayCard = () => {
         case 'Notes':
           setShowCard(<Notes />);
           break;
+        case 'ContactsToUse':
+          setShowCard(<ContactsToUse />);
+          break;
 
         default:
           setShowCard(<Introduction />);
@@ -43,6 +47,7 @@ const DisplayCard = () => {
         address={() => cardToDisplay('Address')}
         agreement={() => cardToDisplay('ImportantToBusiness')}
         notes={() => cardToDisplay('Notes')}
+        contactsToUse={() => cardToDisplay('ContactsToUse')}
         social={() =>
           cardFooter ? setCardFooter(false) : setCardFooter(<SocialLinks />)
         }
