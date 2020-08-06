@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import Introduction from './Introduction';
 import Address from './Address';
 import Notes from './Notes';
@@ -9,6 +10,7 @@ import InternalLinks from './InternalLinks';
 
 const DisplayCard = () => {
   const [showCard, setShowCard] = useState(<Introduction />);
+  const [cardFooter, setCardFooter] = useState(false);
 
   const cardToDisplay = (buttonName) => {
     if (showCard.type.name === buttonName) {
@@ -31,18 +33,22 @@ const DisplayCard = () => {
       }
     }
   };
-  //   console.log(showCard.type.name == 'Introduction')
 
   return (
     <div className='block max-w-md bg-white shadow-lg rounded-lg overflow-hidden'>
       {showCard}
-      <SocialLinks />
+
       <InternalLinks
         home={() => cardToDisplay()}
         address={() => cardToDisplay('Address')}
         agreement={() => cardToDisplay('ImportantToBusiness')}
         notes={() => cardToDisplay('Notes')}
+        social={() =>
+          cardFooter ? setCardFooter(false) : setCardFooter(<SocialLinks />)
+        }
       />
+
+      {cardFooter}
     </div>
   );
 };

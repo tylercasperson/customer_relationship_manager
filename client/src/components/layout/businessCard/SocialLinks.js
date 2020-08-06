@@ -1,30 +1,31 @@
 import React from 'react';
+import InternalLinks from './InternalLinks';
 
-const SocialLinks = () => {
+const SocialLinks = (props) => {
   return (
-    <div className='flex item-center justify-between'>
-      <a className='py-2' href='#!'>
+    <div className='flex px-3 py-2 item-center justify-between'>
+      <a href='#!'>
         <i className='fab fa-youtube'></i>
       </a>
-      <a className='py-2' href='#!'>
+      <a href='#!'>
         <i className='fab fa-twitter'></i>
       </a>
-      <a className='py-2' href='#!'>
+      <a href='#!'>
         <i className='fab fa-amazon'></i>
       </a>
-      <a className='py-2' href='#!'>
+      <a href='#!'>
         <i className='fab fa-facebook-square'></i>
       </a>
-      <a className='py-2' href='#!'>
+      <a href='#!'>
         <i className='fab fa-instagram'></i>
       </a>
-      <a className='py-2' href='#!'>
+      <a href='#!'>
         <i className='fab fa-linkedin'></i>
       </a>
-      <a className='py-2' href='#!'>
+      <a href='#!'>
         <i className='fab fa-tiktok'></i>
       </a>
-      <a className='py-2' href='#!'>
+      <a href='#!'>
         <i className='fab fa-whatsapp'></i>
       </a>
     </div>
