@@ -4,11 +4,11 @@ import Industry from './Industry';
 
 const BusinessCard = () => {
   return (
-    <div className='flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden'>
-      <div className='w-1/3 bg-cover'>
+    <div className='flex h-64 w-128 bg-white shadow-lg rounded-lg overflow-hidden'>
+      <div className='w-3/12 bg-cover'>
         <img src={'https://source.unsplash.com/random'} alt='businessCard' />
       </div>
-      <div className='w-2/3 p-4'>
+      <div className='w-7/12 p-4'>
         <h1 className='text-gray-900 font-bold text-2xl'>Business Name</h1>
         <p className='mt-2 text-gray-600 text-sm'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit In odit
