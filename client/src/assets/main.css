@@ -11852,10 +11852,6 @@ video {
   width: 16rem;
 }
 
-.w-128 {
-  width: 32rem;
-}
-
 .w-auto {
   width: auto;
 }
@@ -14444,6 +14440,10 @@ video {
 
 .animate-bounce {
   animation: bounce 1s infinite;
+}
+
+.w-128 {
+  width: 32rem;
 }
 
 @media (min-width: 640px) {
