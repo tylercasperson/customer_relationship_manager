@@ -18,7 +18,7 @@ const InternalLinks = (props) => {
       <button onClick={props.contactsToUse}>
         <i className='fas fa-sitemap'></i>
       </button>
-      <button>
+      <button onClick={props.events}>
         <i className='fas fa-store'></i>
       </button>
       <button>

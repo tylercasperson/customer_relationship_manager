@@ -3,8 +3,6 @@ import './assets/main.css';
 
 import BusinessState from './context/business/BusinessState';
 
-import ContactsToUse from './components/layout/businessCard/ContactsToUse';
-
 import Navbar from './components/layout/Navbar';
 import DisplayCard from './components/layout/businessCard/DisplayCard';
 import Contact from './components/layout/Contact';
