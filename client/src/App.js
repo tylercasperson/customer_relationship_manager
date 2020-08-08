@@ -1,6 +1,7 @@
 import React from 'react';
 import './assets/main.css';
 
+import AuthState from './context/auth/AuthState';
 import BusinessState from './context/business/BusinessState';
 import AlertState from './context/alert/AlertState';
 
@@ -12,23 +13,25 @@ import Service from './components/layout/Service';
 
 function App() {
   return (
-    <BusinessState>
-      <AlertState>
-        <div id='BusinessRealtionshipManager'>
-          <Navbar />
-          <div className='flex bg-gray-400'>
-            <div className='px-3 py-4'>
-              <DisplayCard />
-            </div>
-            <div className='block'>
-              <Contact />
-              <Product />
-              <Service />
+    <AuthState>
+      <BusinessState>
+        <AlertState>
+          <div id='BusinessRealtionshipManager'>
+            <Navbar />
+            <div className='flex bg-gray-400'>
+              <div className='px-3 py-4'>
+                <DisplayCard />
+              </div>
+              <div className='block'>
+                <Contact />
+                <Product />
+                <Service />
+              </div>
             </div>
           </div>
-        </div>
-      </AlertState>
-    </BusinessState>
+        </AlertState>
+      </BusinessState>
+    </AuthState>
   );
 }
 
