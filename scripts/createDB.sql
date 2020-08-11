@@ -49,7 +49,6 @@ CREATE TABLE businesses (
     country varChar(255),
     notes longtext,
     businessTypeID int,
-    industryID int,
     lockID int,
     numberID int,
     createdAt datetime,

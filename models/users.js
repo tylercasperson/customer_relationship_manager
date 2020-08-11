@@ -1,25 +1,22 @@
 module.exports = function (sequelize, DataTypes) {
-  const businessFunctions = sequelize.define('businessFunctions', {
+  const users = sequelize.define('users', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNulls: false,
       required: true,
     },
-    businessFunction: {
+    name: DataTypes.STRING,
+    email: {
       type: DataTypes.STRING,
-      allowNulls: false,
+      isEmail: true,
       required: true,
+      inNull: false,
     },
+    password: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });
 
-  businessFunctions.associate = function (models) {
-    businessFunctions.hasMany(models.contacts, {
-      onDelete: 'cascade',
-    });
-  };
-
-  return businessFunctions;
+  return users;
 };

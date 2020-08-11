@@ -9,27 +9,24 @@ const BusinessState = (props) => {
     businesses: [
       {
         businessName: 'laudic',
-        address: '262 Oxford Drive',
+        address1: '262 Oxford Drive',
         city: 'Palm Harbor',
         state: 'FL',
         zip: '34683',
-        phone: '(401) 539-7694',
       },
       {
         businessName: 'plape',
-        address: '795 Smith Dr.',
+        address1: '795 Smith Dr.',
         city: 'Hallandale',
         state: 'FL',
         zip: '33009',
-        phone: '(844) 359-7553',
       },
       {
         businessName: 'premicious',
-        address: '8882 Bishop St.',
+        address1: '8882 Bishop St.',
         city: 'Royersford',
         state: 'PA',
         zip: '19468',
-        phone: '(515) 869-0292',
       },
     ],
   };
@@ -39,7 +36,7 @@ const BusinessState = (props) => {
   // Get Businesses
   const getBusinesses = async () => {
     try {
-      const res = await axios.get('/api/businesses/3');
+      const res = await axios.get('/api/businesses/1');
 
       dispatch({
         type: GET_BUSINESSES,
@@ -47,7 +44,7 @@ const BusinessState = (props) => {
       });
       console.log(res.data);
     } catch (err) {
-      console.log(err.response.msg);
+      console.log(err.response.message);
       console.log(err);
 
       dispatch({

@@ -6,7 +6,7 @@ const Address = () => {
 
   const { businesses, getBusinesses } = businessContext;
 
-  const { businessName, address, city, state, phoneNumber } = businesses;
+  const { businessName, address1, address2, city, state, country } = businesses;
 
   useEffect(() => {
     getBusinesses();
@@ -20,16 +20,18 @@ const Address = () => {
       </div>
       <div className='w-10/12 p-4'>
         <h1 className='text-white font-bold text-2xl'>{businessName}</h1>
-        <div className='mt-2 text-white text-sm'>{address}</div>
-        <div className='mt-2 text-white text-sm'>Address Line 2</div>
+        <div className='mt-2 text-white text-sm'>{address1}</div>
+        <div className='mt-2 text-white text-sm'>{address2}</div>
         <div className='flex'>
           <div className='mt-2 text-white text-sm'>{city}</div>
           <div className='mt-2 text-white text-sm'>, </div>
           {'  '}
           <div className='mt-2 text-white text-sm'> {state}</div>
+          {'  '}
+          <div className='mt-2 text-white text-sm'> {country}</div>
         </div>
         <div className='mt-2 text-white text-sm'>Email</div>
-        <div className='mt-2 text-white text-sm'>{phoneNumber}</div>
+        <div className='mt-2 text-white text-sm'>Number</div>
       </div>
     </div>
   );
