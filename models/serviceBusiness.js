@@ -10,5 +10,14 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
+  serviceBusiness.associate = function (models) {
+    serviceBusiness.belongsTo(models.services, {
+      onDelete: 'cascade',
+    }),
+      serviceBusiness.belongsTo(models.businesses, {
+        onDelete: 'cascade',
+      });
+  };
+
   return serviceBusiness;
 };

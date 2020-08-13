@@ -11,5 +11,11 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
+  services.associate = function (models) {
+    services.hasMany(models.serviceBusiness, {
+      onDelete: 'cascade',
+    });
+  };
+
   return services;
 };

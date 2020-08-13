@@ -1,17 +1,20 @@
-module.exports = function(sequelize, DataTypes) {
-    const businessTypes = sequelize.define("businessTypes", {
-      businessType: {
-          type: DataTypes.STRING,
-          allowNulls: false,
-          required: true
-      }
-    });
+module.exports = function (sequelize, DataTypes) {
+  const businessTypes = sequelize.define('businessTypes', {
+    businessType: {
+      type: DataTypes.STRING,
+      allowNulls: false,
+      required: true,
+    },
+  });
 
-    businessTypes.associate = function(models) {
-        businessTypes.hasMany(models.businesses, {
-            onDelete: 'cascade'
-        });
-    };
-  
-    return businessTypes;
+  businessTypes.associate = function (models) {
+    businessTypes.hasMany(models.businessEvents, {
+      onDelete: 'cascade',
+    }),
+      businessTypes.hasMany(models.contactTypes, {
+        onDelete: 'cascade',
+      });
   };
+
+  return businessTypes;
+};

@@ -17,6 +17,9 @@ module.exports = function (sequelize, DataTypes) {
     contactBusinessFunctions.belongsTo(models.contacts, {
       onDelete: 'cascade',
     }),
+      contactBusinessFunctions.belongsTo(models.roles, {
+        onDelete: 'cascade',
+      }),
       contactBusinessFunctions.belongsTo(models.businessFunctions, {
         onDelete: 'cascade',
       });

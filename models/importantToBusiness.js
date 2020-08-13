@@ -11,5 +11,11 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
+  importantToBusiness.associate = function (models) {
+    importantToBusiness.belongsTo(models.businesses, {
+      onDelete: 'cascade',
+    });
+  };
+
   return importantToBusiness;
 };

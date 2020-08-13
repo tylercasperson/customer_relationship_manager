@@ -11,5 +11,11 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
+  useContactWhen.associate = function (models) {
+    useContactWhen.hasMany(models.contactWhenContacts, {
+      onDelete: 'cascade',
+    });
+  };
+
   return useContactWhen;
 };

@@ -10,16 +10,22 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   contacts.associate = (models) => {
-    contacts.belongsTo(models.businesses, {
-      onDelete: 'cascade',
-    });
-    contacts.belongsTo(models.roles, {
+    contacts.hasMany(models.contactBusinessFunctions, {
       onDelete: 'cascade',
     }),
-      contacts.belongsTo(models.businessFunctions, {
+      contacts.hasMany(models.contactList, {
         onDelete: 'cascade',
       }),
-      contacts.belongsTo(models.contactTypes, {
+      contacts.hasMany(models.contactWhenContacts, {
+        onDelete: 'cascade',
+      }),
+      contacts.hasMany(models.contactHigharchy, {
+        onDelete: 'cascade',
+      }),
+      contacts.belongsTo(models.businesses, {
+        onDelete: 'cascade',
+      }),
+      contacts.belongsTo(models.locks, {
         onDelete: 'cascade',
       });
   };

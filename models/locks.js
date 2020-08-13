@@ -11,5 +11,17 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
+  locks.associate = (models) => {
+    locks.hasMany(models.users, {
+      onDelete: 'cascade',
+    }),
+      locks.hasMany(models.businesses, {
+        onDelete: 'cascade',
+      }),
+      locks.hasMany(models.contacts, {
+        onDelete: 'cascade',
+      });
+  };
+
   return locks;
 };

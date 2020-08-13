@@ -25,10 +25,28 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   businesses.associate = (models) => {
-    businesses.hasMany(models.contacts, {
+    businesses.hasMany(models.businessIndustries, {
       onDelete: 'cascade',
     }),
-      businesses.hasMany(models.industries, {
+      businesses.hasMany(models.products, {
+        onDelete: 'cascade',
+      }),
+      businesses.hasMany(models.eventDeals, {
+        onDelete: 'cascade',
+      }),
+      businesses.hasMany(models.businessEvents, {
+        onDelete: 'cascade',
+      }),
+      businesses.hasMany(models.serviceBusiness, {
+        onDelete: 'cascade',
+      }),
+      businesses.hasMany(models.importantToBusiness, {
+        onDelete: 'cascade',
+      }),
+      businesses.hasMany(models.contactList, {
+        onDelete: 'cascade',
+      }),
+      businesses.hasMany(models.contacts, {
         onDelete: 'cascade',
       }),
       businesses.belongsTo(models.businessTypes, {

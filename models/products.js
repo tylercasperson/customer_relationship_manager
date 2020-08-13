@@ -12,5 +12,11 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
+  products.associate = (models) => {
+    products.belongsTo(models.businesses, {
+      onDelete: 'cascade',
+    });
+  };
+
   return products;
 };

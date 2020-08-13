@@ -1,19 +1,19 @@
-module.exports = function(sequelize, DataTypes) {
-    const roles = sequelize.define("roles", {
-      role: {
-          type: DataTypes.STRING,
-          allowNulls: false,
-          required: true
-      },
-      createdAt: DataTypes.DATE,
-      updatedAt: DataTypes.DATE
+module.exports = function (sequelize, DataTypes) {
+  const roles = sequelize.define('roles', {
+    role: {
+      type: DataTypes.STRING,
+      allowNulls: false,
+      required: true,
+    },
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
+  });
+
+  roles.associate = function (models) {
+    roles.hasMany(models.contactBusinessFunctions, {
+      onDelete: 'cascade',
     });
-  
-    roles.associate = function(models) {
-        roles.hasMany(models.contacts, {
-            onDelete: 'cascade'
-        });
-    };
-  
-    return roles;
   };
+
+  return roles;
+};

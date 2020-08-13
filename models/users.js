@@ -18,5 +18,11 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
+  users.associate = function (models) {
+    users.belongsTo(models.locks, {
+      onDelete: 'cascade',
+    });
+  };
+
   return users;
 };

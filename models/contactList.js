@@ -15,7 +15,13 @@ module.exports = function (sequelize, DataTypes) {
     businessIndustries.belongsTo(models.businesses, {
       onDelete: 'cascade',
     }),
-      businessIndustries.belongsTo(models.industries, {
+      businessIndustries.belongsTo(models.contacts, {
+        onDelete: 'cascade',
+      }),
+      businessIndustries.belongsTo(models.businessEvents, {
+        onDelete: 'cascade',
+      }),
+      businessIndustries.belongsTo(models.contactTypes, {
         onDelete: 'cascade',
       });
   };

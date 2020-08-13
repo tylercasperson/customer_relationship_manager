@@ -13,5 +13,11 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
+  contactHigharchy.associate = function (models) {
+    contactHigharchy.belongsTo(models.contacts, {
+      onDelete: 'cascade',
+    });
+  };
+
   return contactHigharchy;
 };
