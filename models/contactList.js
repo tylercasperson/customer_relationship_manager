@@ -11,17 +11,17 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
-  businessIndustries.associate = (models) => {
-    businessIndustries.belongsTo(models.businesses, {
+  contactList.associate = (models) => {
+    contactList.belongsTo(models.businesses, {
       onDelete: 'cascade',
     }),
-      businessIndustries.belongsTo(models.contacts, {
+      contactList.belongsTo(models.contacts, {
         onDelete: 'cascade',
       }),
-      businessIndustries.belongsTo(models.businessEvents, {
+      contactList.belongsTo(models.businessEvents, {
         onDelete: 'cascade',
       }),
-      businessIndustries.belongsTo(models.contactTypes, {
+      contactList.belongsTo(models.contactTypes, {
         onDelete: 'cascade',
       });
   };
