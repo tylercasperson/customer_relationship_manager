@@ -1,44 +1,46 @@
-import React from "react";
-import "./style.css";
-import NavBar from "../../components/NavBar";
-import Footer from "../../components/Footer";
-// import BusinessCard from "../../components/BusinessCard";
-import API from "../../utils/API";
+import React, { useContext, useEffect } from 'react';
 
-class Businesses extends React.Component 
-{
-    state = 
-    {
-        businessList: []
-    }
+import BusinessContext from '../../context/business/businessContext';
 
-    componentDidMount = () => 
-    {
-        API.businesses()
-        .then((res) => {
-            this.setState({ businessList: res.data.businesses });
-            console.log('Business List: ');
-            console.log(this.state.businessList);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }
+import DisplayCard from '../layout/businessCard/DisplayCard';
+import Contact from '../layout/Contact';
+import Product from '../layout/Product';
+import Service from '../layout/Service';
 
-    render = () =>
-    {
-        return (
-            <div className="container-fluid">
-                <NavBar />
-            
-                {/* <BusinessCard
-                    businessName={this.state.businessList.length >0? this.state.businessList[0].businessName : this.state.businessList.length}
-                /> */}
+const Businesses = () => {
+  const businessContext = useContext(BusinessContext);
 
-                <Footer />
-            </div>
-        )
-    }
-}
+  const { businesses, getBusinesses } = businessContext;
 
-    export default Businesses;
+  useEffect(() => {
+    getBusinesses();
+    // eslint-disable-next-line
+  }, []);
+
+  return (
+    <div className='bg-gray-400'>
+      {businesses.map((business) => (
+        <div className='flex' key={business.id}>
+          <div className='px-3 py-4'>
+            <DisplayCard
+              businessName={business.businessName}
+              address1={business.address1}
+              address2={business.address2}
+              city={business.city}
+              state={business.state}
+              zip={business.zip}
+              country={business.country}
+            />
+          </div>
+          <div className='block py-3'>
+            <Contact />
+            <Product />
+            <Service />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Businesses;

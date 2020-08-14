@@ -6,29 +6,7 @@ import { GET_BUSINESSES, BUSINESS_ERROR } from '../types';
 
 const BusinessState = (props) => {
   const initialState = {
-    businesses: [
-      {
-        businessName: 'laudic',
-        address1: '262 Oxford Drive',
-        city: 'Palm Harbor',
-        state: 'FL',
-        zip: '34683',
-      },
-      {
-        businessName: 'plape',
-        address1: '795 Smith Dr.',
-        city: 'Hallandale',
-        state: 'FL',
-        zip: '33009',
-      },
-      {
-        businessName: 'premicious',
-        address1: '8882 Bishop St.',
-        city: 'Royersford',
-        state: 'PA',
-        zip: '19468',
-      },
-    ],
+    businesses: [],
   };
 
   const [state, dispatch] = useReducer(businessReducer, initialState);
@@ -36,13 +14,12 @@ const BusinessState = (props) => {
   // Get Businesses
   const getBusinesses = async () => {
     try {
-      const res = await axios.get('/api/businesses/1');
+      const res = await axios.get('/api/businesses');
 
       dispatch({
         type: GET_BUSINESSES,
         payload: res.data,
       });
-      console.log(res.data);
     } catch (err) {
       console.log(err.response.message);
       console.log(err);

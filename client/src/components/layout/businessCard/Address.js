@@ -1,37 +1,23 @@
-import React, { useContext, useEffect } from 'react';
-import BusinessContext from '../../../context/business/businessContext';
+import React from 'react';
 
-const Address = () => {
-  const businessContext = useContext(BusinessContext);
-
-  const { businesses, getBusinesses } = businessContext;
-
-  const { businessName, address1, address2, city, state, country } = businesses;
-
-  useEffect(() => {
-    getBusinesses();
-    // eslint-disable-next-line
-  }, []);
-
+const Address = (props) => {
   return (
     <div className='h-64 w-128 bg-black bg-contain flex max-w-md shadow-lg rounded-lg overflow-hidden'>
       <div className='w-4/12 bg-cover'>
         <img src={'https://source.unsplash.com/random'} alt='businessCard' />
       </div>
       <div className='w-10/12 p-4'>
-        <h1 className='text-white font-bold text-2xl'>{businessName}</h1>
-        <div className='mt-2 text-white text-sm'>{address1}</div>
-        <div className='mt-2 text-white text-sm'>{address2}</div>
+        <h1 className='text-white font-bold text-2xl'>{props.businessName}</h1>
+        <br />
+        <div className='mt-2 text-white text-sm'>{props.address1}</div>
+        <div className='mt-2 text-white text-sm'>{props.address2}</div>
         <div className='flex'>
-          <div className='mt-2 text-white text-sm'>{city}</div>
-          <div className='mt-2 text-white text-sm'>, </div>
-          {'  '}
-          <div className='mt-2 text-white text-sm'> {state}</div>
-          {'  '}
-          <div className='mt-2 text-white text-sm'> {country}</div>
+          <div className='mt-2 text-white text-sm'>{props.city}, </div>
+          <div className='px-2 mt-2 text-white text-sm'> {props.state}</div>
+          <div className='mt-2 text-white text-sm'> {props.zip}</div>
         </div>
-        <div className='mt-2 text-white text-sm'>Email</div>
-        <div className='mt-2 text-white text-sm'>Number</div>
+        <div className='mt-2 text-white text-sm'> {props.country}</div>
+        <div className='mt-2 text-white text-sm'>{props.contactInfo}</div>
       </div>
     </div>
   );

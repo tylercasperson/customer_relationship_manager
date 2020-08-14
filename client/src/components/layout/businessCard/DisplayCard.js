@@ -11,7 +11,7 @@ import CustomerReports from './CustomerReports';
 import SocialLinks from './SocialLinks';
 import InternalLinks from './InternalLinks';
 
-const DisplayCard = () => {
+const DisplayCard = (props) => {
   const [showCard, setShowCard] = useState(<Introduction />);
   const [cardFooter, setCardFooter] = useState(false);
 
@@ -21,7 +21,18 @@ const DisplayCard = () => {
     } else {
       switch (buttonName) {
         case 'Address':
-          setShowCard(<Address />);
+          setShowCard(
+            <Address
+              businessName={props.businessName}
+              address1={props.address1}
+              address2={props.address2}
+              city={props.city}
+              state={props.state}
+              zip={props.zip}
+              country={props.country}
+              contactInfo={props.contactInfo}
+            />
+          );
           break;
         case 'ImportantToBusiness':
           setShowCard(<ImportantToBusiness />);
