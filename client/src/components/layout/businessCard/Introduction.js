@@ -14,37 +14,12 @@ const BusinessCard = () => {
           exercitationem fuga id nam quia Lorem ipsum dolor sit amet consectetur
           adipisicing elit In odit exercitationem fuga id nam quia
         </p>
-        <div className='flex item-center mt-2'>
-          <svg
-            className='w-5 h-5 fill-current text-gray-700'
-            viewBox='0 0 24 24'
-          >
-            <path d='M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z' />
-          </svg>
-          <svg
-            className='w-5 h-5 fill-current text-gray-700'
-            viewBox='0 0 24 24'
-          >
-            <path d='M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z' />
-          </svg>
-          <svg
-            className='w-5 h-5 fill-current text-gray-700'
-            viewBox='0 0 24 24'
-          >
-            <path d='M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z' />
-          </svg>
-          <svg
-            className='w-5 h-5 fill-current text-gray-500'
-            viewBox='0 0 24 24'
-          >
-            <path d='M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z' />
-          </svg>
-          <svg
-            className='w-5 h-5 fill-current text-gray-500'
-            viewBox='0 0 24 24'
-          >
-            <path d='M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z' />
-          </svg>
+        <div className='flex align-center mt-2'>
+          <i className='px-1 fas fa-star'></i>
+          <i className='px-1 fas fa-star'></i>
+          <i className='px-1 fas fa-star'></i>
+          <i className='px-1 fas fa-star-half-alt'></i>
+          <i className='px-1 far fa-star'></i>
         </div>
         <Industry />
       </div>

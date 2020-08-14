@@ -17,7 +17,14 @@ const DisplayCard = (props) => {
 
   const cardToDisplay = (buttonName) => {
     if (showCard.type.name === buttonName) {
-      setShowCard(<Introduction />);
+      setShowCard(
+        <Introduction
+          businessName={props.businessName}
+          introduction={props.introduction}
+          tagLine={props.tagline}
+          slogan={props.slogan}
+        />
+      );
     } else {
       switch (buttonName) {
         case 'Address':
@@ -51,7 +58,14 @@ const DisplayCard = (props) => {
           break;
 
         default:
-          setShowCard(<Introduction />);
+          setShowCard(
+            <Introduction
+              businessName={props.businessName}
+              introduction={props.introduction}
+              tagLine={props.tagline}
+              slogan={props.slogan}
+            />
+          );
           break;
       }
     }
