@@ -3376,14 +3376,14 @@ VALUES (
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
   );
-INSERT INTO importantToBusiness (
+INSERT INTO importantToBusinesses (
     businessID,
     description,
     createdAt,
     updatedAt
   )
 VALUES (
-    1,
+    '1',
     'Prompt communication',
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
@@ -3408,6 +3408,36 @@ VALUES (
   ),
   (
     1,
+    'No surprises. Email before shipping.',
+    '2020-07-01 00:00:00',
+    '2020-07-01 00:00:00'
+  ),
+  (
+    2,
+    'Prompt communication',
+    '2020-07-01 00:00:00',
+    '2020-07-01 00:00:00'
+  ),
+  (
+    2,
+    'When we say it is important, then keep us updated.',
+    '2020-07-01 00:00:00',
+    '2020-07-01 00:00:00'
+  ),
+  (
+    3,
+    'Quality products',
+    '2020-07-01 00:00:00',
+    '2020-07-01 00:00:00'
+  ),
+  (
+    4,
+    'Payment 50% when ordered, 50% when received',
+    '2020-07-01 00:00:00',
+    '2020-07-01 00:00:00'
+  ),
+  (
+    5,
     'No surprises. Email before shipping.',
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'

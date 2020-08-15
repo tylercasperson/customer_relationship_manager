@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const importantToBusiness = sequelize.define('importantToBusiness', {
+  const importantToBusinesses = sequelize.define('importantToBusinesses', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -11,11 +11,11 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
-  importantToBusiness.associate = function (models) {
-    importantToBusiness.belongsTo(models.businesses, {
+  importantToBusinesses.associate = function (models) {
+    importantToBusinesses.belongsTo(models.businesses, {
       onDelete: 'cascade',
     });
   };
 
-  return importantToBusiness;
+  return importantToBusinesses;
 };

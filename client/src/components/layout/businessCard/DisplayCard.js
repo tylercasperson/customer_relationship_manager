@@ -42,7 +42,11 @@ const DisplayCard = (props) => {
           );
           break;
         case 'ImportantToBusiness':
-          setShowCard(<ImportantToBusiness />);
+          setShowCard(
+            <ImportantToBusiness
+              importantToBusiness={props.importantToBusiness}
+            />
+          );
           break;
         case 'Notes':
           setShowCard(<Notes />);

@@ -10,10 +10,11 @@ import Service from '../layout/Service';
 const Businesses = () => {
   const businessContext = useContext(BusinessContext);
 
-  const { businesses, getBusinesses } = businessContext;
+  const { businesses, importantToBusinesses, getBusinesses } = businessContext;
 
   useEffect(() => {
     getBusinesses();
+    // getImportantToBusiness();
     // eslint-disable-next-line
   }, []);
 
@@ -30,6 +31,13 @@ const Businesses = () => {
               state={business.state}
               zip={business.zip}
               country={business.country}
+              importantToBusiness={business.importantToBusinesses.map(
+                (importantItems) => (
+                  <li className='list-decimal' key={importantItems.id}>
+                    {importantItems.description}
+                  </li>
+                )
+              )}
             />
           </div>
           <div className='block py-3'>

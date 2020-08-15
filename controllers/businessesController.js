@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { Op } = require('sequelize');
 const db = require('../models');
 
 router.get('/', function (req, res) {
@@ -10,7 +9,8 @@ router.get('/', function (req, res) {
 router.get('/api/businesses', async (req, res) => {
   try {
     const businesses = await db.businesses.findAll({
-      include: [db.contacts],
+      // include: [db.contacts],
+      include: [db.importantToBusinesses],
     });
     res.json(businesses);
   } catch (err) {
@@ -18,17 +18,11 @@ router.get('/api/businesses', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-//     .then(function(dbbusinesses) {
-//         var businessesObject = {
-//             businesses: dbbusinesses
-//         };
-//         return res.json(businessesObject);
-//     });
-// });
 
 router.get('/api/businesses/:id', function (req, res) {
   db.businesses
     .findOne({
+      // include: [db.importantToBusiness],
       where: {
         id: req.params.id,
       },

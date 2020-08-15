@@ -179,7 +179,7 @@ CREATE TABLE contactWhenContacts (
     updatedAt datetime,
     PRIMARY KEY (id)
 );
-CREATE TABLE importantToBusiness (
+CREATE TABLE importantToBusinesses (
     id int auto_increment,
     businessID int,
     description varChar (255),
