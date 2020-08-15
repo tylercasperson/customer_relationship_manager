@@ -10,11 +10,10 @@ import Service from '../layout/Service';
 const Businesses = () => {
   const businessContext = useContext(BusinessContext);
 
-  const { businesses, importantToBusinesses, getBusinesses } = businessContext;
+  const { businesses, getBusinesses } = businessContext;
 
   useEffect(() => {
     getBusinesses();
-    // getImportantToBusiness();
     // eslint-disable-next-line
   }, []);
 
@@ -38,6 +37,9 @@ const Businesses = () => {
                   </li>
                 )
               )}
+              notes={
+                business.notes === null ? 'Notes go here...' : business.notes
+              }
             />
           </div>
           <div className='block py-3'>
@@ -47,6 +49,7 @@ const Businesses = () => {
           </div>
         </div>
       ))}
+      {console.log(businesses)}
     </div>
   );
 };

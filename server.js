@@ -5,7 +5,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const db = require('./models');
 const businessesRoute = require('./controllers/businessesController');
-const importantToBusinessesRoute = require('./controllers/importantToBusinessesController');
 const contactRoute = require('./controllers/contactsController');
 
 // sets up express to handle data parsing
@@ -20,7 +19,6 @@ app.use(cors());
 
 // routes
 app.use(businessesRoute);
-app.use(importantToBusinessesRoute);
 app.use(contactRoute);
 
 // Warning handler

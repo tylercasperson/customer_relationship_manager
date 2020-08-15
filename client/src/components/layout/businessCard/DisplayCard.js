@@ -49,7 +49,7 @@ const DisplayCard = (props) => {
           );
           break;
         case 'Notes':
-          setShowCard(<Notes />);
+          setShowCard(<Notes notes={props.notes} />);
           break;
         case 'ContactsToUse':
           setShowCard(<ContactsToUse />);
