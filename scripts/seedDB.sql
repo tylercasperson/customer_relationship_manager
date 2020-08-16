@@ -2108,7 +2108,7 @@ VALUES (
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
   );
-INSERT INTO contactList (
+INSERT INTO contactLists (
     contactTypeID,
     businessID,
     contactID,
@@ -2118,16 +2118,16 @@ INSERT INTO contactList (
   )
 VALUES (
     1,
-    18,
-    5,
+    1,
+    1,
     '(737) 404-2675',
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
   ),
   (
+    4,
     1,
-    8,
-    6,
+    1,
     '(841) 922-7687',
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'

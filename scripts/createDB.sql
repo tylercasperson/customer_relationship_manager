@@ -76,7 +76,7 @@ CREATE TABLE useContactWhen (
     updatedAt datetime,
     PRIMARY KEY (id)
 );
-CREATE TABLE contactList (
+CREATE TABLE contactLists (
     id int auto_increment,
     contactTypeID int,
     businessID int,

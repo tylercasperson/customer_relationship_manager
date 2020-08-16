@@ -10,12 +10,12 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   contactTypes.associate = function (models) {
-    contactTypes.hasMany(models.contactList, {
+    contactTypes.hasMany(models.contactLists, {
       onDelete: 'cascade',
-    }),
-      contactTypes.hasMany(models.businessEvents, {
-        onDelete: 'cascade',
-      });
+    });
+    // contactTypes.hasMany(models.businessEvents, {
+    //   onDelete: 'cascade',
+    // });
   };
 
   return contactTypes;

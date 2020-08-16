@@ -21,10 +21,10 @@ module.exports = function (sequelize, DataTypes) {
     }),
       businessEvents.belongsTo(models.businesses, {
         onDelete: 'cascade',
-      }),
-      businessEvents.belongsTo(models.contactTypes, {
-        onDelete: 'cascade',
       });
+    // businessEvents.belongsTo(models.contactTypes, {
+    //   onDelete: 'cascade',
+    // });
   };
 
   return businessEvents;

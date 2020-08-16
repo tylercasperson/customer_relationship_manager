@@ -52,7 +52,7 @@ const DisplayCard = (props) => {
           setShowCard(<Notes notes={props.notes} />);
           break;
         case 'ContactsToUse':
-          setShowCard(<ContactsToUse />);
+          setShowCard(<ContactsToUse contactsToUse={props.contactsToUse} />);
           break;
         case 'Events':
           setShowCard(<Events />);
@@ -76,7 +76,7 @@ const DisplayCard = (props) => {
   };
 
   return (
-    <div className='block max-w-md bg-white shadow-lg rounded-lg overflow-hidden'>
+    <div className='block max-w-128 max-h-64 bg-white shadow-lg rounded-lg overflow-hidden'>
       {showCard}
 
       <InternalLinks

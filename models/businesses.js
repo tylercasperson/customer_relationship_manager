@@ -42,10 +42,11 @@ module.exports = function (sequelize, DataTypes) {
       }),
       businesses.hasMany(models.importantToBusinesses, {
         onDelete: 'cascade',
-      });
-    businesses.hasMany(models.contactList, {
-      onDelete: 'cascade',
-    }),
+      }),
+      businesses.hasMany(models.contactLists, {
+        // as: 'businessContactLists',
+        onDelete: 'cascade',
+      }),
       businesses.hasMany(models.contacts, {
         onDelete: 'cascade',
       }),

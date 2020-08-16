@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const { Op } = require('sequelize');
 
 router.get('/', function (req, res) {
   res.redirect('/api/businesses');
@@ -9,12 +10,44 @@ router.get('/', function (req, res) {
 router.get('/api/businesses', async (req, res) => {
   try {
     const businesses = await db.businesses.findAll({
-      // include: [db.contacts],
-      include: [db.importantToBusinesses],
+      include: [
+        { model: db.importantToBusinesses },
+        {
+          model: db.contactLists,
+          include: {
+            model: db.contactTypes,
+            where: { id: { [Op.eq]: 1 } },
+          },
+        },
+        {
+          model: db.contacts,
+          include: [
+            {
+              model: db.contactLists,
+
+              include: {
+                model: db.contactTypes,
+                where: { id: { [Op.gt]: 3 } },
+              },
+            },
+            {
+              model: db.contactBusinessFunctions,
+              include: [
+                {
+                  model: db.businessFunctions,
+                },
+                {
+                  model: db.roles,
+                },
+              ],
+            },
+          ],
+        },
+      ],
     });
     res.json(businesses);
   } catch (err) {
-    console.error(err.message);
+    console.error(err.msg);
     res.status(500).send('Server Error');
   }
 });

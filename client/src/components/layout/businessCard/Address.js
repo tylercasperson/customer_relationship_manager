@@ -2,7 +2,7 @@ import React from 'react';
 
 const Address = (props) => {
   return (
-    <div className='h-64 w-128 bg-black bg-contain flex max-w-md shadow-lg rounded-lg overflow-hidden'>
+    <div className='h-64 w-128 bg-black bg-contain flex shadow-lg rounded-lg overflow-hidden'>
       <div className='w-4/12 bg-cover'>
         <img src={'https://source.unsplash.com/random'} alt='businessCard' />
       </div>

@@ -13,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
     contacts.hasMany(models.contactBusinessFunctions, {
       onDelete: 'cascade',
     }),
-      contacts.hasMany(models.contactList, {
+      contacts.hasMany(models.contactLists, {
         onDelete: 'cascade',
       }),
       contacts.hasMany(models.contactWhenContacts, {
