@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   const contactTypes = sequelize.define('contactTypes', {
-    contactType: {
+    contactGroup: {
       type: DataTypes.STRING,
       allowNulls: false,
       required: true,

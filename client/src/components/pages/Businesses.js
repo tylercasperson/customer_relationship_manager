@@ -41,9 +41,13 @@ const Businesses = () => {
                     );
                   }
                 )}
-                notes={
-                  business.notes === null ? 'Notes go here...' : business.notes
-                }
+                notes={business.notes.map((note) =>
+                  note.note === null ? (
+                    'Notes go here...'
+                  ) : (
+                    <div>{note.note}</div>
+                  )
+                )}
                 contactsToUse={business.contacts.map((contact) => (
                   <div key={contact.id}>
                     {contact.contactBusinessFunctions.map(
@@ -54,7 +58,7 @@ const Businesses = () => {
                         >
                           {contactBusinessFunction.role === null
                             ? null
-                            : contactBusinessFunction.role.role}
+                            : contactBusinessFunction.role.title}
                         </h5>
                       )
                     )}
@@ -67,7 +71,7 @@ const Businesses = () => {
                         className='text-gray-600 text-sm'
                         key={contactList.id}
                       >
-                        {contactList.contactType.contactType}
+                        {contactList.contactType.contactGroup}
                         {': '}
                         {contactList.contactInfo}
                       </div>

@@ -4,11 +4,6 @@ const Events = () => {
   return (
     <div className='flex h-64 w-128 bg-red-200 shadow-lg rounded-lg overflow-hidden'>
       <div className='flex h-32 w-full'>
-        <img
-          className='h-32 w-16'
-          src={'https://source.unsplash.com/random'}
-          alt='businessCard'
-        />
         <div className='block w-48 text-center'>
           <h5 className='text-gray-900'>Trade Show ABC</h5>
 
@@ -18,15 +13,20 @@ const Events = () => {
           <div className='text-gray-600 text-sm'>30% Discount preshow</div>
         </div>
 
-        <button className='bg-teal-400 w-16 text-black text-xs font-bold rounded'>
-          Products
-        </button>
-        <button className='bg-green-300 w-16 text-black flex-wrap text-xs font-bold rounded'>
-          Event Specials
-        </button>
-        <button className='bg-orange-500 w-16 text-black flex-wrap text-xs font-bold rounded'>
-          Contacts attending
-        </button>
+        <div className='flex w-8/12'>
+          <button className='bg-teal-400 px-2 w-auto text-black flex-wrap text-xs font-bold rounded'>
+            Products
+          </button>
+          <button className='bg-green-300 w-auto text-black flex-wrap text-xs font-bold rounded'>
+            Event Specials
+          </button>
+          <button className='bg-orange-500 w-auto text-black flex-wrap text-xs font-bold rounded'>
+            Contacts attending
+          </button>
+          <button className='bg-yellow-500 w-auto text-black flex-wrap text-xs font-bold rounded'>
+            Event Location
+          </button>
+        </div>
       </div>
     </div>
   );

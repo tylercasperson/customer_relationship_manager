@@ -47,7 +47,6 @@ CREATE TABLE businesses (
     state varChar (255),
     zip varChar (255),
     country varChar (255),
-    notes longtext,
     businessTypeID int,
     lockID int,
     numberID int,
@@ -55,21 +54,43 @@ CREATE TABLE businesses (
     updatedAt datetime,
     PRIMARY KEY (id)
 );
+CREATE TABLE notes (
+    id int auto_increment,
+    businessID int,
+    contactID int,
+    note varChar(255),
+    createdAt datetime,
+    updatedAt datetime,
+    PRIMARY KEY (id)
+);
 CREATE TABLE contactTypes (
     id int auto_increment,
-    contactType varChar (255),
+    contactGroup varChar (255),
     createdAt datetime,
     updatedAt datetime,
     PRIMARY KEY (id)
 );
 CREATE TABLE roles (
     id int auto_increment,
-    role varChar (255),
+    title varChar (255),
     createdAt datetime,
     updatedAt datetime,
     PRIMARY KEY (id)
 );
-CREATE TABLE useContactWhen (
+CREATE TABLE reports (
+    id int auto_increment,
+    businessID int,
+    report varChar(255),
+    PRIMARY KEY (id)
+);
+CREATE TABLE businessRatings (
+    id int auto_increment,
+    businessID int,
+    contactID int,
+    rating int,
+    PRIMARY KEY (id)
+);
+CREATE TABLE useContactWhens (
     id int auto_increment,
     contactWhen varChar (255),
     createdAt datetime,
@@ -90,7 +111,6 @@ CREATE TABLE contactLists (
 CREATE TABLE contacts (
     id int auto_increment,
     contactName varChar (255),
-    notes longtext,
     businessFunctionID int,
     businessID int,
     lockID int,
@@ -117,8 +137,7 @@ CREATE TABLE users (
 );
 CREATE TABLE eventDeals (
     id int auto_increment,
-    eventID int,
-    businessID int,
+    businessEventID int,
     deal varChar (255),
     createdAt datetime,
     updatedAt datetime,
@@ -127,6 +146,7 @@ CREATE TABLE eventDeals (
 CREATE TABLE businessEvents (
     id int auto_increment,
     businessID int,
+    eventID int,
     booth varChar (255),
     contactTypeID int,
     startDate date,
@@ -154,7 +174,7 @@ CREATE TABLE businessIndustries (
     updatedAt datetime,
     PRIMARY KEY (id)
 );
-CREATE TABLE serviceBusiness (
+CREATE TABLE serviceBusinesses (
     id int auto_increment,
     businessID int,
     serviceID int,
@@ -187,7 +207,7 @@ CREATE TABLE importantToBusinesses (
     updatedAt datetime,
     PRIMARY KEY (id)
 );
-CREATE TABLE contactHigharchy (
+CREATE TABLE contactHigharchies (
     id int auto_increment,
     contactID int,
     xplot int,

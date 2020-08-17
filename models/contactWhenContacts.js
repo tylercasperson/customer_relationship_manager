@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
     contactWhenContacts.belongsTo(models.contacts, {
       onDelete: 'cascade',
     }),
-      contactWhenContacts.belongsTo(models.useContactWhen, {
+      contactWhenContacts.belongsTo(models.useContactWhens, {
         onDelete: 'cascade',
       });
   };

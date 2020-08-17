@@ -1,21 +1,21 @@
 module.exports = function (sequelize, DataTypes) {
-  const useContactWhen = sequelize.define('useContactWhen', {
+  const notes = sequelize.define('notes', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNulls: false,
       required: true,
     },
-    contactWhen: DataTypes.STRING,
+    note: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });
 
-  useContactWhen.associate = function (models) {
-    useContactWhen.hasMany(models.contactWhenContacts, {
+  notes.associate = function (models) {
+    notes.belongsTo(models.businesses, {
       onDelete: 'cascade',
     });
   };
 
-  return useContactWhen;
+  return notes;
 };

@@ -4,7 +4,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNulls: false,
     },
-    notes: DataTypes.TEXT,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });
@@ -19,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
       contacts.hasMany(models.contactWhenContacts, {
         onDelete: 'cascade',
       }),
-      contacts.hasMany(models.contactHigharchy, {
+      contacts.hasMany(models.contactHigharchies, {
         onDelete: 'cascade',
       }),
       contacts.belongsTo(models.businesses, {

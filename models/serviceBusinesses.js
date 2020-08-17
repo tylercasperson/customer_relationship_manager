@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const serviceBusiness = sequelize.define('serviceBusiness', {
+  const serviceBusinesses = sequelize.define('serviceBusinesses', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -10,14 +10,14 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
-  serviceBusiness.associate = function (models) {
-    serviceBusiness.belongsTo(models.services, {
+  serviceBusinesses.associate = function (models) {
+    serviceBusinesses.belongsTo(models.services, {
       onDelete: 'cascade',
     }),
-      serviceBusiness.belongsTo(models.businesses, {
+      serviceBusinesses.belongsTo(models.businesses, {
         onDelete: 'cascade',
       });
   };
 
-  return serviceBusiness;
+  return serviceBusinesses;
 };

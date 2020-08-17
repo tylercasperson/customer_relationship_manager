@@ -7,6 +7,9 @@
 
 <i class="far fa-comments"></i>
 
+<i class="fas fa-edit"></i>
+<i class="fas fa-trash-alt"></i>
+
 
 <div className='flex justify-center p-1'>
 <button className='bg-red-300 p-2' onClick={adminLogin}>

@@ -19,7 +19,6 @@ module.exports = function (sequelize, DataTypes) {
     state: DataTypes.STRING,
     zip: DataTypes.STRING,
     country: DataTypes.STRING,
-    notes: DataTypes.TEXT,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });
@@ -37,7 +36,7 @@ module.exports = function (sequelize, DataTypes) {
       businesses.hasMany(models.businessEvents, {
         onDelete: 'cascade',
       }),
-      businesses.hasMany(models.serviceBusiness, {
+      businesses.hasMany(models.serviceBusinesses, {
         onDelete: 'cascade',
       }),
       businesses.hasMany(models.importantToBusinesses, {
@@ -48,6 +47,9 @@ module.exports = function (sequelize, DataTypes) {
         onDelete: 'cascade',
       }),
       businesses.hasMany(models.contacts, {
+        onDelete: 'cascade',
+      }),
+      businesses.hasMany(models.notes, {
         onDelete: 'cascade',
       }),
       businesses.belongsTo(models.businessTypes, {
