@@ -34,11 +34,16 @@ module.exports = function (sequelize, DataTypes) {
         onDelete: 'cascade',
       }),
       businesses.hasMany(models.businessEvents, {
+        foreignKey: 'eventID',
         onDelete: 'cascade',
       }),
-      businesses.hasMany(models.serviceBusinesses, {
+      businesses.hasMany(models.businessEvents, {
+        as: 'event',
         onDelete: 'cascade',
-      }),
+      });
+    businesses.hasMany(models.serviceBusinesses, {
+      onDelete: 'cascade',
+    }),
       businesses.hasMany(models.importantToBusinesses, {
         onDelete: 'cascade',
       }),

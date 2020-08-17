@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import Moment from 'moment';
 
 import BusinessContext from '../../context/business/businessContext';
 
@@ -77,6 +78,36 @@ const Businesses = () => {
                       </div>
                     ))}
                     <div className='h-px bg-black'></div>
+                  </div>
+                ))}
+                notes={business.notes.map((note) =>
+                  note.note === null ? (
+                    'Notes go here...'
+                  ) : (
+                    <div>{note.note}</div>
+                  )
+                )}
+                event={business.event.map((event) => (
+                  <div key={event.id} className='py-2'>
+                    <h5 className='text-gray-900'>
+                      {event.business.businessName}
+                    </h5>
+
+                    <div className='text-gray-600 text-sm'>
+                      {Moment(event.startDate).format('MMM D, y')}
+                      {' to '}
+                      {Moment(event.endDate).format('MMM D, y')}
+                    </div>
+                    <div className='text-gray-600 text-sm'>
+                      {Moment(event.startDate + ' ' + event.startTime).format(
+                        'LT'
+                      )}{' '}
+                      to{' '}
+                      {Moment(event.endDate + ' ' + event.endTime).format('LT')}
+                    </div>
+                    <div className='text-gray-600 text-sm'>
+                      booth: {event.booth}
+                    </div>
                   </div>
                 ))}
               />

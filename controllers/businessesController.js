@@ -43,6 +43,18 @@ router.get('/api/businesses', async (req, res) => {
             },
           ],
         },
+        { model: db.businessEvents, as: 'event', include: db.businesses },
+        {
+          model: db.businessEvents,
+          include: [
+            {
+              model: db.businesses,
+            },
+            //   {
+            //     model: db.eventDeals,
+            //   },
+          ],
+        },
       ],
       order: [['id', 'ASC']],
     });

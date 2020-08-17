@@ -7,14 +7,14 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  businessTypes.associate = function (models) {
-    businessTypes.hasMany(models.businessEvents, {
-      onDelete: 'cascade',
-    });
-    // businessTypes.hasMany(models.contactTypes, {
-    //   onDelete: 'cascade',
-    // });
-  };
+  // businessTypes.associate = function (models) {
+  // businessTypes.hasMany(models.businessEvents, {
+  //   onDelete: 'cascade',
+  // });
+  // businessTypes.hasMany(models.contactTypes, {
+  //   onDelete: 'cascade',
+  // });
+  // };
 
   return businessTypes;
 };

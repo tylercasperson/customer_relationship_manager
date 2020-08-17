@@ -55,7 +55,7 @@ const DisplayCard = (props) => {
           setShowCard(<ContactsToUse contactsToUse={props.contactsToUse} />);
           break;
         case 'Events':
-          setShowCard(<Events />);
+          setShowCard(<Events event={props.event} />);
           break;
         case 'CustomerReports':
           setShowCard(<CustomerReports />);
