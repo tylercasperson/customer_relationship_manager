@@ -81,6 +81,8 @@ CREATE TABLE reports (
     id int auto_increment,
     businessID int,
     report varChar(255),
+    createdAt datetime,
+    updatedAt datetime,
     PRIMARY KEY (id)
 );
 CREATE TABLE businessRatings (
@@ -149,10 +151,8 @@ CREATE TABLE businessEvents (
     eventID int,
     booth varChar (255),
     contactTypeID int,
-    startDate date,
-    endDate date,
-    startTime time,
-    endtime time,
+    startDateTime datetime,
+    endDateTime datetime,
     createdAt datetime,
     updatedAt datetime,
     PRIMARY KEY (id)

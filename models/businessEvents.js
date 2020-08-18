@@ -7,10 +7,8 @@ module.exports = function (sequelize, DataTypes) {
       required: true,
     },
     booth: DataTypes.STRING,
-    startDate: DataTypes.DATEONLY,
-    startTime: DataTypes.TIME,
-    endDate: DataTypes.DATEONLY,
-    endTime: DataTypes.TIME,
+    startDateTime: DataTypes.DATE,
+    endDateTime: DataTypes.DATE,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });

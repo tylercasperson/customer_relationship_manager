@@ -80,11 +80,11 @@ const Businesses = () => {
                     <div className='h-px bg-black'></div>
                   </div>
                 ))}
-                notes={business.notes.map((note) =>
-                  note.note === null ? (
+                notes={business.notes.map((businessNote) =>
+                  businessNote.note === null ? (
                     'Notes go here...'
                   ) : (
-                    <div>{note.note}</div>
+                    <div>{businessNote.note}</div>
                   )
                 )}
                 event={business.event.map((event) => (
@@ -94,16 +94,13 @@ const Businesses = () => {
                     </h5>
 
                     <div className='text-gray-600 text-sm'>
-                      {Moment(event.startDate).format('MMM D, y')}
+                      {Moment(event.startDateTime).format('MMM D, Y')}
                       {' to '}
-                      {Moment(event.endDate).format('MMM D, y')}
+                      {Moment(event.endDateTime).format('MMM D, Y')}
                     </div>
                     <div className='text-gray-600 text-sm'>
-                      {Moment(event.startDate + ' ' + event.startTime).format(
-                        'LT'
-                      )}{' '}
-                      to{' '}
-                      {Moment(event.endDate + ' ' + event.endTime).format('LT')}
+                      {Moment(event.startDateTime).format('LT')} to{' '}
+                      {Moment(event.endDateTime).format('LT')}
                     </div>
                     <div className='text-gray-600 text-sm'>
                       booth: {event.booth}
