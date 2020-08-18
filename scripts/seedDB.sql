@@ -3455,25 +3455,29 @@ VALUES (
   );
 INSERT INTO reports (
     businessID,
-    report,
+    reportName,
+    description,
     createdAt,
     updatedAt
   )
 VALUES (
     1,
     'customer map',
+    'Locates customer groups on a map',
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
   ),
   (
     1,
     'customer funnel',
+    'sales funnel for new customers',
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
   ),
   (
     2,
     'event sales',
+    'sales activity for an event',
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
   );

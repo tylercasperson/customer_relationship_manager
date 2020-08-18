@@ -55,6 +55,7 @@ router.get('/api/businesses', async (req, res) => {
             //   },
           ],
         },
+        { model: db.reports },
       ],
       order: [['id', 'ASC']],
     });

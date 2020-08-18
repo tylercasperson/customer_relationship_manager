@@ -107,6 +107,20 @@ const Businesses = () => {
                     </div>
                   </div>
                 ))}
+                contactReports={business.reports.map((report) => (
+                  <div className='flex'>
+                    <div className='p-2 w-4/12 text-gray-900'>
+                      {report.reportName}
+                    </div>
+                    <div className='px-3'></div>
+                    <div className='p-2 w-5/12 text-black'>
+                      {report.description}
+                    </div>
+                    <button className='p-1 h-10 hover:bg-gray-600 hover:text-white border border-black rounded bg-gray-400'>
+                      Open
+                    </button>
+                  </div>
+                ))}
               />
             </div>
             <div className='block py-3'>

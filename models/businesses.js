@@ -63,6 +63,9 @@ module.exports = function (sequelize, DataTypes) {
       businesses.belongsTo(models.locks, {
         onDelete: 'cascade',
       }),
+      businesses.hasMany(models.reports, {
+        onDelete: 'cascade',
+      }),
       businesses.belongsTo(models.numbers, {
         onDelete: 'cascade',
       });

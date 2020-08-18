@@ -80,7 +80,8 @@ CREATE TABLE roles (
 CREATE TABLE reports (
     id int auto_increment,
     businessID int,
-    report varChar(255),
+    reportName varChar(255),
+    description varChar(255),
     createdAt datetime,
     updatedAt datetime,
     PRIMARY KEY (id)

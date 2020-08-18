@@ -6,7 +6,7 @@ import Notes from './Notes';
 import ImportantToBusiness from './ImportantToBusiness';
 import ContactsToUse from './ContactsToUse';
 import Events from './Events';
-import CustomerReports from './CustomerReports';
+import ContactReports from './ContactReports';
 
 import SocialLinks from './SocialLinks';
 import InternalLinks from './InternalLinks';
@@ -57,8 +57,8 @@ const DisplayCard = (props) => {
         case 'Events':
           setShowCard(<Events event={props.event} />);
           break;
-        case 'CustomerReports':
-          setShowCard(<CustomerReports />);
+        case 'ContactReports':
+          setShowCard(<ContactReports contactReports={props.contactReports} />);
           break;
 
         default:
@@ -86,7 +86,7 @@ const DisplayCard = (props) => {
         notes={() => cardToDisplay('Notes')}
         contactsToUse={() => cardToDisplay('ContactsToUse')}
         events={() => cardToDisplay('Events')}
-        reports={() => cardToDisplay('CustomerReports')}
+        reports={() => cardToDisplay('ContactReports')}
         social={() =>
           cardFooter ? setCardFooter(false) : setCardFooter(<SocialLinks />)
         }
