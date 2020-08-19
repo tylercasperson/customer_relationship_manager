@@ -24,7 +24,7 @@ const Businesses = () => {
       {businesses.map((business) => {
         return (
           <div className='flex' key={business.id}>
-            <div className='overflow-y-auto grid grid-cols-4 h-64 gap-1 p-2'>
+            <div className='w-1/3 h-64 overflow-y-auto grid grid-cols-5 p-2'>
               {business.contacts.map((contact) => (
                 <Contact key={contact.id} contactName={contact.contactName} />
               ))}
@@ -134,10 +134,17 @@ const Businesses = () => {
                 ))}
               />
             </div>
-            <div className='block py-3'>
-              <div className='flex'>
-                <Product />
-              </div>
+            <div className='grid grid-cols-5 gap-1 p-2 h-64 w-1/3 overflow-y-auto'>
+              {/* w-1/3 h-64 */}
+              {/* <div className='grid grid-cols-6 gap-1 p-2'> */}
+              {business.products.map((product) => (
+                <Product
+                  key={product.id}
+                  productName={product.name}
+                  price={product.price}
+                />
+              ))}
+              {/* </div> */}
               <Service />
             </div>
           </div>

@@ -1,12 +1,11 @@
 import React from 'react';
 
-function Product() {
+function Product(props) {
   return (
-    <div className='h-30 p-1 w-20 rounded-lg border-4 border-green-600 overflow-hidden'>
-      <div className='flex'>
-        <img src={'https://source.unsplash.com/random'} alt='contact' />
-      </div>
-      <p className='text-sm'>Price</p>
+    <div className='p-3 w-20'>
+      <img src={'https://source.unsplash.com/random'} alt='contact' />
+      <p className='text-sm w-auto'>{props.productName}</p>
+      <p className='text-sm'>{props.price}</p>
     </div>
   );
 }
