@@ -24,6 +24,12 @@ const Businesses = () => {
       {businesses.map((business) => {
         return (
           <div className='flex' key={business.id}>
+            <div className='overflow-y-auto grid grid-cols-4 h-64 gap-1 p-2'>
+              {business.contacts.map((contact) => (
+                <Contact key={contact.id} contactName={contact.contactName} />
+              ))}
+            </div>
+
             <div className='px-3 py-4'>
               <DisplayCard
                 businessName={business.businessName}
@@ -129,8 +135,9 @@ const Businesses = () => {
               />
             </div>
             <div className='block py-3'>
-              <Contact />
-              <Product />
+              <div className='flex'>
+                <Product />
+              </div>
               <Service />
             </div>
           </div>
