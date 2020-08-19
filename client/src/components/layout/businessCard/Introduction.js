@@ -1,7 +1,7 @@
 import React from 'react';
 import Industry from './Industry';
 
-const BusinessCard = () => {
+const Introduction = () => {
   return (
     <div className='flex h-64 w-128 bg-white shadow-lg rounded-lg overflow-hidden'>
       <div className='w-3/12 bg-cover'>
@@ -27,4 +27,4 @@ const BusinessCard = () => {
   );
 };
 
-export default BusinessCard;
+export default Introduction;

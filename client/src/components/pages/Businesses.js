@@ -33,6 +33,18 @@ const Businesses = () => {
                 state={business.state}
                 zip={business.zip}
                 country={business.country}
+                contactInfo={business.contacts.map((contact) =>
+                  contact.contactLists.map((contactList) =>
+                    contactList.contactType.id === 1 ||
+                    contactList.contactType === 3 ? (
+                      <div key={contactList.id}>
+                        {contactList.contactType.contactGroup}
+                        {': '}
+                        {contactList.contactInfo}
+                      </div>
+                    ) : null
+                  )
+                )}
                 importantToBusiness={business.importantToBusinesses.map(
                   (importantItems) => {
                     return (
@@ -41,13 +53,6 @@ const Businesses = () => {
                       </li>
                     );
                   }
-                )}
-                notes={business.notes.map((note) =>
-                  note.note === null ? (
-                    'Notes go here...'
-                  ) : (
-                    <div>{note.note}</div>
-                  )
                 )}
                 contactsToUse={business.contacts.map((contact) => (
                   <div key={contact.id}>
@@ -84,7 +89,7 @@ const Businesses = () => {
                   businessNote.note === null ? (
                     'Notes go here...'
                   ) : (
-                    <div>{businessNote.note}</div>
+                    <div key={businessNote.id}>{businessNote.note}</div>
                   )
                 )}
                 event={business.event.map((event) => (
@@ -108,7 +113,7 @@ const Businesses = () => {
                   </div>
                 ))}
                 contactReports={business.reports.map((report) => (
-                  <div className='flex'>
+                  <div key={report.id} className='flex'>
                     <div className='p-2 w-4/12 text-gray-900'>
                       {report.reportName}
                     </div>
