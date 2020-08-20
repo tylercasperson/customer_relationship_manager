@@ -4,6 +4,7 @@ import Moment from 'moment';
 import BusinessContext from '../../context/business/businessContext';
 
 import DisplayCard from '../layout/businessCard/DisplayCard';
+import Industry from '../layout/businessCard/Industry';
 import Contact from '../layout/Contact';
 import Product from '../layout/Product';
 import Service from '../layout/Service';
@@ -18,10 +19,17 @@ const Businesses = () => {
     // eslint-disable-next-line
   }, []);
 
+  let fullStar = <i className='px-1 fas fa-star'></i>;
+  let halfStar = <i className='px-1 fas fa-star-half-alt'></i>;
+  let emptyStar = <i className='px-1 far fa-star'></i>;
+
   return (
     <div className='bg-gray-400'>
       {console.log(businesses)}
       {businesses.map((business) => {
+        let total = [];
+        let fiveStar = [1, 2, 3, 4, 5];
+
         return (
           <div className='flex' key={business.id}>
             <div className='w-1/3 h-64 p-5 overflow-y-auto grid grid-cols-6'>
@@ -33,6 +41,7 @@ const Businesses = () => {
             <div className='px-3 py-4'>
               <DisplayCard
                 businessName={business.businessName}
+                tagLine={business.tagLine}
                 address1={business.address1}
                 address2={business.address2}
                 city={business.city}
@@ -49,6 +58,33 @@ const Businesses = () => {
                         {contactList.contactInfo}
                       </div>
                     ) : null
+                  )
+                )}
+                rating={
+                  (business.businessRatings.map((businessRating) =>
+                    total.push(businessRating.rating)
+                  ),
+                  total.length === 0
+                    ? null
+                    : fiveStar.map((star) => (
+                        <div key={star}>
+                          {star >=
+                          total.reduce((a, b) => {
+                            return a + b;
+                          }) /
+                            total.length +
+                            1
+                            ? emptyStar
+                            : fullStar}
+                        </div>
+                      )))
+                }
+                industries={business.businessIndustries.map(
+                  (businessIndustry) => (
+                    <Industry
+                      key={businessIndustry.id}
+                      industry={businessIndustry.industry.industry}
+                    />
                   )
                 )}
                 importantToBusiness={business.importantToBusinesses.map(

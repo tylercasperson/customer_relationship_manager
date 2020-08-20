@@ -11,7 +11,9 @@ router.get('/api/businesses', async (req, res) => {
   try {
     const businesses = await db.businesses.findAll({
       include: [
+        { model: db.businessIndustries, include: db.industries },
         { model: db.products },
+        { model: db.businessRatings },
         {
           model: db.serviceBusinesses,
           include: {

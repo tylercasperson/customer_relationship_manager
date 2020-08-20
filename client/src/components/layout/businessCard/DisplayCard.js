@@ -21,8 +21,10 @@ const DisplayCard = (props) => {
         <Introduction
           businessName={props.businessName}
           introduction={props.introduction}
-          tagLine={props.tagline}
+          tagLine={props.tagLine}
           slogan={props.slogan}
+          industries={props.industries}
+          rating={props.rating}
         />
       );
     } else {
@@ -66,8 +68,10 @@ const DisplayCard = (props) => {
             <Introduction
               businessName={props.businessName}
               introduction={props.introduction}
-              tagLine={props.tagline}
+              tagLine={props.tagLine}
               slogan={props.slogan}
+              industries={props.industries}
+              rating={props.rating}
             />
           );
           break;

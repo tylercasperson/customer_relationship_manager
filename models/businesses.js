@@ -47,6 +47,9 @@ module.exports = function (sequelize, DataTypes) {
       businesses.hasMany(models.importantToBusinesses, {
         onDelete: 'cascade',
       }),
+      businesses.hasMany(models.businessRatings, {
+        onDelete: 'cascade',
+      }),
       businesses.hasMany(models.contactLists, {
         // as: 'businessContactLists',
         onDelete: 'cascade',

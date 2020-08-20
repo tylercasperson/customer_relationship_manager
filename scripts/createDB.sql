@@ -91,6 +91,8 @@ CREATE TABLE businessRatings (
     businessID int,
     contactID int,
     rating int,
+    createdAt datetime,
+    updatedAt datetime,
     PRIMARY KEY (id)
 );
 CREATE TABLE useContactWhens (
