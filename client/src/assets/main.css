@@ -14442,6 +14442,10 @@ video {
   animation: bounce 1s infinite;
 }
 
+.h-72 {
+  width: 18rem;
+}
+
 .w-128 {
   width: 32rem;
 }
