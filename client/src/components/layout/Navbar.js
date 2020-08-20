@@ -5,7 +5,7 @@ import enterpriseLogo from '../images/company-enterprise.png';
 function Navbar() {
   return (
     <nav className='justify-start flex bg-blue-400 px-8 pt-2 shadow-md'>
-      <div className='flex'>
+      <div className='flex w-1/3'>
         <a
           className='focus:scale-150 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3 mr-8'
           href='#!'
@@ -32,17 +32,13 @@ function Navbar() {
         </a>
       </div>
 
-      <div className='-mb-px flex w-full justify-center'>
-        <img
-          className='h-12 px-3 py-1'
-          src={enterpriseLogo}
-          alt='enterpriseLogo'
-        />
-        <div className='py-2'>Business Relationship Manager</div>
-        <img className='h-12 px-3 py-1' src={gearsLogo} alt='gearsLogo' />
+      <div className='flex w-1/3 justify-center rounded-t-lg bg-gray-400 border-black border-t-2 border-r-2 border-l-2'>
+        <img className='h-12 py-1' src={enterpriseLogo} alt='enterpriseLogo' />
+        <div className='py-2 px-3'>Business Relationship Manager</div>
+        <img className='h-12 py-1' src={gearsLogo} alt='gearsLogo' />
       </div>
 
-      <div className='justify-end -mb-px flex'>
+      <div className='justify-end w-1/3 flex'>
         <a
           className='focus:scale-150 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3 mr-8'
           href='#!'
