@@ -5,7 +5,7 @@ export default (state, action) => {
     case GET_INDUSTRIES:
       return {
         ...state,
-        contacts: action.payload,
+        industries: action.payload,
         loading: false,
       };
     case INDUSTRY_ERROR:

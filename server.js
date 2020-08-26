@@ -4,10 +4,10 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const db = require('./models');
-const businessesRoute = require('./controllers/businessesController');
-const contactsRoute = require('./controllers/contactsController');
-const industriesRoute = require('./controllers/industriesController');
-const servicesRoute = require('./controllers/servicesController');
+const businessesRoute = require('./controllers/businesses');
+const contactsRoute = require('./controllers/contacts');
+const industriesRoute = require('./controllers/industries');
+const servicesRoute = require('./controllers/services');
 
 // sets up express to handle data parsing
 app.use(express.urlencoded({ extended: true }));

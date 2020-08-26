@@ -49,14 +49,13 @@ const Businesses = () => {
           <div className='flex' key={business.id}>
             <div className='w-1/3 h-64 p-5 overflow-y-auto grid grid-cols-6'>
               {contacts
-                .filter((contact) => contact.businessId == business.id)
+                .filter((contact) => contact.businessId === business.id)
                 .map((contact) => (
                   <Contact key={contact.id} contactName={contact.contactName} />
                 ))}
             </div>
 
             <div className='px-3 py-4'>
-              {business.id}
               <DisplayCard
                 businessName={business.businessName}
                 tagLine={business.tagLine}
@@ -67,12 +66,11 @@ const Businesses = () => {
                 zip={business.zip}
                 country={business.country}
                 contactInfo={contacts
-                  .filter((contact) => contact.businessId == business.id)
+                  .filter((contact) => contact.businessId === business.id)
                   .map((contact) =>
                     contact.contactLists.map((contactList) =>
-                      contactList.contactTypeId == 1 ? (
+                      contactList.contactTypeId === 1 ? (
                         <div key={contactList.id}>
-                          {contactList.contactTypeId}
                           {contactList.contactType.contactGroup}
                           {': '}
                           {contactList.contactInfo}
@@ -100,7 +98,7 @@ const Businesses = () => {
                       )))
                 }
                 industries={industries
-                  .filter((industry) => industry.businessId == business.id)
+                  .filter((industry) => industry.businessId === business.id)
                   .map((businessIndustry) => (
                     <Industry
                       key={businessIndustry.id}
@@ -117,7 +115,7 @@ const Businesses = () => {
                   }
                 )}
                 contactsToUse={contacts
-                  .filter((contact) => contact.businessId == business.id)
+                  .filter((contact) => contact.businessId === business.id)
                   .map((contact) => (
                     <div key={contact.id}>
                       {contact.contactBusinessFunctions.map(
@@ -207,7 +205,7 @@ const Businesses = () => {
               </div>
 
               {services
-                .filter((service) => service.businessId == business.id)
+                .filter((service) => service.businessId === business.id)
                 .map((serviceBusiness) => (
                   <Service
                     key={serviceBusiness.id}
