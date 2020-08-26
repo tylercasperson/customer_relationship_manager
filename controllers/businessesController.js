@@ -66,7 +66,7 @@ router.get('/api/businesses', async (req, res) => {
         },
         { model: db.reports },
       ],
-      where: { id: { [Op.lt]: 10 } },
+      // where: { id: { [Op.lt]: 10 } },
       order: [['id', 'ASC']],
     });
     res.json(businesses);
