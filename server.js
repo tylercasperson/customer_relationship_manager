@@ -7,6 +7,7 @@ const db = require('./models');
 const businessesRoute = require('./controllers/businessesController');
 const contactsRoute = require('./controllers/contactsController');
 const industriesRoute = require('./controllers/industriesController');
+const servicesRoute = require('./controllers/servicesController');
 
 // sets up express to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -22,6 +23,7 @@ app.use(cors());
 app.use(businessesRoute);
 app.use(contactsRoute);
 app.use(industriesRoute);
+app.use(servicesRoute);
 
 // Warning handler
 process.on('warning', (warning) => {

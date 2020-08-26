@@ -13,44 +13,8 @@ router.get('/api/businesses', async (req, res) => {
       include: [
         { model: db.products },
         { model: db.businessRatings },
-        {
-          model: db.serviceBusinesses,
-          include: {
-            model: db.services,
-          },
-        },
         { model: db.notes },
         { model: db.importantToBusinesses },
-        // {
-        //   model: db.contactLists,
-        //   include: {
-        //     model: db.contactTypes,
-        //     where: { id: { [Op.eq]: 1 } },
-        //   },
-        // },
-        // {
-        //   model: db.contacts,
-        //   include: [
-        //     {
-        //       model: db.contactLists,
-        //       include: {
-        //         model: db.contactTypes,
-        //         where: { id: { [Op.gt]: 3 } },
-        //       },
-        //     },
-        //     {
-        //       model: db.contactBusinessFunctions,
-        //       include: [
-        //         {
-        //           model: db.businessFunctions,
-        //         },
-        //         {
-        //           model: db.roles,
-        //         },
-        //       ],
-        //     },
-        //   ],
-        // },
         { model: db.businessEvents, as: 'event', include: db.businesses },
         {
           model: db.businessEvents,
@@ -58,9 +22,9 @@ router.get('/api/businesses', async (req, res) => {
             {
               model: db.businesses,
             },
-            //   {
-            //     model: db.eventDeals,
-            //   },
+            // {
+            //   model: db.eventDeals,
+            // },
           ],
         },
         { model: db.reports },

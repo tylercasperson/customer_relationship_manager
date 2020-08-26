@@ -8,6 +8,9 @@ export const CONTACT_ERROR = 'CONTACT_ERROR';
 export const GET_INDUSTRIES = 'GET_INDUSTRIES';
 export const INDUSTRY_ERROR = 'INDUSTRY_ERROR';
 
+export const GET_SERVICES = 'GET_SERVICES';
+export const SERVICE_ERROR = 'SERVICE_ERROR';
+
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 

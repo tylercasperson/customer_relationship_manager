@@ -34,7 +34,7 @@ const IndustryState = (props) => {
   return (
     <IndustryContext.Provider
       value={{
-        industries: state.contacts,
+        industries: state.industries,
         getIndustries,
       }}
     >

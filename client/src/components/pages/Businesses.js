@@ -4,6 +4,7 @@ import Moment from 'moment';
 import BusinessContext from '../../context/business/businessContext';
 import ContactContext from '../../context/contact/contactContext';
 import IndustryContext from '../../context/industry/industryContext';
+import ServiceContext from '../../context/service/serviceContext';
 
 import DisplayCard from '../layout/businessCard/DisplayCard';
 import Industry from '../layout/businessCard/Industry';
@@ -15,15 +16,18 @@ const Businesses = () => {
   const businessContext = useContext(BusinessContext);
   const contactContext = useContext(ContactContext);
   const industryContext = useContext(IndustryContext);
+  const serviceContext = useContext(ServiceContext);
 
   const { businesses, getBusinesses } = businessContext;
   const { contacts, getContacts } = contactContext;
   const { industries, getIndustries } = industryContext;
+  const { services, getServices } = serviceContext;
 
   useEffect(() => {
     getBusinesses();
     getContacts();
     getIndustries();
+    getServices();
     // eslint-disable-next-line
   }, []);
 
@@ -36,6 +40,7 @@ const Businesses = () => {
       {console.log(businesses)}
       {console.log(contacts)}
       {console.log(industries)}
+      {console.log(services)}
       {businesses.map((business) => {
         let total = [];
         let fiveStar = [1, 2, 3, 4, 5];
@@ -201,14 +206,14 @@ const Businesses = () => {
                     ))}
               </div>
 
-              {business.serviceBusinesses === null
-                ? null
-                : business.serviceBusinesses.map((serviceBusiness) => (
-                    <Service
-                      key={serviceBusiness.id}
-                      serviceOffered={serviceBusiness.service.service}
-                    />
-                  ))}
+              {services
+                .filter((service) => service.businessId == business.id)
+                .map((serviceBusiness) => (
+                  <Service
+                    key={serviceBusiness.id}
+                    serviceOffered={serviceBusiness.service.service}
+                  />
+                ))}
             </div>
           </div>
         );
