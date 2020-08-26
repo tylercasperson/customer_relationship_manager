@@ -23,6 +23,7 @@ module.exports = function (sequelize, DataTypes) {
       //   as: 'eventContactList',
       //   onDelete: 'cascade',
       // }),
+
       contactLists.belongsTo(models.contactTypes, {
         onDelete: 'cascade',
       });

@@ -29,29 +29,29 @@ router.get('/api/businesses', async (req, res) => {
             where: { id: { [Op.eq]: 1 } },
           },
         },
-        {
-          model: db.contacts,
-          include: [
-            {
-              model: db.contactLists,
-              include: {
-                model: db.contactTypes,
-                where: { id: { [Op.gt]: 3 } },
-              },
-            },
-            {
-              model: db.contactBusinessFunctions,
-              include: [
-                {
-                  model: db.businessFunctions,
-                },
-                {
-                  model: db.roles,
-                },
-              ],
-            },
-          ],
-        },
+        // {
+        //   model: db.contacts,
+        //   include: [
+        //     {
+        //       model: db.contactLists,
+        //       include: {
+        //         model: db.contactTypes,
+        //         where: { id: { [Op.gt]: 3 } },
+        //       },
+        //     },
+        //     {
+        //       model: db.contactBusinessFunctions,
+        //       include: [
+        //         {
+        //           model: db.businessFunctions,
+        //         },
+        //         {
+        //           model: db.roles,
+        //         },
+        //       ],
+        //     },
+        //   ],
+        // },
         { model: db.businessEvents, as: 'event', include: db.businesses },
         {
           model: db.businessEvents,
@@ -66,6 +66,7 @@ router.get('/api/businesses', async (req, res) => {
         },
         { model: db.reports },
       ],
+      where: { id: { [Op.lt]: 10 } },
       order: [['id', 'ASC']],
     });
     res.json(businesses);

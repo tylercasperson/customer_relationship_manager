@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Moment from 'moment';
 
 import BusinessContext from '../../context/business/businessContext';
+import ContactContext from '../../context/contact/contactContext';
 
 import DisplayCard from '../layout/businessCard/DisplayCard';
 import Industry from '../layout/businessCard/Industry';
@@ -11,11 +12,14 @@ import Service from '../layout/Service';
 
 const Businesses = () => {
   const businessContext = useContext(BusinessContext);
+  const contactContext = useContext(ContactContext);
 
   const { businesses, getBusinesses } = businessContext;
+  const { contacts, getContacts } = contactContext;
 
   useEffect(() => {
     getBusinesses();
+    getContacts();
     // eslint-disable-next-line
   }, []);
 
@@ -26,6 +30,7 @@ const Businesses = () => {
   return (
     <div className='bg-gray-400'>
       {console.log(businesses)}
+      {console.log(contacts)}
       {businesses.map((business) => {
         let total = [];
         let fiveStar = [1, 2, 3, 4, 5];
@@ -33,12 +38,15 @@ const Businesses = () => {
         return (
           <div className='flex' key={business.id}>
             <div className='w-1/3 h-64 p-5 overflow-y-auto grid grid-cols-6'>
-              {business.contacts.map((contact) => (
-                <Contact key={contact.id} contactName={contact.contactName} />
-              ))}
+              {contacts
+                .filter((contact) => contact.businessId == business.id)
+                .map((contact) => (
+                  <Contact key={contact.id} contactName={contact.contactName} />
+                ))}
             </div>
 
             <div className='px-3 py-4'>
+              {business.id}
               <DisplayCard
                 businessName={business.businessName}
                 tagLine={business.tagLine}
@@ -48,18 +56,20 @@ const Businesses = () => {
                 state={business.state}
                 zip={business.zip}
                 country={business.country}
-                contactInfo={business.contacts.map((contact) =>
-                  contact.contactLists.map((contactList) =>
-                    contactList.contactType.id === 1 ||
-                    contactList.contactType === 3 ? (
-                      <div key={contactList.id}>
-                        {contactList.contactType.contactGroup}
-                        {': '}
-                        {contactList.contactInfo}
-                      </div>
-                    ) : null
-                  )
-                )}
+                contactInfo={contacts
+                  .filter((contact) => contact.businessId == business.id)
+                  .map((contact) =>
+                    contact.contactLists.map((contactList) =>
+                      contactList.contactTypeId == 1 ? (
+                        <div key={contactList.id}>
+                          {contactList.contactTypeId}
+                          {contactList.contactType.contactGroup}
+                          {': '}
+                          {contactList.contactInfo}
+                        </div>
+                      ) : null
+                    )
+                  )}
                 rating={
                   (business.businessRatings.map((businessRating) =>
                     total.push(businessRating.rating)
@@ -96,37 +106,39 @@ const Businesses = () => {
                     );
                   }
                 )}
-                contactsToUse={business.contacts.map((contact) => (
-                  <div key={contact.id}>
-                    {contact.contactBusinessFunctions.map(
-                      (contactBusinessFunction) => (
-                        <h5
-                          className='text-gray-900'
-                          key={contactBusinessFunction.id}
-                        >
-                          {contactBusinessFunction.role === null
-                            ? null
-                            : contactBusinessFunction.role.title}
-                        </h5>
-                      )
-                    )}
+                contactsToUse={contacts
+                  .filter((contact) => contact.businessId == business.id)
+                  .map((contact) => (
+                    <div key={contact.id}>
+                      {contact.contactBusinessFunctions.map(
+                        (contactBusinessFunction) => (
+                          <h5
+                            className='text-gray-900'
+                            key={contactBusinessFunction.id}
+                          >
+                            {contactBusinessFunction.role === null
+                              ? null
+                              : contactBusinessFunction.role.title}
+                          </h5>
+                        )
+                      )}
 
-                    <div className='text-gray-600 text-sm'>
-                      {contact.contactName}
-                    </div>
-                    {contact.contactLists.map((contactList) => (
-                      <div
-                        className='text-gray-600 text-sm'
-                        key={contactList.id}
-                      >
-                        {contactList.contactType.contactGroup}
-                        {': '}
-                        {contactList.contactInfo}
+                      <div className='text-gray-600 text-sm'>
+                        {contact.contactName}
                       </div>
-                    ))}
-                    <div className='h-px bg-black'></div>
-                  </div>
-                ))}
+                      {contact.contactLists.map((contactList) => (
+                        <div
+                          className='text-gray-600 text-sm'
+                          key={contactList.id}
+                        >
+                          {contactList.contactType.contactGroup}
+                          {': '}
+                          {contactList.contactInfo}
+                        </div>
+                      ))}
+                      <div className='h-px bg-black'></div>
+                    </div>
+                  ))}
                 notes={business.notes.map((businessNote) =>
                   businessNote.note === null ? (
                     'Notes go here...'

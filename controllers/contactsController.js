@@ -1,95 +1,34 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const { Op } = require('sequelize');
 
 router.get('/', function (req, res) {
   res.redirect('/api/contacts');
 });
 
-router.get('/api/contacts', function (req, res) {
-  db.contacts
-    .findAll({
+router.get('/api/contacts', async (req, res) => {
+  try {
+    const contacts = await db.contacts.findAll({
       include: [
         {
-          model: db.businesses,
+          model: db.contactLists,
+          include: {
+            model: db.contactTypes,
+            where: { id: { [Op.or]: { [Op.gt]: 3, [Op.eq]: 1 } } },
+          },
         },
         {
-          model: db.contactTypes,
-        },
-        {
-          model: db.roles,
-        },
-        {
-          model: db.businessFunctions,
+          model: db.contactBusinessFunctions,
+          include: [{ model: db.businessFunctions }, { model: db.roles }],
         },
       ],
-    })
-    .then(function (dbcontacts) {
-      var contactsObject = {
-        contacts: dbcontacts,
-      };
-      return res.json(contactsObject);
     });
-});
-
-router.get('/api/contacts/:id', function (req, res) {
-  db.contacts
-    .findOne({
-      where: {
-        id: req.params.id,
-      },
-    })
-    .then(function (dbcontacts) {
-      var contactsObject = {
-        contacts: dbcontacts,
-      };
-      return res.json(contactsObject);
-    });
-});
-
-router.post('/api/contacts', function (req, res) {
-  db.contacts
-    .create({
-      where: {
-        id: req.params.id,
-      },
-    })
-    .then(function (dbcontacts) {
-      var contactsObject = {
-        contacts: dbcontacts,
-      };
-      return res.json(contactsObject);
-    });
-});
-
-router.put('/api/contacts/:id', function (req, res) {
-  db.contacts
-    .update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    })
-    .then(function (dbcontacts) {
-      var contactsObject = {
-        contacts: dbcontacts,
-      };
-      return res.json(contactsObject);
-    });
-});
-
-router.delete('/api/contacts/:id', function (req, res) {
-  db.contacts
-    .destroy({
-      where: {
-        id: req.params.id,
-      },
-    })
-    .then(function (dbcontacts) {
-      var contactsObject = {
-        contacts: dbcontacts,
-      };
-      return res.json(contactsObject);
-    });
+    res.json(contacts);
+  } catch (err) {
+    console.error(err.msg);
+    res.status(500).send('Server Error');
+  }
 });
 
 module.exports = router;

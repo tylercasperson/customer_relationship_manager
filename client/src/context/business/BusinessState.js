@@ -25,7 +25,6 @@ const BusinessState = (props) => {
         payload: res.data,
       });
     } catch (err) {
-      console.log(err.response.message);
       console.log(err);
 
       dispatch({
