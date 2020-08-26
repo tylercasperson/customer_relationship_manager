@@ -3,6 +3,7 @@ import Moment from 'moment';
 
 import BusinessContext from '../../context/business/businessContext';
 import ContactContext from '../../context/contact/contactContext';
+import IndustryContext from '../../context/industry/industryContext';
 
 import DisplayCard from '../layout/businessCard/DisplayCard';
 import Industry from '../layout/businessCard/Industry';
@@ -13,13 +14,16 @@ import Service from '../layout/Service';
 const Businesses = () => {
   const businessContext = useContext(BusinessContext);
   const contactContext = useContext(ContactContext);
+  const industryContext = useContext(IndustryContext);
 
   const { businesses, getBusinesses } = businessContext;
   const { contacts, getContacts } = contactContext;
+  const { industries, getIndustries } = industryContext;
 
   useEffect(() => {
     getBusinesses();
     getContacts();
+    getIndustries();
     // eslint-disable-next-line
   }, []);
 
@@ -31,6 +35,7 @@ const Businesses = () => {
     <div className='bg-gray-400'>
       {console.log(businesses)}
       {console.log(contacts)}
+      {console.log(industries)}
       {businesses.map((business) => {
         let total = [];
         let fiveStar = [1, 2, 3, 4, 5];
@@ -89,14 +94,14 @@ const Businesses = () => {
                         </div>
                       )))
                 }
-                industries={business.businessIndustries.map(
-                  (businessIndustry) => (
+                industries={industries
+                  .filter((industry) => industry.businessId == business.id)
+                  .map((businessIndustry) => (
                     <Industry
                       key={businessIndustry.id}
                       industry={businessIndustry.industry.industry}
                     />
-                  )
-                )}
+                  ))}
                 importantToBusiness={business.importantToBusinesses.map(
                   (importantItems) => {
                     return (

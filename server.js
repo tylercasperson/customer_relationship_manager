@@ -5,7 +5,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const db = require('./models');
 const businessesRoute = require('./controllers/businessesController');
-const contactRoute = require('./controllers/contactsController');
+const contactsRoute = require('./controllers/contactsController');
+const industriesRoute = require('./controllers/industriesController');
 
 // sets up express to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +20,8 @@ app.use(cors());
 
 // routes
 app.use(businessesRoute);
-app.use(contactRoute);
+app.use(contactsRoute);
+app.use(industriesRoute);
 
 // Warning handler
 process.on('warning', (warning) => {

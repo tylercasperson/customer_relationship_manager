@@ -11,7 +11,6 @@ router.get('/api/businesses', async (req, res) => {
   try {
     const businesses = await db.businesses.findAll({
       include: [
-        { model: db.businessIndustries, include: db.industries },
         { model: db.products },
         { model: db.businessRatings },
         {
@@ -22,13 +21,13 @@ router.get('/api/businesses', async (req, res) => {
         },
         { model: db.notes },
         { model: db.importantToBusinesses },
-        {
-          model: db.contactLists,
-          include: {
-            model: db.contactTypes,
-            where: { id: { [Op.eq]: 1 } },
-          },
-        },
+        // {
+        //   model: db.contactLists,
+        //   include: {
+        //     model: db.contactTypes,
+        //     where: { id: { [Op.eq]: 1 } },
+        //   },
+        // },
         // {
         //   model: db.contacts,
         //   include: [

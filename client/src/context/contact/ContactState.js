@@ -6,7 +6,7 @@ import { GET_CONTACTS, CONTACT_ERROR } from '../types';
 
 const ContactState = (props) => {
   const initialState = {
-    contact: [],
+    contacts: [],
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
