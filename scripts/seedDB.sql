@@ -2340,7 +2340,7 @@ INSERT INTO users (
   )
 VALUES (
     'admin',
-    'admin@gmail.cim',
+    'admin@gmail.com',
     '123456',
     1,
     '2020-07-01 00:00:00',
@@ -2349,16 +2349,16 @@ VALUES (
   (
     'manager',
     'manager@gmail.com',
-    2,
     '123456',
+    2,
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
   ),
   (
     'employee',
     'employee@gmail.com',
-    3,
     '123456',
+    3,
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
   );

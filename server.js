@@ -4,6 +4,8 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const db = require('./models');
+const usersRoute = require('./controllers/users');
+const authRoute = require('./controllers/auth');
 const businessesRoute = require('./controllers/businesses');
 const contactsRoute = require('./controllers/contacts');
 const industriesRoute = require('./controllers/industries');
@@ -20,6 +22,8 @@ app.use(express.static('public'));
 app.use(cors());
 
 // routes
+app.use(usersRoute);
+app.use(authRoute);
 app.use(businessesRoute);
 app.use(contactsRoute);
 app.use(industriesRoute);

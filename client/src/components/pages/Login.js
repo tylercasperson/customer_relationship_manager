@@ -43,7 +43,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className='w-128'>
+    <div>
       <div className='flex justify-center'>Account Login</div>
       <form onSubmit={onSubmit}>
         <div className='flex justify-center'>
