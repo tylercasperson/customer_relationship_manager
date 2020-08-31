@@ -27,7 +27,6 @@ function App() {
                 <Router>
                   <div id='BusinessRealtionshipManager'>
                     <Navbar />
-
                     <Switch>
                       <PrivateRoute exact path='/' component={Businesses} />
                       <Route exact path='/login' component={Login} />
@@ -35,7 +34,6 @@ function App() {
                     </Switch>
                   </div>
                 </Router>
-                <Businesses />
               </AlertState>
             </ContactState>
           </ServiceState>

@@ -11,6 +11,10 @@ import {
 const BusinessState = (props) => {
   const initialState = {
     businesses: [],
+    contacts: [],
+    events: [],
+    industries: [],
+    services: [],
   };
 
   const [state, dispatch] = useReducer(businessReducer, initialState);
@@ -45,7 +49,6 @@ const BusinessState = (props) => {
       });
       console.log(res.data);
     } catch (err) {
-      console.log('hello');
       console.log(err.response.message);
       console.log(err);
 

@@ -12,7 +12,16 @@ import SocialLinks from './SocialLinks';
 import InternalLinks from './InternalLinks';
 
 const DisplayCard = (props) => {
-  const [showCard, setShowCard] = useState(<Introduction />);
+  const [showCard, setShowCard] = useState(
+    <Introduction
+      businessName={props.businessName}
+      introduction={props.introduction}
+      tagLine={props.tagLine}
+      slogan={props.slogan}
+      industries={props.industries}
+      rating={props.rating}
+    />
+  );
   const [cardFooter, setCardFooter] = useState(false);
 
   const cardToDisplay = (buttonName) => {

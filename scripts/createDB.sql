@@ -38,6 +38,7 @@ CREATE TABLE services (
 CREATE TABLE businesses (
     id int auto_increment,
     businessName varChar (255),
+    imageURL varChar(255),
     introduction varChar (255),
     tagLine varChar (255),
     slogan varChar (255),
@@ -116,6 +117,7 @@ CREATE TABLE contactLists (
 CREATE TABLE contacts (
     id int auto_increment,
     contactName varChar (255),
+    imageURL varChar (255),
     businessFunctionID int,
     businessID int,
     lockID int,
@@ -163,6 +165,7 @@ CREATE TABLE businessEvents (
 CREATE TABLE products (
     id int auto_increment,
     name varChar (255),
+    imageURL varChar(255),
     price decimal (13, 2),
     businessID int,
     createdAt datetime,

@@ -10,6 +10,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNulls: false,
     },
+    imageURL: DataTypes.STRING,
     introduction: DataTypes.STRING,
     tagLine: DataTypes.STRING,
     slogan: DataTypes.STRING,

@@ -35,12 +35,13 @@ const Businesses = () => {
   let halfStar = <i className='px-1 fas fa-star-half-alt'></i>;
   let emptyStar = <i className='px-1 far fa-star'></i>;
 
+  console.log(businesses);
+  console.log(contacts);
+  console.log(industries);
+  console.log(services);
+
   return (
     <div className='bg-gray-400'>
-      {console.log(businesses)}
-      {console.log(contacts)}
-      {console.log(industries)}
-      {console.log(services)}
       {businesses.map((business) => {
         let total = [];
         let fiveStar = [1, 2, 3, 4, 5];
