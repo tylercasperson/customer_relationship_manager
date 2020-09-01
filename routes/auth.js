@@ -8,7 +8,9 @@ const auth = require('../middleware/auth');
 
 router.get('/api/auth', auth, async (req, res) => {
   try {
-    const user = await db.Users.findOne({ where: { email: req.body.email } });
+    const user = await db.users.findOne(
+      { email: req.body.email } && { password: req.body.email }
+    );
     res.json(user);
   } catch (err) {
     console.error(err.message);
@@ -32,7 +34,7 @@ router.post(
 
     try {
       const user = await db.users.findOne({
-        where: { email: email },
+        where: { email: email } && { password: password },
       });
       if (!user) {
         return res.status(400).json({ msg: 'Invalid Credentials' });

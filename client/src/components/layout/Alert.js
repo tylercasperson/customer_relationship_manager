@@ -8,7 +8,7 @@ const Alert = () => {
     alertContext.alerts.map((alert) => (
       <div
         key={alert.id}
-        className={`p-3 m-4 opacity-75 text-gray-800 background-red-400 alert-${alert.type}`}
+        className={`p-3 m-4 opacity-75 text-gray-800 ${alert.type}`}
       >
         <i className='fas fa-info-circle' />
         {alert.msg}

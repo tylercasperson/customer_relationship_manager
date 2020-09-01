@@ -28,7 +28,7 @@ function App() {
                   <div id='BusinessRealtionshipManager'>
                     <Navbar />
                     <Switch>
-                      <PrivateRoute exact path='/' component={Businesses} />
+                      <Route exact path='/' component={Businesses} />
                       <Route exact path='/login' component={Login} />
                       <Route exact path='/register' component={Register} />
                     </Switch>
