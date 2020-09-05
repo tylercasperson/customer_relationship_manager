@@ -5,6 +5,12 @@
 <i class="fas fa-map-marked-alt"></i>
 
 
+
+<button onClick={props.reports}>
+<i className='fas fa-chart-line'></i>
+</button>
+
+
 <i class="far fa-comments"></i>
 
 <i class="fas fa-edit"></i>

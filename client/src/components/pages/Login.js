@@ -74,7 +74,7 @@ const Login = (props) => {
             name='email'
             value={email}
             onChange={onChange}
-            // required
+            required
           />
         </div>
 
@@ -86,7 +86,7 @@ const Login = (props) => {
             name='password'
             value={password}
             onChange={onChange}
-            // required
+            required
           />
         </div>
 
