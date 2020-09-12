@@ -33,6 +33,20 @@ router.get('/api/notes/:businessId', async (req, res) => {
   }
 });
 
+router.post('/api/notes', async (req, res) => {
+  try {
+    const newNote = await db.notes.create({
+      businessId: req.body.businessId,
+      note: req.body.note,
+    });
+    res.json(newNote);
+  } catch (err) {
+    console.log('error');
+    console.error(err);
+    console.log('Server Error');
+  }
+});
+
 router.delete('/api/notes/:id', async (req, res) => {
   try {
     const removeNote = await db.notes.destroy({
@@ -44,7 +58,7 @@ router.delete('/api/notes/:id', async (req, res) => {
   } catch (err) {
     console.log('error');
     console.error(err);
-    return console.log('Server Error');
+    console.log('Server Error');
   }
 });
 

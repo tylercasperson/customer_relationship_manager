@@ -13,7 +13,6 @@ router.get('/api/businesses', async (req, res) => {
       include: [
         { model: db.products },
         { model: db.businessRatings },
-        { model: db.notes },
         { model: db.importantToBusinesses },
         { model: db.businessEvents, as: 'event', include: db.businesses },
         {

@@ -37,6 +37,40 @@ const NoteState = (props) => {
     }
   };
 
+  // Add Note
+  const createNote = async (note) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      console.log(note);
+      console.log(config);
+
+      const res = await axios.post('/api/notes', note, config);
+
+      console.log(res);
+
+      console.log(note);
+      console.log(config);
+      console.log(res.data);
+
+      dispatch({
+        type: CREATE_NOTE,
+        payload: res.data,
+      });
+      console.log(res);
+      console.log(res.data);
+    } catch (err) {
+      dispatch({
+        type: NOTE_ERROR,
+        payload: err,
+      });
+    }
+  };
+
   // ???????? If I cant get this to work then I want it deleted
   // Count Notes
   const countNotes = async (businessId) => {
@@ -59,30 +93,19 @@ const NoteState = (props) => {
 
   // Delete Note
   const deleteNote = async (noteId) => {
-    // console.log(noteId);
-    // console.log(...noteId);
-    console.log('start');
     try {
       await axios.delete(`/api/notes/${noteId}`);
-      console.log('try');
-      console.log(noteId);
 
       dispatch({
         type: DELETE_NOTE,
         payload: noteId,
       });
     } catch (err) {
-      console.log('error');
       dispatch({
         type: NOTE_ERROR,
         payload: err,
       });
-      console.log('error');
-      console.log(noteId);
-      console.log(err);
     }
-    // dispatch({ type: DELETE_NOTE, payload: id });
-    console.log('finish');
   };
 
   return (
@@ -92,6 +115,7 @@ const NoteState = (props) => {
         getNotes,
         countNotes,
         deleteNote,
+        createNote,
       }}
     >
       {props.children}

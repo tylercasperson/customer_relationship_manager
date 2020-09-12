@@ -5,7 +5,6 @@ import BusinessContext from '../../context/business/businessContext';
 import ContactContext from '../../context/contact/contactContext';
 import IndustryContext from '../../context/industry/industryContext';
 import ServiceContext from '../../context/service/serviceContext';
-import NoteContext from '../../context/note/noteContext';
 
 import DisplayCard from '../layout/businessCard/DisplayCard';
 import Industry from '../layout/businessCard/Industry';
@@ -18,21 +17,11 @@ const Businesses = () => {
   const contactContext = useContext(ContactContext);
   const industryContext = useContext(IndustryContext);
   const serviceContext = useContext(ServiceContext);
-  const noteContext = useContext(NoteContext);
 
   const { businesses, getBusinesses } = businessContext;
   const { contacts, getContacts } = contactContext;
   const { industries, getIndustries } = industryContext;
   const { services, getServices } = serviceContext;
-  const {
-    notes,
-    noteCount,
-    abc,
-    id,
-    getNotes,
-    countNotes,
-    deleteNote,
-  } = noteContext;
 
   // To Do
   //  read and delete work need to update and delete
@@ -43,7 +32,6 @@ const Businesses = () => {
     getContacts();
     getIndustries();
     getServices();
-    getNotes();
     // countNotes();
     // deleteNote(id);
     // eslint-disable-next-line
@@ -57,18 +45,18 @@ const Businesses = () => {
   // console.log(contacts);
   // console.log(industries);
   // console.log(services);
-  console.log(notes);
+  // console.log(notes);
   // console.log(countNotes.length);
 
   // const noteCount = (businessId) => {
   //   countNotes(businessId);
   // };
 
-  const removeNote = (id) => {
-    deleteNote(id);
-    notes.slice(id, 1);
-    console.log(notes);
-  };
+  // const removeNote = (id) => {
+  //   deleteNote(id);
+  //   notes.slice(id, 1);
+  //   console.log(notes);
+  // };
 
   return (
     <div className='bg-gray-400'>
@@ -232,7 +220,6 @@ const Businesses = () => {
                   // }
 
                   businessMatch={business.id}
-                  note={notes}
                   event={business.event.map((event) => (
                     <div key={event.id} className='py-2'>
                       <h5 className='text-gray-900'>

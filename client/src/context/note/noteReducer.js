@@ -24,7 +24,7 @@ export default (state, action) => {
     case CREATE_NOTE:
       return {
         ...state,
-        notes: action.payload,
+        notes: [...state.notes, action.payload],
         loading: false,
       };
     case UPDATE_NOTE:
