@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Introduction from './Introduction';
 import Address from './Address';
 import Notes from './Notes';
+import NotesEdit from './NotesEdit';
 import ImportantToBusiness from './ImportantToBusiness';
 import ContactsToUse from './ContactsToUse';
 import Events from './Events';
@@ -23,6 +24,15 @@ const DisplayCard = (props) => {
     />
   );
   const [cardFooter, setCardFooter] = useState(false);
+
+  const clickEdit = () => {
+    setShowCard(
+      <NotesEdit
+        businessMatch={props.businessMatch}
+        clickSave={props.clickSave}
+      />
+    );
+  };
 
   const cardToDisplay = (buttonName) => {
     if (showCard.type.name === buttonName) {
@@ -60,7 +70,17 @@ const DisplayCard = (props) => {
           );
           break;
         case 'Notes':
-          setShowCard(<Notes notes={props.notes} />);
+          setShowCard(
+            <Notes businessMatch={props.businessMatch} clickEdit={clickEdit} />
+          );
+          break;
+        case 'NotesEdit':
+          setShowCard(
+            <NotesEdit
+              businessMatch={props.businessMatch}
+              clickSave={props.clickSave}
+            />
+          );
           break;
         case 'ContactsToUse':
           setShowCard(<ContactsToUse contactsToUse={props.contactsToUse} />);

@@ -5,6 +5,13 @@ export const BUSINESS_ERROR = 'BUSINESS_ERROR';
 export const GET_CONTACTS = 'GET_CONTACTS';
 export const CONTACT_ERROR = 'CONTACT_ERROR';
 
+export const GET_NOTES = 'GET_NOTES';
+export const COUNT_NOTES = 'COUNT_NOTES';
+export const CREATE_NOTE = 'CREATE_NOTE';
+export const UPDATE_NOTE = 'UPDATE_NOTE';
+export const DELETE_NOTE = 'DELETE_NOTE';
+export const NOTE_ERROR = 'NOTE_ERROR';
+
 export const GET_INDUSTRIES = 'GET_INDUSTRIES';
 export const INDUSTRY_ERROR = 'INDUSTRY_ERROR';
 

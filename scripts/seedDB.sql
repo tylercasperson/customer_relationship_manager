@@ -1567,6 +1567,12 @@ VALUES (
   );
 INSERT INTO notes (businessID, note, createdAt, updatedAt)
 VALUES (
+    0,
+    'hello',
+    '2020-07-01 00:00:00',
+    '2020-07-01 00:00:00'
+  ),
+  (
     1,
     'hello',
     '2020-07-01 00:00:00',

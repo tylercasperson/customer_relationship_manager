@@ -11,10 +11,10 @@ import {
 const BusinessState = (props) => {
   const initialState = {
     businesses: [],
-    contacts: [],
-    events: [],
-    industries: [],
-    services: [],
+    // contacts: [],
+    // events: [],
+    // industries: [],
+    // services: [],
   };
 
   const [state, dispatch] = useReducer(businessReducer, initialState);
@@ -33,7 +33,7 @@ const BusinessState = (props) => {
 
       dispatch({
         type: BUSINESS_ERROR,
-        payload: err.response.msg,
+        payload: err.response,
       });
     }
   };
@@ -49,7 +49,7 @@ const BusinessState = (props) => {
       });
       console.log(res.data);
     } catch (err) {
-      console.log(err.response.message);
+      console.log(err.response);
       console.log(err);
 
       dispatch({
@@ -64,7 +64,6 @@ const BusinessState = (props) => {
       value={{
         businesses: state.businesses,
         getBusinesses,
-        getImportantToBusiness,
       }}
     >
       {props.children}

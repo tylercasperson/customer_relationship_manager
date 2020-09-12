@@ -10,6 +10,7 @@ const businessesRoute = require('./routes/businesses');
 const contactsRoute = require('./routes/contacts');
 const industriesRoute = require('./routes/industries');
 const servicesRoute = require('./routes/services');
+const notesRoute = require('./routes/notes');
 
 // sets up express to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -28,6 +29,7 @@ app.use(businessesRoute);
 app.use(contactsRoute);
 app.use(industriesRoute);
 app.use(servicesRoute);
+app.use(notesRoute);
 
 // Warning handler
 process.on('warning', (warning) => {

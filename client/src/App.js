@@ -7,6 +7,7 @@ import BusinessState from './context/business/BusinessState';
 import IndustryState from './context/industry/IndustryState';
 import ServiceState from './context/service/ServiceState';
 import ContactState from './context/contact/ContactState';
+import NoteState from './context/note/NoteState';
 import AlertState from './context/alert/AlertState';
 
 import Login from './components/pages/Login';
@@ -23,18 +24,20 @@ function App() {
         <IndustryState>
           <ServiceState>
             <ContactState>
-              <AlertState>
-                <Router>
-                  <div id='BusinessRealtionshipManager'>
-                    <Navbar />
-                    <Switch>
-                      <Route exact path='/' component={Businesses} />
-                      <Route exact path='/login' component={Login} />
-                      <Route exact path='/register' component={Register} />
-                    </Switch>
-                  </div>
-                </Router>
-              </AlertState>
+              <NoteState>
+                <AlertState>
+                  <Router>
+                    <div id='BusinessRealtionshipManager'>
+                      <Navbar />
+                      <Switch>
+                        <Route exact path='/' component={Businesses} />
+                        <Route exact path='/login' component={Login} />
+                        <Route exact path='/register' component={Register} />
+                      </Switch>
+                    </div>
+                  </Router>
+                </AlertState>
+              </NoteState>
             </ContactState>
           </ServiceState>
         </IndustryState>
