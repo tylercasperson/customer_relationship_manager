@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import NoteContext from '../../../context/note/noteContext';
 
 const NotesEdit = (props) => {
   const noteContext = useContext(NoteContext);
   const {
     notes,
-    getNotes,
     getBusinessNotes,
     createNote,
     updateNote,
@@ -18,11 +17,6 @@ const NotesEdit = (props) => {
     note: '',
     type: '',
   });
-
-  useEffect(() => {
-    getNotes();
-    // eslint-disable-next-line
-  }, []);
 
   const onChange = (businessId, noteItem, type) => {
     setNote({ businessId, note: noteItem, type });

@@ -1,14 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import NoteContext from '../../../context/note/noteContext';
 
 const Notes = (props) => {
   const noteContext = useContext(NoteContext);
-  const { notes, getNotes } = noteContext;
-
-  useEffect(() => {
-    getNotes();
-    // eslint-disable-next-line
-  }, []);
+  const { notes } = noteContext;
 
   return (
     <div className='relative h-64 w-128 bg-white shadow-lg rounded-lg'>
