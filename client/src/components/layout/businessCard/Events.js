@@ -2,7 +2,7 @@ import React from 'react';
 
 const Events = (props) => {
   return (
-    <div className='flex h-64 w-128 bg-red-200 shadow-lg rounded-lg overflow-hidden'>
+    <div className='flex h-64 w-128 bg-red-200 shadow-lg rounded-lg overflow-scroll'>
       <div className='flex h-32 w-full'>
         <div className='block w-48 text-center'>
           {props.event}

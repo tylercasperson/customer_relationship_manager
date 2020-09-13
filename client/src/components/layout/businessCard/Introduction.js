@@ -2,7 +2,7 @@ import React from 'react';
 
 const Introduction = (props) => {
   return (
-    <div className='flex h-64 w-128 bg-white shadow-lg rounded-lg overflow-hidden'>
+    <div className='flex h-64 w-128 bg-white shadow-lg rounded-lg overflow-scroll'>
       <div className='w-1/3 bg-cover'>
         <img src={'https://source.unsplash.com/random'} alt='businessCard' />
       </div>
