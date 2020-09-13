@@ -45,7 +45,7 @@ const NotesEdit = (props) => {
 
   return (
     <div className='relative h-64 w-128 bg-white shadow-lg rounded-lg overflow-hidden'>
-      <div className='bg-yellow-300 h-full w-full px-2 py-2 shadow-xl'>
+      <div className='bg-yellow-300 overflow-scroll h-full w-full px-2 py-2 shadow-xl'>
         {notes.length === undefined
           ? null
           : notes
