@@ -35,6 +35,23 @@ const NoteState = (props) => {
     }
   };
 
+  // Get Business Notes
+  const getBusinessNotes = async (businessId) => {
+    try {
+      const res = await axios.get(`/api/notes/${businessId}`);
+
+      dispatch({
+        type: GET_NOTES,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: NOTE_ERROR,
+        payload: err.response,
+      });
+    }
+  };
+
   // Add Note
   const createNote = async (note) => {
     const config = {
@@ -104,6 +121,7 @@ const NoteState = (props) => {
         notes: state.notes,
         noteError: state.noteError,
         getNotes,
+        getBusinessNotes,
         deleteNote,
         createNote,
         updateNote,

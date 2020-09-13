@@ -17,6 +17,18 @@ router.get('/api/notes', async (req, res) => {
   }
 });
 
+router.get('/api/notes/:businessId', async (req, res) => {
+  try {
+    const notes = await db.notes.findAll({
+      where: { businessId: { [Op.eq]: req.params.businessId } },
+    });
+    res.json(notes);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
 router.post('/api/notes', async (req, res) => {
   try {
     const newNote = await db.notes.create({

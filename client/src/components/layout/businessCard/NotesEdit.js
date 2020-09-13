@@ -3,12 +3,20 @@ import NoteContext from '../../../context/note/noteContext';
 
 const NotesEdit = (props) => {
   const noteContext = useContext(NoteContext);
-  const { notes, getNotes, createNote, updateNote, deleteNote } = noteContext;
+  const {
+    notes,
+    getNotes,
+    getBusinessNotes,
+    createNote,
+    updateNote,
+    deleteNote,
+  } = noteContext;
 
   const [note, setNote] = useState({
     id: '',
     businessId: props.businessMatch,
     note: '',
+    type: '',
   });
 
   useEffect(() => {
@@ -16,12 +24,12 @@ const NotesEdit = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  const onChange = (businessId, noteItem) => {
-    setNote({ businessId, note: noteItem });
+  const onChange = (businessId, noteItem, type) => {
+    setNote({ businessId, note: noteItem, type });
   };
 
-  const noteUpdate = (id, noteItem) => {
-    setNote({ id, note: noteItem });
+  const noteUpdate = (id, businessId, noteItem) => {
+    setNote({ id, businessId, note: noteItem });
   };
 
   const saveNote = () => {
@@ -30,13 +38,19 @@ const NotesEdit = (props) => {
         id: '',
         businessId: props.businessMatch,
         note: '',
+        type: '',
       });
     };
     if (note.note === '') return;
-    updateNote(note);
-    createNote(note);
+
+    if (note.type === 'create') {
+      createNote(note);
+    } else {
+      updateNote(note);
+    }
+
+    getBusinessNotes(note.businessId);
     clearNote();
-    // }
   };
 
   const removeNote = (id) => {
@@ -59,7 +73,11 @@ const NotesEdit = (props) => {
                     type='text'
                     defaultValue={businessNote.note}
                     onChange={(e) =>
-                      noteUpdate(businessNote.id, e.target.value)
+                      noteUpdate(
+                        businessNote.id,
+                        businessNote.businessId,
+                        e.target.value
+                      )
                     }
                     className='bg-yellow-300 w-10/12'
                   />
@@ -76,7 +94,9 @@ const NotesEdit = (props) => {
           type='text'
           className='bg-yellow-200 w-full'
           placeholder='New notes go here'
-          onChange={(e) => onChange(props.businessMatch, e.target.value)}
+          onChange={(e) =>
+            onChange(props.businessMatch, e.target.value, 'create')
+          }
         />
         <button
           onClickCapture={saveNote}
