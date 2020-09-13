@@ -28,10 +28,7 @@ const Notes = (props) => {
                   businessNote.businessId === props.businessMatch
               )
               .map((businessNote) => (
-                <div key={businessNote.id}>
-                  {/* remove the below lines after crud is complete */}
-                  {businessNote.id}
-                  {'   '}
+                <div key={businessNote.id} onClick={props.clickEdit}>
                   {businessNote.note}
                 </div>
               ))}

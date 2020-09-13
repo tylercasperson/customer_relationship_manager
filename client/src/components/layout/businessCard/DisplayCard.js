@@ -27,10 +27,13 @@ const DisplayCard = (props) => {
 
   const clickEdit = () => {
     setShowCard(
-      <NotesEdit
-        businessMatch={props.businessMatch}
-        clickSave={props.clickSave}
-      />
+      <NotesEdit businessMatch={props.businessMatch} saveNote={saveNote} />
+    );
+  };
+
+  const saveNote = () => {
+    setShowCard(
+      <Notes businessMatch={props.businessMatch} clickEdit={clickEdit} />
     );
   };
 
@@ -78,7 +81,7 @@ const DisplayCard = (props) => {
           setShowCard(
             <NotesEdit
               businessMatch={props.businessMatch}
-              clickSave={props.clickSave}
+              saveNote={saveNote}
             />
           );
           break;

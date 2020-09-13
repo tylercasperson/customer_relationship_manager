@@ -16,25 +16,27 @@ const NotesEdit = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  const onChange = (e) => {
-    setNote({ note: e.target.value, businessId: props.businessMatch });
-    console.log(note);
+  const onChange = (businessId, noteItem) => {
+    setNote({ businessId, note: noteItem });
   };
 
-  const changeNote = (id, noteItem) => {
-    console.log(noteItem);
+  const noteUpdate = (id, noteItem) => {
     setNote({ id, note: noteItem });
-    console.log(note);
   };
 
-  const addNote = () => {
-    console.log(note);
-    createNote(note);
-  };
-
-  const saveNote = (e, id) => {
-    setNote({ note: e.target.value, id });
+  const saveNote = () => {
+    const clearNote = () => {
+      setNote({
+        id: '',
+        businessId: props.businessMatch,
+        note: '',
+      });
+    };
+    if (note.note === '') return;
     updateNote(note);
+    createNote(note);
+    clearNote();
+    // }
   };
 
   const removeNote = (id) => {
@@ -53,14 +55,11 @@ const NotesEdit = (props) => {
               )
               .map((businessNote) => (
                 <div key={businessNote.id}>
-                  {/* remove the below lines after crud is complete */}
-                  {businessNote.id}
-                  {'   '}
                   <input
                     type='text'
                     defaultValue={businessNote.note}
                     onChange={(e) =>
-                      changeNote(businessNote.id, e.target.value)
+                      noteUpdate(businessNote.id, e.target.value)
                     }
                     className='bg-yellow-300 w-10/12'
                   />
@@ -77,16 +76,23 @@ const NotesEdit = (props) => {
           type='text'
           className='bg-yellow-200 w-full'
           placeholder='New notes go here'
-          name='note'
-          onChange={onChange}
+          onChange={(e) => onChange(props.businessMatch, e.target.value)}
         />
-        <button onClick={addNote}>Save</button>
+        <button
+          onClickCapture={saveNote}
+          onClick={props.saveNote}
+          className='bg-green-300 p-1 hover:bg-green-500 rounded-lg w-full'
+        >
+          <i className='fas fa-save px-1'></i>
+          Save
+        </button>
 
         <button
           className='bg-green-300 hover:bg-green-500 p-2 rounded-lg absolute bottom-0 right-0 m-4'
-          onClick={saveNote}
+          onClickCapture={saveNote}
+          onClick={props.saveNote}
         >
-          <i className='fas fa-save'></i> Save
+          <i className='fas fa-save px-1'></i> Save
         </button>
       </div>
     </div>

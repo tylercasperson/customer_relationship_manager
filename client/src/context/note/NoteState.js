@@ -4,7 +4,6 @@ import NoteContext from './noteContext';
 import noteReducer from './noteReducer';
 import {
   GET_NOTES,
-  COUNT_NOTES,
   CREATE_NOTE,
   UPDATE_NOTE,
   DELETE_NOTE,
@@ -14,6 +13,7 @@ import {
 const NoteState = (props) => {
   const initialState = {
     notes: [],
+    noteError: [],
   };
 
   const [state, dispatch] = useReducer(noteReducer, initialState);
@@ -28,8 +28,6 @@ const NoteState = (props) => {
         payload: res.data,
       });
     } catch (err) {
-      console.log(err);
-
       dispatch({
         type: NOTE_ERROR,
         payload: err.response,
@@ -46,47 +44,16 @@ const NoteState = (props) => {
     };
 
     try {
-      console.log(note);
-      console.log(config);
-
       const res = await axios.post('/api/notes', note, config);
-
-      console.log(res);
-
-      console.log(note);
-      console.log(config);
-      console.log(res.data);
 
       dispatch({
         type: CREATE_NOTE,
         payload: res.data,
       });
-      console.log(res);
-      console.log(res.data);
     } catch (err) {
       dispatch({
         type: NOTE_ERROR,
         payload: err,
-      });
-    }
-  };
-
-  // ???????? If I cant get this to work then I want it deleted
-  // Count Notes
-  const countNotes = async (businessId) => {
-    try {
-      const res = await axios.get('/api/notes/:' + businessId);
-
-      dispatch({
-        type: COUNT_NOTES,
-        payload: res.data,
-      });
-    } catch (err) {
-      console.log(err);
-
-      dispatch({
-        type: NOTE_ERROR,
-        payload: err.response,
       });
     }
   };
@@ -135,8 +102,8 @@ const NoteState = (props) => {
     <NoteContext.Provider
       value={{
         notes: state.notes,
+        noteError: state.noteError,
         getNotes,
-        countNotes,
         deleteNote,
         createNote,
         updateNote,

@@ -5,6 +5,7 @@ import BusinessContext from '../../context/business/businessContext';
 import ContactContext from '../../context/contact/contactContext';
 import IndustryContext from '../../context/industry/industryContext';
 import ServiceContext from '../../context/service/serviceContext';
+import NoteContext from '../../context/note/noteContext';
 
 import DisplayCard from '../layout/businessCard/DisplayCard';
 import Industry from '../layout/businessCard/Industry';
@@ -17,23 +18,20 @@ const Businesses = () => {
   const contactContext = useContext(ContactContext);
   const industryContext = useContext(IndustryContext);
   const serviceContext = useContext(ServiceContext);
+  const noteContext = useContext(NoteContext);
 
   const { businesses, getBusinesses } = businessContext;
   const { contacts, getContacts } = contactContext;
   const { industries, getIndustries } = industryContext;
   const { services, getServices } = serviceContext;
-
-  // To Do
-  //  read and delete work need to update and delete
-  // need to figure out how to reload the notes component after it is updated maybe setShowCard(<NotesEdit/><Notes/>)
+  const { getNotes, noteError } = noteContext;
 
   useEffect(() => {
     getBusinesses();
     getContacts();
     getIndustries();
     getServices();
-    // countNotes();
-    // deleteNote(id);
+    getNotes();
     // eslint-disable-next-line
   }, []);
 
@@ -42,21 +40,10 @@ const Businesses = () => {
   let emptyStar = <i className='px-1 far fa-star'></i>;
 
   console.log(businesses);
+  console.log(noteError);
   // console.log(contacts);
   // console.log(industries);
   // console.log(services);
-  // console.log(notes);
-  // console.log(countNotes.length);
-
-  // const noteCount = (businessId) => {
-  //   countNotes(businessId);
-  // };
-
-  // const removeNote = (id) => {
-  //   deleteNote(id);
-  //   notes.slice(id, 1);
-  //   console.log(notes);
-  // };
 
   return (
     <div className='bg-gray-400'>
@@ -171,54 +158,6 @@ const Businesses = () => {
                         <div className='h-px bg-black'></div>
                       </div>
                     ))}
-                  // notes={
-                  //   notes.length === undefined
-                  //     ? null
-                  //     : notes.filter(
-                  //         (businessNote) =>
-                  //           businessNote.businessId === business.id
-                  //       ).length === 0
-                  //     ? 'Notes go here...'
-                  //     : notes
-                  //         .filter(
-                  //           (businessNote) =>
-                  //             businessNote.businessId === business.id
-                  //         )
-                  //         .map((businessNote) => (
-                  //           <div key={businessNote.id}>
-                  //             {businessNote.id}
-                  //             {'   '}
-                  //             {businessNote.note}
-                  //           </div>
-                  //         ))
-                  // }
-                  // editNotes={
-                  //   notes.length === undefined
-                  //     ? null
-                  //     : notes
-                  //         .filter(
-                  //           (businessNote) =>
-                  //             businessNote.businessId === business.id
-                  //           // props.notesMatch
-                  //         )
-                  //         .map((businessNote) => (
-                  //           <div key={businessNote.id}>
-                  //             {businessNote.id}
-                  //             {'   '}
-                  //             <input
-                  //               type='text'
-                  //               defaultValue={businessNote.note}
-                  //               className='bg-yellow-300 w-10/12'
-                  //             />
-                  //             <button
-                  //               onClick={() => removeNote(businessNote.id)}
-                  //             >
-                  //               <i className='fas fa-trash-alt absolute right-0 px-3'></i>
-                  //             </button>
-                  //           </div>
-                  //         ))
-                  // }
-
                   businessMatch={business.id}
                   event={business.event.map((event) => (
                     <div key={event.id} className='py-2'>

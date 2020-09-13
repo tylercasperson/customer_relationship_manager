@@ -1,6 +1,5 @@
 import {
   GET_NOTES,
-  COUNT_NOTES,
   CREATE_NOTE,
   UPDATE_NOTE,
   DELETE_NOTE,
@@ -13,12 +12,6 @@ export default (state, action) => {
       return {
         ...state,
         notes: action.payload,
-        loading: false,
-      };
-    case COUNT_NOTES:
-      return {
-        ...state,
-        countNotes: action.payload,
         loading: false,
       };
     case CREATE_NOTE:
@@ -34,7 +27,6 @@ export default (state, action) => {
           note.id === action.payload.id ? action.payload : note
         ),
       };
-
     case DELETE_NOTE:
       return {
         ...state,
@@ -44,8 +36,7 @@ export default (state, action) => {
     case NOTE_ERROR:
       return {
         ...state,
-        notes: action.payload,
-        loading: false,
+        noteError: action.payload,
       };
     default:
       return state;
