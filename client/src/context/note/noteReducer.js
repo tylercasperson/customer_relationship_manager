@@ -30,18 +30,10 @@ export default (state, action) => {
     case UPDATE_NOTE:
       return {
         ...state,
-        notes: action.payload,
-        loading: false,
+        notes: state.notes.map((note) =>
+          note.id === action.payload.id ? action.payload : note
+        ),
       };
-
-    // case DELETE_CONTACT:
-    //   return {
-    //     ...state,
-    //     contacts: state.contacts.filter(
-    //       (contact) => contact._id !== action.payload
-    //     ),
-    //     loading: false,
-    //   };
 
     case DELETE_NOTE:
       return {

@@ -3,11 +3,12 @@ import NoteContext from '../../../context/note/noteContext';
 
 const NotesEdit = (props) => {
   const noteContext = useContext(NoteContext);
-  const { notes, getNotes, createNote, deleteNote } = noteContext;
+  const { notes, getNotes, createNote, updateNote, deleteNote } = noteContext;
 
   const [note, setNote] = useState({
-    note: '',
+    id: '',
     businessId: props.businessMatch,
+    note: '',
   });
 
   useEffect(() => {
@@ -20,9 +21,20 @@ const NotesEdit = (props) => {
     console.log(note);
   };
 
+  const changeNote = (id, noteItem) => {
+    console.log(noteItem);
+    setNote({ id, note: noteItem });
+    console.log(note);
+  };
+
   const addNote = () => {
     console.log(note);
     createNote(note);
+  };
+
+  const saveNote = (e, id) => {
+    setNote({ note: e.target.value, id });
+    updateNote(note);
   };
 
   const removeNote = (id) => {
@@ -47,6 +59,9 @@ const NotesEdit = (props) => {
                   <input
                     type='text'
                     defaultValue={businessNote.note}
+                    onChange={(e) =>
+                      changeNote(businessNote.id, e.target.value)
+                    }
                     className='bg-yellow-300 w-10/12'
                   />
                   <button
@@ -65,11 +80,11 @@ const NotesEdit = (props) => {
           name='note'
           onChange={onChange}
         />
-        <button onClick={addNote}>Add Note</button>
+        <button onClick={addNote}>Save</button>
 
         <button
           className='bg-green-300 hover:bg-green-500 p-2 rounded-lg absolute bottom-0 right-0 m-4'
-          // onClick={props.clickSave}
+          onClick={saveNote}
         >
           <i className='fas fa-save'></i> Save
         </button>

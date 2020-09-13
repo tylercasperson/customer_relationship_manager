@@ -91,6 +91,29 @@ const NoteState = (props) => {
     }
   };
 
+  // Update Note
+  const updateNote = async (note) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const res = await axios.put(`/api/notes/${note.id}`, note, config);
+
+      dispatch({
+        type: UPDATE_NOTE,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: NOTE_ERROR,
+        payload: err,
+      });
+    }
+  };
+
   // Delete Note
   const deleteNote = async (noteId) => {
     try {
@@ -116,6 +139,7 @@ const NoteState = (props) => {
         countNotes,
         deleteNote,
         createNote,
+        updateNote,
       }}
     >
       {props.children}

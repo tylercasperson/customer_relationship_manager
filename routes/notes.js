@@ -47,6 +47,22 @@ router.post('/api/notes', async (req, res) => {
   }
 });
 
+router.put('/api/notes/:id', async (req, res) => {
+  try {
+    const updateNote = await db.notes.update(
+      {
+        note: req.body.note,
+      },
+      { where: { id: { [Op.eq]: req.body.id } } }
+    );
+    res.json(updateNote);
+  } catch (err) {
+    console.log('error');
+    console.error(err);
+    console.log('Server Error');
+  }
+});
+
 router.delete('/api/notes/:id', async (req, res) => {
   try {
     const removeNote = await db.notes.destroy({
