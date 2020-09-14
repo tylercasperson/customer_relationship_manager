@@ -9,7 +9,21 @@ router.get('/', function (req, res) {
 
 router.get('/api/events', async (req, res) => {
   try {
-    const events = await db.events.findAll({});
+    const events = await db.events.findAll({
+      // include: [{ model: db.eventSpecials }],
+    });
+    res.json(events);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
+router.get('/api/events/:eventId', async (req, res) => {
+  try {
+    const events = await db.events.findAll({
+      eventId: { [Op.eq]: req.params.eventId },
+    });
     res.json(events);
   } catch (err) {
     console.error(err);
@@ -20,7 +34,7 @@ router.get('/api/events', async (req, res) => {
 router.get('/api/events/:businessId', async (req, res) => {
   try {
     const events = await db.events.findAll({
-      where: { businessId: { [Op.eq]: req.params.businessId } },
+      businessId: { [Op.eq]: req.params.businessId },
     });
     res.json(events);
   } catch (err) {
@@ -29,39 +43,79 @@ router.get('/api/events/:businessId', async (req, res) => {
   }
 });
 
-router.post('/api/events', async (req, res) => {
+router.get('/api/events/:eventId/:businessId', async (req, res) => {
   try {
-    const newNote = await db.events.create({
-      businessId: req.body.businessId,
-      note: req.body.note,
-    });
-    res.json(newNote);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Server Error');
-  }
-});
-
-router.put('/api/events/:id', async (req, res) => {
-  try {
-    const updateNote = await db.events.update(
-      {
-        note: req.body.note,
+    const events = await db.events.findAll({
+      where: {
+        eventId: { [Op.eq]: req.params.eventId },
+        businessId: { [Op.eq]: req.params.businessId },
       },
-      { where: { id: { [Op.eq]: req.body.id } } }
-    );
-    res.json(updateNote);
+    });
+    res.json(events);
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');
   }
 });
 
-router.delete('/api/events/:id', async (req, res) => {
+router.post('/api/events/:eventId/:businessId', async (req, res) => {
+  try {
+    const newEvent = await db.events.create({
+      eventId: req.body.eventId,
+      businessId: req.body.businessId,
+      booth: req.body.booth,
+      startDateTime: req.body.startDateTime,
+      endDateTime: req.body.endDateTime,
+    });
+    res.json(newEvent);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
+router.put('/api/events/:eventId/:businessId', async (req, res) => {
+  try {
+    const updateEvent = await db.events.update(
+      {
+        booth: req.body.booth,
+        startDateTime: req.body.startDateTime,
+        endDateTime: req.body.endDateTime,
+      },
+      {
+        where: {
+          eventId: { [Op.eq]: req.params.eventId },
+          businessId: { [Op.eq]: req.params.businessId },
+        },
+      }
+    );
+    res.json(updateEvent);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
+router.delete('/api/events/:eventId/:businessId', async (req, res) => {
   try {
     const removeNote = await db.events.destroy({
       where: {
-        id: req.params.id,
+        eventId: { [Op.eq]: req.params.eventId },
+        businessId: { [Op.eq]: req.params.businessId },
+      },
+    });
+    res.json(removeNote);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
+router.delete('/api/events/:eventId', async (req, res) => {
+  try {
+    const removeNote = await db.events.destroy({
+      where: {
+        eventId: { [Op.eq]: req.params.eventId },
       },
     });
     res.json(removeNote);

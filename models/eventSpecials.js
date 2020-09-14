@@ -16,6 +16,8 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: 'cascade',
     }),
       eventSpecials.belongsTo(models.businesses, {
+        targetKey: 'id',
+        foreignKey: 'eventId',
         onDelete: 'cascade',
       });
   };

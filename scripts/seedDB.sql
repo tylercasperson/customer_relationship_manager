@@ -2405,8 +2405,8 @@ VALUES (
     '2020-07-01 00:00:00'
   );
 INSERT INTO eventSpecials (
-    businessEventID,
-    deal,
+    eventID,
+    special,
     createdAt,
     updatedAt
   )

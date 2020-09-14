@@ -32,6 +32,8 @@ module.exports = function (sequelize, DataTypes) {
         onDelete: 'cascade',
       }),
       businesses.hasMany(models.eventSpecials, {
+        foreignKey: 'eventId',
+        targetKey: 'eventId',
         onDelete: 'cascade',
       }),
       businesses.hasMany(models.events, {

@@ -144,8 +144,8 @@ CREATE TABLE users (
 );
 CREATE TABLE eventSpecials (
     id int auto_increment,
-    businessEventID int,
-    deal varChar (255),
+    eventID int,
+    special varChar (255),
     createdAt datetime,
     updatedAt datetime,
     PRIMARY KEY (id)
