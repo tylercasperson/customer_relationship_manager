@@ -22,7 +22,7 @@ router.get('/api/businesses', async (req, res) => {
               model: db.businesses,
             },
             // {
-            //   model: db.eventDeals,
+            //   model: db.eventSpecials,
             // },
           ],
         },

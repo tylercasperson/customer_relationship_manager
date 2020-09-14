@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const eventDeals = sequelize.define('eventDeals', {
+  const eventSpecials = sequelize.define('eventSpecials', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -11,14 +11,14 @@ module.exports = function (sequelize, DataTypes) {
     updatedAt: DataTypes.DATE,
   });
 
-  eventDeals.associate = function (models) {
-    eventDeals.belongsTo(models.businessEvents, {
+  eventSpecials.associate = function (models) {
+    eventSpecials.belongsTo(models.businessEvents, {
       onDelete: 'cascade',
     }),
-      eventDeals.belongsTo(models.businesses, {
+      eventSpecials.belongsTo(models.businesses, {
         onDelete: 'cascade',
       });
   };
 
-  return eventDeals;
+  return eventSpecials;
 };

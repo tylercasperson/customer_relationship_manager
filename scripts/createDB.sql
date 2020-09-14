@@ -142,7 +142,7 @@ CREATE TABLE users (
     updatedAt datetime,
     PRIMARY KEY (id)
 );
-CREATE TABLE eventDeals (
+CREATE TABLE eventSpecials (
     id int auto_increment,
     businessEventID int,
     deal varChar (255),

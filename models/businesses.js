@@ -31,7 +31,7 @@ module.exports = function (sequelize, DataTypes) {
       businesses.hasMany(models.products, {
         onDelete: 'cascade',
       }),
-      businesses.hasMany(models.eventDeals, {
+      businesses.hasMany(models.eventSpecials, {
         onDelete: 'cascade',
       }),
       businesses.hasMany(models.businessEvents, {

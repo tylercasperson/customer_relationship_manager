@@ -5,10 +5,16 @@
 <i class="fas fa-map-marked-alt"></i>
 
 
+  {/* <button className='bg-teal-400 px-2 w-auto text-black flex-wrap text-xs font-bold rounded'>
+              Products //{' '}
+            </button> */}
+
+
 
 <button onClick={props.reports}>
 <i className='fas fa-chart-line'></i>
 </button>
+
 
 
 <i class="far fa-comments"></i>

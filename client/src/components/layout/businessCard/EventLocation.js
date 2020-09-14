@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Events = (props) => {
+const EventLocation = (props) => {
   const eventSpecials = () => {};
 
   const atEvent = () => {};
@@ -41,10 +41,9 @@ const Events = (props) => {
           </div>
         </div>
       </div>
-
       <hr className='border-1 border-black my-2' />
     </div>
   );
 };
 
-export default Events;
+export default EventLocation;
