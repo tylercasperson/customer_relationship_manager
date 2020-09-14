@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
     //   as: 'generalContacts',
     //   onDelete: 'cascade',
     // });
-    // contactTypes.hasMany(models.businessEvents, {
+    // contactTypes.hasMany(models.events, {
     //   onDelete: 'cascade',
     // });
   };

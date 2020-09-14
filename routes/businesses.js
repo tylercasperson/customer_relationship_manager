@@ -14,9 +14,9 @@ router.get('/api/businesses', async (req, res) => {
         { model: db.products },
         { model: db.businessRatings },
         { model: db.importantToBusinesses },
-        { model: db.businessEvents, as: 'event', include: db.businesses },
+        { model: db.events, as: 'event', include: db.businesses },
         {
-          model: db.businessEvents,
+          model: db.events,
           include: [
             {
               model: db.businesses,

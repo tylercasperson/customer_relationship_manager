@@ -150,7 +150,7 @@ CREATE TABLE eventSpecials (
     updatedAt datetime,
     PRIMARY KEY (id)
 );
-CREATE TABLE businessEvents (
+CREATE TABLE events (
     id int auto_increment,
     businessID int,
     eventID int,

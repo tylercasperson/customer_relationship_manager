@@ -2368,7 +2368,7 @@ VALUES (
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
   );
-INSERT INTO businessEvents (
+INSERT INTO events (
     businessID,
     eventID,
     startDateTime,

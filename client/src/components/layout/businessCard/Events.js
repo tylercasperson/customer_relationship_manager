@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 const Events = (props) => {
-  const eventSpecials = () => {};
+  const specials = useRef('');
+
+  const eventSpecials = () => {
+    console.log(specials.current.classList);
+    specials.current.classList.remove('hidden');
+    console.log(specials.current.classList);
+  };
 
   const atEvent = () => {};
 
@@ -41,6 +47,8 @@ const Events = (props) => {
           </div>
         </div>
       </div>
+
+      <div className='hidden' ref={specials}></div>
 
       <hr className='border-1 border-black my-2' />
     </div>

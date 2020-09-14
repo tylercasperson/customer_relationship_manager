@@ -12,7 +12,7 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   eventSpecials.associate = function (models) {
-    eventSpecials.belongsTo(models.businessEvents, {
+    eventSpecials.belongsTo(models.events, {
       onDelete: 'cascade',
     }),
       eventSpecials.belongsTo(models.businesses, {
