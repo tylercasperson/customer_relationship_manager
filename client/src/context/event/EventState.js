@@ -170,4 +170,4 @@ const EventState = (props) => {
   );
 };
 
-export default NoteState;
+export default EventState;
