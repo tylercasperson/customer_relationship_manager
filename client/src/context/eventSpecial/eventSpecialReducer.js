@@ -15,6 +15,7 @@ export default (state, action) => {
         loading: false,
       };
     case CREATE_EVENT_SPECIAL:
+      console.log(action.type);
       return {
         ...state,
         eventSpecials: [...state.eventSpecials, action.payload],

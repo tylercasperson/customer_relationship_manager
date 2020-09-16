@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from 'react';
-import Moment from 'moment';
 
 import BusinessContext from '../../context/business/businessContext';
 import ContactContext from '../../context/contact/contactContext';
 import IndustryContext from '../../context/industry/industryContext';
 import ServiceContext from '../../context/service/serviceContext';
 import NoteContext from '../../context/note/noteContext';
+import EventContext from '../../context/event/eventContext';
+import EventSpecialContext from '../../context/eventSpecial/eventSpecialContext';
 
 import DisplayCard from '../layout/businessCard/DisplayCard';
 import Industry from '../layout/businessCard/Industry';
@@ -19,12 +20,16 @@ const Businesses = () => {
   const industryContext = useContext(IndustryContext);
   const serviceContext = useContext(ServiceContext);
   const noteContext = useContext(NoteContext);
+  const eventContext = useContext(EventContext);
+  const eventSpecialContext = useContext(EventSpecialContext);
 
   const { businesses, getBusinesses } = businessContext;
   const { contacts, getContacts } = contactContext;
   const { industries, getIndustries } = industryContext;
   const { services, getServices } = serviceContext;
   const { getNotes, noteError } = noteContext;
+  const { events, getEvents } = eventContext;
+  const { eventSpecials, getEventSpecials } = eventSpecialContext;
 
   useEffect(() => {
     getBusinesses();
@@ -32,6 +37,8 @@ const Businesses = () => {
     getIndustries();
     getServices();
     getNotes();
+    getEvents();
+    getEventSpecials();
     // eslint-disable-next-line
   }, []);
 
@@ -41,9 +48,11 @@ const Businesses = () => {
 
   console.log(businesses);
   console.log(noteError);
-  // console.log(contacts);
-  // console.log(industries);
-  // console.log(services);
+  console.log(contacts);
+  console.log(industries);
+  console.log(services);
+  console.log(events);
+  console.log(eventSpecials);
 
   return (
     <div className='bg-gray-400'>
@@ -159,26 +168,6 @@ const Businesses = () => {
                       </div>
                     ))}
                   businessMatch={business.id}
-                  event={business.event.map((event) => (
-                    <div key={event.id} className='py-2'>
-                      <h5 className='text-gray-900'>
-                        {event.business.businessName}
-                      </h5>
-
-                      <div className='text-gray-600 text-sm'>
-                        {Moment(event.startDateTime).format('MMM D, Y')}
-                        {' to '}
-                        {Moment(event.endDateTime).format('MMM D, Y')}
-                      </div>
-                      <div className='text-gray-600 text-sm'>
-                        {Moment(event.startDateTime).format('LT')} to{' '}
-                        {Moment(event.endDateTime).format('LT')}
-                      </div>
-                      <div className='text-gray-600 text-sm'>
-                        booth: {event.booth}
-                      </div>
-                    </div>
-                  ))}
                 />
               </div>
 

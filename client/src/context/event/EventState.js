@@ -19,7 +19,7 @@ const EventState = (props) => {
 
   const [state, dispatch] = useReducer(eventReducer, initialState);
 
-  // Get Events
+  //   Get Events
   const getEvents = async () => {
     try {
       const res = await axios.get('/api/events');
@@ -36,10 +36,12 @@ const EventState = (props) => {
     }
   };
 
-  // Get events that businesses attend
+  //   Get events that businesses attend
   const getEventsForBusinesses = async (eventId) => {
+    console.log(eventId);
     try {
       const res = await axios.get(`/api/events/${eventId}`);
+      console.log(res.data);
 
       dispatch({
         type: GET_EVENTS,
@@ -55,6 +57,7 @@ const EventState = (props) => {
 
   // Get Business specific events
   const getBusinessEvents = async (businessId) => {
+    console.log(businessId);
     try {
       const res = await axios.get(`/api/events/${businessId}`);
 

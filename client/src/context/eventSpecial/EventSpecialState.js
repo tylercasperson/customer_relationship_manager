@@ -36,9 +36,9 @@ const EventSpecialState = (props) => {
   };
 
   // Get Business Event Specials
-  const getBusinessEventSpecials = async (businessId) => {
+  const getBusinessEventSpecials = async (eventId) => {
     try {
-      const res = await axios.get(`/api/eventSpecials/${businessId}`);
+      const res = await axios.get(`/api/eventSpecials/${eventId}`);
 
       dispatch({
         type: GET_EVENT_SPECIALS,
@@ -139,8 +139,8 @@ const EventSpecialState = (props) => {
   return (
     <EventSpecialContext.Provider
       value={{
-        eventSpecials: state.notes,
-        eventSpecialError: state.noteError,
+        eventSpecials: state.eventSpecials,
+        eventSpecialError: state.eventSpecialError,
         getEventSpecials,
         getBusinessEventSpecials,
         updateEventSpecial,

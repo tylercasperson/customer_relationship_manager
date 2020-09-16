@@ -89,7 +89,12 @@ const DisplayCard = (props) => {
           setShowCard(<ContactsToUse contactsToUse={props.contactsToUse} />);
           break;
         case 'Events':
-          setShowCard(<Events event={props.event} />);
+          setShowCard(
+            <Events
+              businessName={props.businessName}
+              businessMatch={props.businessMatch}
+            />
+          );
           break;
         case 'ContactReports':
           setShowCard(<ContactReports contactReports={props.contactReports} />);

@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
 router.get('/api/eventSpecials', async (req, res) => {
   try {
     const eventSpecials = await db.eventSpecials.findAll({
-      include: [{ model: db.businesses }, { model: db.events }],
+      // include: [{ model: db.businesses }, { model: db.events }],
     });
     res.json(eventSpecials);
   } catch (err) {

@@ -7,6 +7,9 @@ import BusinessState from './context/business/BusinessState';
 import IndustryState from './context/industry/IndustryState';
 import ServiceState from './context/service/ServiceState';
 import ContactState from './context/contact/ContactState';
+import EventState from './context/event/EventState';
+import EventSpecialState from './context/eventSpecial/EventSpecialState';
+
 import NoteState from './context/note/NoteState';
 import AlertState from './context/alert/AlertState';
 
@@ -24,20 +27,28 @@ function App() {
         <IndustryState>
           <ServiceState>
             <ContactState>
-              <NoteState>
-                <AlertState>
-                  <Router>
-                    <div id='BusinessRealtionshipManager'>
-                      <Navbar />
-                      <Switch>
-                        <Route exact path='/' component={Businesses} />
-                        <Route exact path='/login' component={Login} />
-                        <Route exact path='/register' component={Register} />
-                      </Switch>
-                    </div>
-                  </Router>
-                </AlertState>
-              </NoteState>
+              <EventState>
+                <EventSpecialState>
+                  <NoteState>
+                    <AlertState>
+                      <Router>
+                        <div id='BusinessRealtionshipManager'>
+                          <Navbar />
+                          <Switch>
+                            <Route exact path='/' component={Businesses} />
+                            <Route exact path='/login' component={Login} />
+                            <Route
+                              exact
+                              path='/register'
+                              component={Register}
+                            />
+                          </Switch>
+                        </div>
+                      </Router>
+                    </AlertState>
+                  </NoteState>
+                </EventSpecialState>
+              </EventState>
             </ContactState>
           </ServiceState>
         </IndustryState>

@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
       allowNulls: false,
       required: true,
     },
-    deal: DataTypes.STRING,
+    special: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   });

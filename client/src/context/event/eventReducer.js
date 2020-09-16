@@ -1,5 +1,6 @@
 import {
   GET_EVENTS,
+  GET_ATTANDANCE_AT_EVENT,
   CREATE_EVENT,
   UPDATE_EVENT,
   DELETE_ATTENDANCE_TO_EVENT,
@@ -13,6 +14,14 @@ export default (state, action) => {
       return {
         ...state,
         events: action.payload,
+        loading: false,
+      };
+    case GET_ATTANDANCE_AT_EVENT:
+      return {
+        ...state,
+        events: state.events.filter(
+          (event) => event.businessId === action.payload
+        ),
         loading: false,
       };
     case CREATE_EVENT:

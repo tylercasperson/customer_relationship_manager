@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
 router.get('/api/events', async (req, res) => {
   try {
     const events = await db.events.findAll({
-      // include: [{ model: db.eventSpecials }],
+      include: [{ model: db.eventSpecials }],
     });
     res.json(events);
   } catch (err) {
@@ -22,7 +22,8 @@ router.get('/api/events', async (req, res) => {
 router.get('/api/events/:eventId', async (req, res) => {
   try {
     const events = await db.events.findAll({
-      eventId: { [Op.eq]: req.params.eventId },
+      include: [{ model: db.events }],
+      where: { eventId: { [Op.eq]: req.params.eventId } },
     });
     res.json(events);
   } catch (err) {
@@ -32,9 +33,10 @@ router.get('/api/events/:eventId', async (req, res) => {
 });
 
 router.get('/api/events/:businessId', async (req, res) => {
+  console.log(req.params);
   try {
     const events = await db.events.findAll({
-      businessId: { [Op.eq]: req.params.businessId },
+      where: { businessId: { [Op.eq]: req.params.businessId } },
     });
     res.json(events);
   } catch (err) {
