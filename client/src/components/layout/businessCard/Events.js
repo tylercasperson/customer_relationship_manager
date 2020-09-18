@@ -1,12 +1,17 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import Moment from 'moment';
 
+import BusinessContext from '../../../context/business/businessContext';
 import EventContext from '../../../context/event/eventContext';
 import EventSpecialContext from '../../../context/eventSpecial/eventSpecialContext';
+// import businessContext from '../../../context/business/businessContext';
 
 const Events = (props) => {
+  const businessContext = useContext(BusinessContext);
   const eventContext = useContext(EventContext);
   const eventSpecialContext = useContext(EventSpecialContext);
+
+  const { businesses, getBusinesses } = businessContext;
 
   const {
     events,
@@ -23,19 +28,27 @@ const Events = (props) => {
   const Specials = useRef('');
   const eventSpecialButton = useRef('');
 
+  const [atEventBtn, setAtEventBtn] = useState('At the Event');
+  const [lastButtonPresses, setLastButtonPresses] = useState('');
+
   const eventDeals = (businessId) => {
     if (eventSpecialButton.current.innerText === 'Hide Event Specials') {
       Specials.current.classList.add('hidden');
       eventSpecialButton.current.innerText = 'Event Specials';
     } else {
       getBusinessEventSpecials(businessId);
-
       Specials.current.classList.remove('hidden');
       eventSpecialButton.current.innerText = 'Hide Event Specials';
     }
   };
 
-  const atEvent = () => {};
+  const atEventButton = () => {
+    if (atEventBtn === 'At the Event') {
+      setAtEventBtn('Show all businesses');
+    } else {
+      setAtEventBtn('At the Event');
+    }
+  };
 
   const eventLocation = () => {};
 
@@ -49,7 +62,14 @@ const Events = (props) => {
               <div className='flex content-center w-7/12 self-center overflow-scroll'>
                 <div className='w-48 mx-auto text-center'>
                   <div key={event.id} className='py-2'>
-                    <h5 className='text-gray-900'>{props.businessName}</h5>
+                    <h5 className='text-gray-900'>
+                      {
+                        businesses.filter(
+                          (host) => host.id === event.eventId
+                        )[0].businessName
+                        // props.eventName
+                      }
+                    </h5>
 
                     <div className='text-gray-600 text-sm'>
                       {Moment(event.startDateTime).format('MMM D, Y')}
@@ -77,10 +97,12 @@ const Events = (props) => {
                     Event Specials
                   </button>
                   <button
-                    onClick={atEvent}
+                    onClick={props.eventAttendance}
+                    onClickCapture={atEventButton}
+                    ref={props.buttonAtEvent}
                     className='bg-orange-400 hover:bg-orange-600 w-auto text-black flex-wrap text-xs font-bold rounded px-2'
                   >
-                    At the event
+                    {atEventBtn}
                   </button>
                   <button
                     onClick={eventLocation}

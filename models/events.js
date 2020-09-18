@@ -14,9 +14,15 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   events.associate = (models) => {
-    events.hasMany(models.eventSpecials, {
+    events.hasMany(models.events, {
       onDelete: 'cascade',
     }),
+      events.belongsTo(models.events, {
+        onDelete: 'cascade',
+      }),
+      events.hasMany(models.eventSpecials, {
+        onDelete: 'cascade',
+      }),
       events.belongsTo(models.businesses, {
         onDelete: 'cascade',
       }),

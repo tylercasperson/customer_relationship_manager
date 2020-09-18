@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 
 import BusinessContext from '../../context/business/businessContext';
 import ContactContext from '../../context/contact/contactContext';
@@ -23,13 +23,22 @@ const Businesses = () => {
   const eventContext = useContext(EventContext);
   const eventSpecialContext = useContext(EventSpecialContext);
 
-  const { businesses, getBusinesses } = businessContext;
+  const {
+    businesses,
+    resetBusinesses,
+    getBusinesses,
+    getEventAttandance,
+  } = businessContext;
   const { contacts, getContacts } = contactContext;
   const { industries, getIndustries } = industryContext;
   const { services, getServices } = serviceContext;
   const { getNotes, noteError } = noteContext;
   const { events, getEvents } = eventContext;
   const { eventSpecials, getEventSpecials } = eventSpecialContext;
+
+  // const [atEventBtn, setAtEventBtn] = useState('At the Event');
+  const [lastTimePresses, setLastTimePresses] = useState('');
+  const ButtonAtEvent = useRef('');
 
   useEffect(() => {
     getBusinesses();
@@ -47,12 +56,25 @@ const Businesses = () => {
   let emptyStar = <i className='px-1 far fa-star'></i>;
 
   console.log(businesses);
-  console.log(noteError);
-  console.log(contacts);
-  console.log(industries);
-  console.log(services);
+  // console.log(noteError);
+  // console.log(contacts);
+  // console.log(industries);
+  // console.log(services);
   console.log(events);
-  console.log(eventSpecials);
+  // console.log(eventSpecials);
+
+  const eventAttendance = (host) => {
+    if (ButtonAtEvent.current === null) {
+      resetBusinesses();
+      return;
+    }
+    console.log(ButtonAtEvent);
+    if (ButtonAtEvent.current.innerText !== 'At the Event') {
+      resetBusinesses();
+    } else {
+      getEventAttandance(host);
+    }
+  };
 
   return (
     <div className='bg-gray-400'>
@@ -168,6 +190,10 @@ const Businesses = () => {
                       </div>
                     ))}
                   businessMatch={business.id}
+                  eventAttendance={() =>
+                    eventAttendance(business.eventBooth[0].eventId)
+                  }
+                  buttonAtEvent={ButtonAtEvent}
                 />
               </div>
 

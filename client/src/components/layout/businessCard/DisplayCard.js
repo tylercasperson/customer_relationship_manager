@@ -91,8 +91,11 @@ const DisplayCard = (props) => {
         case 'Events':
           setShowCard(
             <Events
-              businessName={props.businessName}
+              eventName={props.eventName}
               businessMatch={props.businessMatch}
+              eventAttendance={props.eventAttendance}
+              atEventButton={props.atEventButton}
+              buttonAtEvent={props.buttonAtEvent}
             />
           );
           break;

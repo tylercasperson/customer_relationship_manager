@@ -14,16 +14,18 @@ router.get('/api/businesses', async (req, res) => {
         { model: db.products },
         { model: db.businessRatings },
         { model: db.importantToBusinesses },
-        { model: db.events, as: 'event', include: db.businesses },
         {
           model: db.events,
+          as: 'eventBooth',
+          include: [{ model: db.businesses }],
+        },
+        {
+          model: db.events,
+          as: 'eventAttendance',
           include: [
             {
               model: db.businesses,
             },
-            // {
-            //   model: db.eventSpecials,
-            // },
           ],
         },
         { model: db.reports },
@@ -38,17 +40,63 @@ router.get('/api/businesses', async (req, res) => {
   }
 });
 
-router.get('/api/businesses/:id', function (req, res) {
-  db.businesses
-    .findOne({
-      // include: [db.importantToBusiness],
+// router.get('/api/businesses/:id', async (req, res) => {
+//   console.log(req.params);
+//   try {
+//     const businesses = await db.businesses.findAll({
+//       where: { id: { [Op.eq]: req.params.id } },
+//     });
+//     res.json(businesses);
+//   } catch (err) {
+//     console.error(err.msg);
+//     res.status(500).send('Server Error');
+//   }
+// });
+
+router.get('/api/businesses/:id', async (req, res) => {
+  try {
+    const businesses = await db.businesses.findAll({
+      include: [
+        {
+          model: db.events,
+          as: 'eventAttendance',
+          include: [
+            {
+              model: db.businesses,
+
+              include: [
+                { model: db.products },
+                { model: db.businessRatings },
+                { model: db.importantToBusinesses },
+                {
+                  model: db.events,
+                  as: 'eventBooth',
+                  include: [{ model: db.businesses }],
+                },
+                {
+                  model: db.events,
+                  as: 'eventAttendance',
+                  include: [
+                    {
+                      model: db.businesses,
+                    },
+                  ],
+                },
+                { model: db.reports },
+              ],
+            },
+          ],
+        },
+      ],
       where: {
-        id: req.params.id,
+        '$eventAttendance.eventId$': req.params.id,
       },
-    })
-    .then(function (dbbusinesses) {
-      res.json(dbbusinesses);
     });
+    res.json(businesses);
+  } catch (err) {
+    console.error(err.msg);
+    res.status(500).send('Server Error');
+  }
 });
 
 router.post('/api/businesses', function (req, res) {
