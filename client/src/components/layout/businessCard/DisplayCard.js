@@ -93,9 +93,6 @@ const DisplayCard = (props) => {
             <Events
               eventName={props.eventName}
               businessMatch={props.businessMatch}
-              eventAttendance={props.eventAttendance}
-              atEventButton={props.atEventButton}
-              buttonAtEvent={props.buttonAtEvent}
             />
           );
           break;

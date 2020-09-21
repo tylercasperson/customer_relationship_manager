@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 
+import PlaceholderContext from '../../context/placeholder/placeholderContext';
 import BusinessContext from '../../context/business/businessContext';
 import ContactContext from '../../context/contact/contactContext';
 import IndustryContext from '../../context/industry/industryContext';
@@ -15,6 +16,7 @@ import Product from '../layout/Product';
 import Service from '../layout/Service';
 
 const Businesses = () => {
+  const placeholderContext = useContext(PlaceholderContext);
   const businessContext = useContext(BusinessContext);
   const contactContext = useContext(ContactContext);
   const industryContext = useContext(IndustryContext);
@@ -23,6 +25,11 @@ const Businesses = () => {
   const eventContext = useContext(EventContext);
   const eventSpecialContext = useContext(EventSpecialContext);
 
+  const {
+    placeholders,
+    getPlaceholders,
+    updatePlaceholder,
+  } = placeholderContext;
   const {
     businesses,
     resetBusinesses,
@@ -36,11 +43,8 @@ const Businesses = () => {
   const { events, getEvents } = eventContext;
   const { eventSpecials, getEventSpecials } = eventSpecialContext;
 
-  // const [atEventBtn, setAtEventBtn] = useState('At the Event');
-  const [lastTimePresses, setLastTimePresses] = useState('');
-  const ButtonAtEvent = useRef('');
-
   useEffect(() => {
+    getPlaceholders();
     getBusinesses();
     getContacts();
     getIndustries();
@@ -55,26 +59,14 @@ const Businesses = () => {
   let halfStar = <i className='px-1 fas fa-star-half-alt'></i>;
   let emptyStar = <i className='px-1 far fa-star'></i>;
 
+  console.log(placeholders);
   console.log(businesses);
   // console.log(noteError);
   // console.log(contacts);
   // console.log(industries);
   // console.log(services);
-  console.log(events);
+  // console.log(events);
   // console.log(eventSpecials);
-
-  const eventAttendance = (host) => {
-    if (ButtonAtEvent.current === null) {
-      resetBusinesses();
-      return;
-    }
-    console.log(ButtonAtEvent);
-    if (ButtonAtEvent.current.innerText !== 'At the Event') {
-      resetBusinesses();
-    } else {
-      getEventAttandance(host);
-    }
-  };
 
   return (
     <div className='bg-gray-400'>
@@ -190,10 +182,6 @@ const Businesses = () => {
                       </div>
                     ))}
                   businessMatch={business.id}
-                  eventAttendance={() =>
-                    eventAttendance(business.eventBooth[0].eventId)
-                  }
-                  buttonAtEvent={ButtonAtEvent}
                 />
               </div>
 

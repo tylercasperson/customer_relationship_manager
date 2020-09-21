@@ -1,17 +1,31 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Moment from 'moment';
 
+import PlaceholderContext from '../../../context/placeholder/placeholderContext';
 import BusinessContext from '../../../context/business/businessContext';
 import EventContext from '../../../context/event/eventContext';
 import EventSpecialContext from '../../../context/eventSpecial/eventSpecialContext';
-// import businessContext from '../../../context/business/businessContext';
 
 const Events = (props) => {
+  const placeholderContext = useContext(PlaceholderContext);
   const businessContext = useContext(BusinessContext);
   const eventContext = useContext(EventContext);
   const eventSpecialContext = useContext(EventSpecialContext);
 
-  const { businesses, getBusinesses } = businessContext;
+  const {
+    placeholders,
+    getPlaceholders,
+    getSinglePlaceholder,
+    createPlaceholder,
+    updatePlaceholder,
+  } = placeholderContext;
+
+  const {
+    businesses,
+    getBusinesses,
+    resetBusinesses,
+    getEventAttandance,
+  } = businessContext;
 
   const {
     events,
@@ -25,11 +39,16 @@ const Events = (props) => {
     getBusinessEventSpecials,
   } = eventSpecialContext;
 
+  useEffect(() => {
+    getPlaceholders();
+    // eslint-disable-next-line
+  }, []);
+
   const Specials = useRef('');
   const eventSpecialButton = useRef('');
 
-  const [atEventBtn, setAtEventBtn] = useState('At the Event');
-  const [lastButtonPresses, setLastButtonPresses] = useState('');
+  const [eventBtnText, setEventBtnText] = useState('At the Event');
+  const [lastBtn, setLastBtn] = useState('');
 
   const eventDeals = (businessId) => {
     if (eventSpecialButton.current.innerText === 'Hide Event Specials') {
@@ -42,15 +61,50 @@ const Events = (props) => {
     }
   };
 
-  const atEventButton = () => {
-    if (atEventBtn === 'At the Event') {
-      setAtEventBtn('Show all businesses');
-    } else {
-      setAtEventBtn('At the Event');
+  const atEventBtnText = (businessId, host) => {
+    eventBtnText === 'At the Event'
+      ? setEventBtnText('Show all businesses')
+      : setEventBtnText('At the Event');
+
+    let lastBtn = placeholders[0].placeholder;
+
+    if (document.getElementById('atEventBtn' + lastBtn) !== null) {
+      document.getElementById('atEventBtn' + lastBtn).innerText =
+        'At the Event';
     }
+
+    if (lastBtn === null) {
+      updatePlaceholder({
+        id: 1,
+        placeholder: businessId,
+        description: 'businessId',
+      });
+      getEventAttandance(host);
+    } else if (lastBtn === businessId) {
+      updatePlaceholder({
+        id: 1,
+        placeholder: null,
+        description: 'businessId',
+      });
+      resetBusinesses();
+    } else {
+      updatePlaceholder({
+        id: 1,
+        placeholder: businessId,
+        description: 'businessId',
+      });
+      getEventAttandance(host);
+    }
+    getPlaceholders();
   };
 
-  const eventLocation = () => {};
+  const eventLocation = () => {
+    updatePlaceholder({
+      id: 1,
+      placeholder: null,
+      description: 'attendeeId',
+    });
+  };
 
   return (
     <div className='relative h-64 w-128 bg-red-200 shadow-lg rounded-lg overflow-scroll'>
@@ -67,7 +121,6 @@ const Events = (props) => {
                         businesses.filter(
                           (host) => host.id === event.eventId
                         )[0].businessName
-                        // props.eventName
                       }
                     </h5>
 
@@ -97,12 +150,13 @@ const Events = (props) => {
                     Event Specials
                   </button>
                   <button
-                    onClick={props.eventAttendance}
-                    onClickCapture={atEventButton}
-                    ref={props.buttonAtEvent}
+                    onClick={() =>
+                      atEventBtnText(event.businessId, event.eventId)
+                    }
+                    id={'atEventBtn' + event.businessId}
                     className='bg-orange-400 hover:bg-orange-600 w-auto text-black flex-wrap text-xs font-bold rounded px-2'
                   >
-                    {atEventBtn}
+                    {eventBtnText}
                   </button>
                   <button
                     onClick={eventLocation}

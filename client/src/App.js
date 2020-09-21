@@ -3,6 +3,7 @@ import './assets/main.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import AuthState from './context/auth/AuthState';
+import PlaceholderState from './context/placeholder/PlaceholderState';
 import BusinessState from './context/business/BusinessState';
 import IndustryState from './context/industry/IndustryState';
 import ServiceState from './context/service/ServiceState';
@@ -23,36 +24,38 @@ import Navbar from './components/layout/Navbar';
 function App() {
   return (
     <AuthState>
-      <BusinessState>
-        <IndustryState>
-          <ServiceState>
-            <ContactState>
-              <EventState>
-                <EventSpecialState>
-                  <NoteState>
-                    <AlertState>
-                      <Router>
-                        <div id='BusinessRealtionshipManager'>
-                          <Navbar />
-                          <Switch>
-                            <Route exact path='/' component={Businesses} />
-                            <Route exact path='/login' component={Login} />
-                            <Route
-                              exact
-                              path='/register'
-                              component={Register}
-                            />
-                          </Switch>
-                        </div>
-                      </Router>
-                    </AlertState>
-                  </NoteState>
-                </EventSpecialState>
-              </EventState>
-            </ContactState>
-          </ServiceState>
-        </IndustryState>
-      </BusinessState>
+      <PlaceholderState>
+        <BusinessState>
+          <IndustryState>
+            <ServiceState>
+              <ContactState>
+                <EventState>
+                  <EventSpecialState>
+                    <NoteState>
+                      <AlertState>
+                        <Router>
+                          <div id='BusinessRealtionshipManager'>
+                            <Navbar />
+                            <Switch>
+                              <Route exact path='/' component={Businesses} />
+                              <Route exact path='/login' component={Login} />
+                              <Route
+                                exact
+                                path='/register'
+                                component={Register}
+                              />
+                            </Switch>
+                          </div>
+                        </Router>
+                      </AlertState>
+                    </NoteState>
+                  </EventSpecialState>
+                </EventState>
+              </ContactState>
+            </ServiceState>
+          </IndustryState>
+        </BusinessState>
+      </PlaceholderState>
     </AuthState>
   );
 }

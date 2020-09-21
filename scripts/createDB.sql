@@ -223,3 +223,11 @@ CREATE TABLE contactHigharchies (
     updatedAt datetime,
     PRIMARY KEY (id)
 );
+CREATE TABLE placeholders (
+    id int auto_increment,
+    placeholder int,
+    description varChar (255),
+    createdAt datetime,
+    updatedAt datetime,
+    PRIMARY KEY (id)
+);

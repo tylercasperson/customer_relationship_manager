@@ -9,7 +9,6 @@ import {
   GET_IMPORTANT_TO_BUSINESS,
   BUSINESS_ERROR,
 } from '../types';
-import DisplayCard from '../../components/layout/businessCard/DisplayCard';
 
 const BusinessState = (props) => {
   const initialState = {
@@ -29,7 +28,7 @@ const BusinessState = (props) => {
       const res = await axios.get('/api/businesses');
 
       dispatch({
-        type: RESET_BUSINESSES,
+        type: GET_BUSINESSES,
         payload: res.data,
       });
     } catch (err) {
@@ -46,7 +45,6 @@ const BusinessState = (props) => {
   const getBusinesses = async () => {
     try {
       const res = await axios.get('/api/businesses');
-      console.log(res);
       dispatch({
         type: GET_BUSINESSES,
         payload: res.data,
@@ -67,12 +65,15 @@ const BusinessState = (props) => {
 
       dispatch({
         type: GET_EVENT_ATTENDANCE,
-        payload: res.data.map(
-          (coordinator) =>
-            coordinator.eventAttendance.map(
-              (attendees) => attendees.business
-            )[0]
-        ),
+        payload: [
+          res.data.map(
+            (coordinator) =>
+              coordinator.eventAttendance.map(
+                (attendees) => attendees.business
+              )[0]
+          ),
+          id,
+        ],
       });
     } catch (err) {
       console.log(err);

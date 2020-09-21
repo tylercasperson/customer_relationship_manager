@@ -3522,3 +3522,17 @@ VALUES (
     '2020-07-01 00:00:00',
     '2020-07-01 00:00:00'
   );
+INSERT INTO placeholders (
+    id,
+    placeholder,
+    description,
+    createdAt,
+    updatedAt
+  )
+VALUES (
+    1,
+    null,
+    'hostId',
+    '2020-07-01 00:00:00',
+    '2020-07-01 00:00:00'
+  );

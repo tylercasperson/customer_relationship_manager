@@ -68,24 +68,24 @@ router.get('/api/businesses/:id', async (req, res) => {
                 { model: db.products },
                 { model: db.businessRatings },
                 { model: db.importantToBusinesses },
-                {
-                  model: db.events,
-                  as: 'eventBooth',
-                  include: [{ model: db.businesses }],
-                },
-                {
-                  model: db.events,
-                  as: 'eventAttendance',
-                  include: [
-                    {
-                      model: db.businesses,
-                    },
-                  ],
-                },
-                { model: db.reports },
+                //           {
+                //             model: db.events,
+                //             as: 'eventBooth',
+                //             include: [{ model: db.businesses }],
+                // },
+                //           {
+                //             model: db.events,
+                //             as: 'eventAttendance',
+                //             include: [
+                //               {
+                //                 model: db.businesses,
+                // },
               ],
             },
+            //           { model: db.reports },
           ],
+          //       },
+          //     ],
         },
       ],
       where: {

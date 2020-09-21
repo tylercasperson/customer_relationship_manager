@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3001;
 const db = require('./models');
 const usersRoute = require('./routes/users');
 const authRoute = require('./routes/auth');
+const placeholderRoute = require('./routes/placeholders');
 const businessesRoute = require('./routes/businesses');
 const contactsRoute = require('./routes/contacts');
 const industriesRoute = require('./routes/industries');
@@ -27,6 +28,7 @@ app.use(cors());
 // routes
 app.use(usersRoute);
 app.use(authRoute);
+app.use(placeholderRoute);
 app.use(businessesRoute);
 app.use(contactsRoute);
 app.use(industriesRoute);

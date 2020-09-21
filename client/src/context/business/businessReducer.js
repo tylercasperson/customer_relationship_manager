@@ -7,9 +7,11 @@ import {
 } from '../types';
 
 export default (state, action) => {
+  console.log(action.type);
   switch (action.type) {
     case RESET_BUSINESSES:
       return {
+        ...state,
         businesses: action.payload,
         loading: false,
       };
@@ -20,12 +22,14 @@ export default (state, action) => {
         loading: false,
       };
     case GET_EVENT_ATTENDANCE:
-      console.log(action.payload);
       return {
         ...state,
-        businesses: action.payload,
+        businesses: action.payload[0],
         loading: false,
       };
+    // case LAST_EVENT_FILTERED:
+    //   localStorage.getItem(filteredEvent);
+    //   return {};
     case GET_IMPORTANT_TO_BUSINESS:
       return {
         ...state,

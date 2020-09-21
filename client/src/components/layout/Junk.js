@@ -72,3 +72,105 @@ const adminLogin = () => {
       </button>
     </div>
   ))}
+
+
+
+
+
+
+  const atEventBtnText = (businessId, host) => {
+    if (eventBtnText === 'At the Event') {
+      setEventBtnText('Show all businesses');
+    } else {
+      setEventBtnText('At the Event');
+    }
+
+    let lastBtn =
+      placeholders.length <= 2
+        ? placeholders[1].placeholder
+        : placeholders[0].placeholder;
+
+    console.log(placeholders);
+    console.log('lastBtn: ', lastBtn);
+    console.log('businessId: ', businessId);
+
+    console.log('o1: ', lastBtn === null);
+    console.log('o2: ', lastBtn === businessId);
+    console.log('o3: ', lastBtn !== businessId);
+
+    const resetLastBtn = (lastBtn) => {
+      if (document.getElementById('atEventBtn' + lastBtn) !== null) {
+        document.getElementById('atEventBtn' + lastBtn).innerText =
+          'At the Event';
+      }
+    };
+
+    if (lastBtn === null) {
+      console.log('Option 1');
+      updatePlaceholder({
+        id: 2,
+        placeholder: businessId,
+        description: 'businessId',
+      });
+    } else if (lastBtn === businessId) {
+      console.log('Option 2');
+      updatePlaceholder({
+        id: 2,
+        placeholder: null,
+        description: 'businessId',
+      });
+      // resetLastBtn(lastBtn);
+    } else {
+      console.log('Option 3');
+      resetLastBtn(lastBtn);
+
+      updatePlaceholder({
+        id: 2,
+        placeholder: businessId,
+        description: 'businessId',
+      });
+    }
+
+    // const eventAttendance = (host, businessId) => {
+    let attendeeId =
+      placeholders.length <= 2
+        ? placeholders[0].placeholder
+        : placeholders[1].placeholder;
+
+    console.log('attendeeId: ', attendeeId);
+    console.log('host: ', host);
+    console.log('businessId: ', businessId);
+
+    console.log('o1: ', attendeeId === null);
+    console.log('o2: ', attendeeId === businessId);
+    console.log('o3: ', attendeeId !== businessId);
+
+    if (attendeeId === null) {
+      console.log('option 1');
+
+      updatePlaceholder({
+        id: 1,
+        placeholder: businessId,
+        description: 'attendeeId',
+      });
+      getEventAttandance(host);
+    } else if (attendeeId === businessId) {
+      console.log('option 2');
+
+      updatePlaceholder({
+        id: 1,
+        placeholder: null,
+        description: 'attendeeId',
+      });
+      resetBusinesses();
+    } else if (attendeeId !== businessId) {
+      console.log('option 3');
+      // resetBusinesses();
+      updatePlaceholder({
+        id: 1,
+        placeholder: businessId,
+        description: 'attendeeId',
+      });
+      getEventAttandance(host);
+    }
+  };
