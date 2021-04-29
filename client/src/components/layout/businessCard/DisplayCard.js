@@ -7,6 +7,7 @@ import NotesEdit from './NotesEdit';
 import ImportantToBusiness from './ImportantToBusiness';
 import ContactsToUse from './ContactsToUse';
 import Events from './Events';
+import EventLocation from './EventLocation';
 import ContactReports from './ContactReports';
 
 import SocialLinks from './SocialLinks';
@@ -35,6 +36,10 @@ const DisplayCard = (props) => {
     setShowCard(
       <Notes businessMatch={props.businessMatch} clickEdit={clickEdit} />
     );
+  };
+
+  const locationOfEvent = () => {
+    setShowCard(<EventLocation businessMatch={props.businessMatch} />);
   };
 
   const cardToDisplay = (buttonName) => {
@@ -91,11 +96,20 @@ const DisplayCard = (props) => {
         case 'Events':
           setShowCard(
             <Events
-              eventName={props.eventName}
               businessMatch={props.businessMatch}
+              eventLocation={locationOfEvent}
             />
           );
           break;
+        case 'EventLocation':
+          setShowCard(
+            <EventLocation
+              businessMatch={props.businessMatch}
+              // eventLocation={locationOfEvent}
+            />
+          );
+          break;
+
         case 'ContactReports':
           setShowCard(<ContactReports contactReports={props.contactReports} />);
           break;

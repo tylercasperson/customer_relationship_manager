@@ -1,49 +1,52 @@
-import React from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Icon } from 'leaflet';
+import * as parkData from '../../../data/skateboard-parks.json';
 
-const EventLocation = (props) => {
-  const eventSpecials = () => {};
+const Events = (props) => {
+  const [activePark, setActivePark] = useState();
+  // var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
-  const atEvent = () => {};
-
-  const eventLocation = () => {};
+  // https://blog.logrocket.com/how-to-use-react-leaflet/
 
   return (
     <div className='relative h-64 w-128 bg-red-200 shadow-lg rounded-lg overflow-scroll'>
-      <div className='flex h-32 w-full'>
-        <div className='flex content-center w-7/12 self-center overflow-scroll'>
-          <div className='w-48 mx-auto text-center'>
-            {props.event}
-
-            {/* <div class-Name ='text-gray-600 text-sm'>30% Discount preshow</div> */}
-          </div>
-        </div>
-
-        <div className='absolute right-0 w-5/12'>
-          <div className='flex h-32'>
-            <button
-              onClick={eventSpecials}
-              className='bg-green-300 hover:bg-green-500 w-auto text-black flex-wrap text-xs font-bold rounded px-2'
-            >
-              Event Specials
-            </button>
-            <button
-              onClick={atEvent}
-              className='bg-orange-400 hover:bg-orange-600 w-auto text-black flex-wrap text-xs font-bold rounded px-2'
-            >
-              At the event
-            </button>
-            <button
-              onClick={eventLocation}
-              className='bg-yellow-400 hover:bg-yellow-600 w-auto text-black flex-wrap text-xs font-bold rounded px-2'
-            >
-              Event Location
-            </button>
-          </div>
-        </div>
-      </div>
-      <hr className='border-1 border-black my-2' />
+      <Map center={[45.4, -75.7]} zoom={12}>
+        <TileLayer
+          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+        {activePark && (
+          <Popup
+            position={[
+              activePark.geometry.coordinates[1],
+              activePark.geometry.coordinates[0],
+            ]}
+            onClose={() => {
+              setActivePark(null);
+            }}
+          >
+            <div>
+              <h2>{activePark.properties.NAME}</h2>
+              <p>{activePark.properties.DESCRIPTIO}</p>
+            </div>
+          </Popup>
+        )}
+        {parkData.features.map((park) => (
+          <Marker
+            key={park.properties.PARK_ID}
+            position={[
+              park.geometry.coordinates[1],
+              park.geometry.coordinates[0],
+            ]}
+            onClick={() => {
+              setActivePark(park);
+            }}
+          />
+        ))}
+      </Map>
     </div>
   );
 };
 
-export default EventLocation;
+export default Events;

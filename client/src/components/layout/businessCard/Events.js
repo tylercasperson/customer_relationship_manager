@@ -98,14 +98,6 @@ const Events = (props) => {
     getPlaceholders();
   };
 
-  const eventLocation = () => {
-    updatePlaceholder({
-      id: 1,
-      placeholder: null,
-      description: 'attendeeId',
-    });
-  };
-
   return (
     <div className='relative h-64 w-128 bg-red-200 shadow-lg rounded-lg overflow-scroll'>
       {events
@@ -159,7 +151,7 @@ const Events = (props) => {
                     {eventBtnText}
                   </button>
                   <button
-                    onClick={eventLocation}
+                    onClick={props.eventLocation}
                     className='bg-yellow-400 hover:bg-yellow-600 w-auto text-black flex-wrap text-xs font-bold rounded px-2'
                   >
                     Event Location
